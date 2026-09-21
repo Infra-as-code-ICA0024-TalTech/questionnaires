@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 03</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L3 Q1 Inventory</text>
+    </name>
+    <idnumber>L3-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>What is the main purpose of an Ansible inventory?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Inventory identifies target hosts and groups and can associate variables such as SSH connection details with them.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To store a binary snapshot of every server</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To replace all role defaults and templates</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>To identify managed hosts and groups, with variables such as connection details</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To record only the commands that previously failed</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L3 Q2 Partial state</text>
+    </name>
+    <idnumber>L3-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A playbook ensures that Nginx is installed but says nothing about an unrelated package installed manually. What should you generally expect?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Ansible ordinarily manages the state expressed by the tasks. An omitted resource is not automatically declared absent; additional unmanaged state can remain.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The unrelated package remains unless a task explicitly manages or removes it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ansible removes every package absent from the playbook.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ansible recreates the server from a stock image.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The playbook must fail because the server has additional state.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L3 Q3 Roles</text>
+    </name>
+    <idnumber>L3-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Why does <code>demo-03a</code> separate <code>common</code>, <code>web</code>, <code>database</code>, and <code>batch</code> into roles?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Roles organize related tasks, defaults, templates, handlers, and other supporting resources into reusable units. They do not guarantee task parallelism or prohibit shared variables.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Roles guarantee that all tasks run simultaneously.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Each role creates its own independent Ansible installation.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Roles prevent the use of variables shared across hosts.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Roles package related tasks and supporting files so they can be organized and reused.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L3 Q4 Variable precedence</text>
+    </name>
+    <idnumber>L3-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider a simplified version of the demo's port configuration using a scalar variable named <code>app_port</code>. Role defaults set it to <code>8080</code>, the target host's group variables set it to <code>3000</code>, and the playbook command includes <code>-e app_port=9000</code>. What value should <code>{{ app_port }}</code> produce?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The command-line extra variable sets <code>app_port</code> to <code>9000</code>. Extra variables have higher variable precedence than the group variables and role defaults in this example. Multiple definitions are permitted; precedence determines the effective value. The scalar form in the question avoids unrelated dictionary-merging details.</p>
+<p>Technical reference: <a href="https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence">Ansible variable precedence</a>.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><code>8080</code>, because the role owns its configuration</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><code>9000</code>, because the extra variable overrides the other supplied values</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><code>3000</code>, because group variables always override command-line values</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>An error, because the same variable cannot appear in multiple places</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q5 Selecting hosts and roles</text>
+    </name>
+    <idnumber>L3-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>In <code>demo-03a/provisioning/provision.yml</code>, the <code>common</code> role targets <code>fleet</code>, while the <code>web</code>, <code>database</code>, and <code>batch</code> roles target their respective host groups. Explain which roles a host belonging to <code>web_servers</code> should receive and why the grouping is useful.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> A web host belongs to <code>web_servers</code>, which is a child group of <code>fleet</code>, so it receives the <code>common</code> role in the first play and the <code>web</code> role in the web play during a normal full run.</li>
+<li><strong>1 mark:</strong> This applies a shared baseline to the fleet while limiting specialized configuration to the appropriate hosts. It avoids installing the entire database or batch stack everywhere.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q6 Service state</text>
+    </name>
+    <idnumber>L3-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Explain the difference between <code>state: started</code> and <code>enabled: yes</code> in a service task. Why is <code>state: restarted</code> different from <code>state: started</code> when a playbook is run repeatedly?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> <code>state: started</code> requests that the service be running now, while <code>enabled: yes</code> requests that it start automatically at boot. These are distinct aspects of service state.</li>
+<li><strong>1 mark:</strong> <code>state: restarted</code> requests a restart whenever the task executes, whereas <code>state: started</code> normally leaves an already running service running. Repeated restart operations can cause unnecessary disruption even if the final service state is “running.”</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q7 Registering results</text>
+    </name>
+    <idnumber>L3-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The infrastructure playbook in <code>demo-03a</code> uses:</p>
+<pre><code class="language-yaml">- name: Create web security group
+  amazon.aws.ec2_security_group:
+    # Other settings omitted
+    state: present
+  register: web_sg
+
+# A later EC2 task uses:
+# security_group: &quot;{{ web_sg.group_id }}&quot;
+</code></pre>
+<p>Explain what <code>register</code> does here and why the later task uses the returned group ID instead of a manually copied value. These are excerpts; no execution is required.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> <code>register: web_sg</code> stores the task's returned result in a variable named <code>web_sg</code>, including its <code>group_id</code>.</li>
+<li><strong>1 mark:</strong> Referencing that returned ID passes the actual created or located resource into the later task and avoids manually duplicating a changing cloud identifier. The producing task must execute before its result is consumed in this sequence.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q8 Provisioning and testing</text>
+    </name>
+    <idnumber>L3-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The demo separates <code>00_create.sh</code>, <code>50_provision.sh</code>, and <code>60_test.sh</code>. Explain the difference between creating infrastructure and provisioning its operating-system/application state. Why is a separate functional test useful even when provisioning exits successfully?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> Creation establishes infrastructure such as instances, security groups, and connection information; provisioning installs/configures the operating-system and application resources on those instances.</li>
+<li><strong>1 mark:</strong> Successful tasks do not prove that the application works end to end. Functional tests can check health endpoints, database access, or communication between components that might still be misconfigured.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q9 Templates and handlers</text>
+    </name>
+    <idnumber>L3-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider this shortened excerpt from the web role in <code>demo-03a</code>:</p>
+<pre><code class="language-yaml"># tasks/main.yml
+- name: Configure Nginx for web application
+  template:
+    src: nginx-site.conf.j2
+    dest: /etc/nginx/sites-available/{{ project_name }}
+  notify:
+    - reload nginx
+
+# handlers/main.yml
+- name: reload nginx
+  systemd:
+    name: nginx
+    state: reloaded
+</code></pre>
+<p>Assume a successful play, no forced handler flushes, and no other task notifying this handler.</p>
+<ol>
+<li>When should the handler run if rendering the template changes the destination file? What happens on the next run if the rendered file is identical? <strong>(2 marks)</strong></li>
+<li>Suppose three changed tasks notify the same handler before the normal end-of-tasks handler phase. How many times should it run in that phase, and why is this useful? <strong>(2 marks)</strong></li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>monospaced</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>18</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> A changed template task notifies <code>reload nginx</code>; in the stated scenario it runs at the normal handler phase after the play's regular tasks.</li>
+<li><strong>1 mark:</strong> If the rendered file is unchanged on the next run, that task does not notify the handler, so it does not cause a reload.</li>
+<li><strong>1 mark:</strong> The same handler runs once in that handler phase despite three notifications.</li>
+<li><strong>1 mark:</strong> Combining notifications avoids redundant reloads and lets the service consume the completed configuration changes together.</li>
+</ul>
+<p>Technical reference: <a href="https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html">Ansible handlers and notification timing</a>. A later explicit flush or later handler phase changes the scope of the “once” statement; the question intentionally excludes that complication.</p>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L3 Q10 A misleading idempotence guard</text>
+    </name>
+    <idnumber>L3-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The web role contains this dependency-installation task:</p>
+<pre><code class="language-yaml">- name: Install Node.js dependencies
+  shell: |
+    cd &quot;{{ app_directory }}&quot;
+    npm install
+  become_user: &quot;{{ app_user }}&quot;
+  args:
+    creates: &quot;{{ app_directory }}/node_modules&quot;
+</code></pre>
+<p>The <code>node_modules</code> directory already exists from an earlier deployment. A new application release changes the required dependencies in <code>package.json</code>.</p>
+<ol>
+<li>Predict whether this task runs and explain the resulting risk. <strong>(2 marks)</strong></li>
+<li>Propose a change-aware way to install updated dependencies and one check that would show the application has the intended dependency state. Simply forcing every task to report <code>ok</code> is not a solution. <strong>(2 marks)</strong></li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>monospaced</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>18</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> The existing <code>node_modules</code> path causes <code>creates</code> to skip the shell command.</li>
+<li><strong>1 mark:</strong> Directory existence does not prove that installed dependencies match the new manifest; the application can retain stale or missing dependencies.</li>
+<li><strong>1 mark:</strong> Propose a manifest/lockfile-aware installation step, for example register changes to deployed dependency definitions and run a suitable installation task when those change or dependencies are missing. A committed lockfile with <code>npm ci</code> is one valid approach, if the required files and installation conditions are handled correctly. A checksummed build artifact is another defensible approach.</li>
+<li><strong>1 mark:</strong> Verify installed dependency versions against the intended manifest/lockfile or run a targeted application/smoke test that exercises the changed dependency. A combination is strongest. Merely testing whether the directory exists does not establish dependency correctness.</li>
+</ul>
+<p>Technical references: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/shell_module.html">Ansible shell creates guard</a> and <a href="https://docs.npmjs.com/cli/v11/commands/npm-ci/">npm ci requirements</a>.</p>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-03</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

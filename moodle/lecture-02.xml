@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 02</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L2 Q1 Image and running machine</text>
+    </name>
+    <idnumber>L2-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>What is the relationship between a machine image and a virtual machine?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>An image supplies the starting state for instances. The instances can subsequently change independently; their changes do not automatically rewrite the source image.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The image is the live machine's current CPU and memory usage.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>One image can be used to initialize multiple VM instances, which can later develop different state.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Every image can initialize only one VM.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Launching a VM automatically updates the source image whenever the VM changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L2 Q2 Packer output</text>
+    </name>
+    <idnumber>L2-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>What is the principal artifact produced by the AWS Packer build in <code>demo-02</code>?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The Packer build prepares a temporary instance and captures a reusable AMI. It does not, by itself, operate the long-lived production fleet.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A continuously reconciled Kubernetes deployment</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A Terraform state file describing the production fleet</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>An Ansible inventory containing all running servers</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>A custom AMI built using a temporary instance</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L2 Q3 Rebuildability</text>
+    </name>
+    <idnumber>L2-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The lecture describes a problematic form of a “golden image.” What makes that example an anti-pattern?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The problem is the unrepeatable manual creation process and accumulated hidden changes. The lecturer explicitly distinguishes this from an automated, rebuildable image that an organization may also call a “golden image.” The name alone is not the anti-pattern.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The image was modified manually and cannot be reliably recreated from a maintained build definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The organization uses a shared base image.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The image has been tested before use.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The image is generated by an automated build pipeline.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L2 Q4 Regions and architectures</text>
+    </name>
+    <idnumber>L2-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team needs equivalent Ubuntu-based machines in two AWS regions and on both x86-64 and ARM64 processors. Which assumption is sound?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Image selection must match the target region and CPU architecture. Equivalent image contents in different regions do not imply the same AMI ID.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>One AMI ID is valid in every region and on both architectures.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The VM instance type converts any image to the required architecture automatically.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The team must select suitable images for each region and architecture combination.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Only the size of the VM's disk determines whether the image can boot.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q5 Stock and custom images</text>
+    </name>
+    <idnumber>L2-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Explain the difference between a stock image and a custom image. Give one reason an organization would maintain a custom image instead of configuring every new machine entirely from a stock image at launch time.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> A stock image is a supplied starting image, such as a distribution vendor's Ubuntu image; a custom image adds an organization's chosen software or configuration.</li>
+<li><strong>1 mark:</strong> A relevant reason, such as consistently applying a security baseline, reducing repeated installation work, shortening launch time, or maintaining a tested organization-specific starting state.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q6 Build time and boot time</text>
+    </name>
+    <idnumber>L2-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Explain the difference between Packer provisioning during an image build and cloud-init configuration when a machine boots. Give one suitable example for each stage.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> Packer provisioning prepares the image before it is reused, for example installing shared tooling or applying a common baseline.</li>
+<li><strong>1 mark:</strong> Cloud-init can initialize an instance at boot using supplied metadata/user data, for example setting instance-specific configuration or running initial setup. It is not a general continuously running reconciliation loop; whether an individual action repeats depends on cloud-init configuration and module frequency.</li>
+</ul>
+<p>Accept reasonable alternative placements if the student explains the trade-off between a larger prepared baseline and more work at launch.</p>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q7 Containers and virtual machines</text>
+    </name>
+    <idnumber>L2-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Explain one important difference between a typical Linux container and a virtual machine in how they use the operating-system kernel. State one practical consequence for their isolation or compatibility.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> Typical Linux containers share the host's Linux kernel, while VMs run a guest operating system with its own kernel over virtualized hardware.</li>
+<li><strong>1 mark:</strong> A valid consequence: containers generally have a smaller startup/runtime overhead, share a kernel-level boundary, or require compatibility with the host kernel. VMs can provide different guest kernels. On a non-Linux desktop, Linux containers normally use a Linux VM underneath.</li>
+</ul>
+<p>Do not accept “containers have no isolation” or “any container can run unchanged on any operating system and architecture.”</p>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q8 Image layers</text>
+    </name>
+    <idnumber>L2-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A company needs web-server and database-server images with the same security baseline. Propose a simple image hierarchy and explain one maintenance benefit compared with independently repeating the baseline setup in every image build.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>8</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> A suitable hierarchy is vendor Ubuntu → shared organization baseline → separate web and database images.</li>
+<li><strong>1 mark:</strong> Shared baseline changes can be maintained centrally and reused, reducing duplicated provisioning logic and inconsistent baseline setup. Descendant images still need rebuilding and testing when the baseline changes; existing instances do not inherit the changes automatically.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>short-explanation</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q9 Reading the image build</text>
+    </name>
+    <idnumber>L2-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p><code>demo-02/devops-ubuntu-26.04-aws.pkr.hcl</code> defines two build sources:</p>
+<pre><code class="language-hcl">source &quot;amazon-ebs&quot; &quot;ubuntu-north&quot; {
+  region = &quot;eu-north-1&quot;
+  # Other settings omitted
+}
+
+source &quot;amazon-ebs&quot; &quot;ubuntu-west&quot; {
+  region = &quot;eu-west-1&quot;
+  # Other settings omitted
+}
+
+# The build uses both sources. Its provisioning scripts include,
+# in this order:
+# cloud-init.sh, base.sh, git.sh, aws-cli.sh, motd.sh,
+# disable-auto-updates.sh, cleanup.sh, zerodisk.sh
+</code></pre>
+<p>The first script waits for the initial cloud-init process to finish. The final scripts clean temporary files and prepare the disk before the image is captured.</p>
+<ol>
+<li>Describe the build lifecycle from source image to resulting AMI, including the role of the temporary VM and what happens to it after a successful build. <strong>(2 marks)</strong></li>
+<li>Why does the build wait for cloud-init before changing the operating system, and why does cleanup belong after software installation? <strong>(2 marks)</strong></li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>monospaced</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>18</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> For each configured source, Packer starts a temporary VM from the selected stock image and runs the provisioners against it.</li>
+<li><strong>1 mark:</strong> It captures the prepared machine state as a custom AMI and, on normal successful completion, removes the temporary build instance. The two configured targets produce regional AMIs; the image artifacts remain available.</li>
+<li><strong>1 mark:</strong> Waiting for cloud-init avoids racing initial configuration, package-manager activity, or related boot-time setup.</li>
+<li><strong>1 mark:</strong> Final cleanup removes build-time leftovers after installation has finished, so temporary files and caches are not needlessly captured in the reusable image. Cleanup is not proof that every secret or machine-specific identity has been sanitized.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="essay">
+    <name>
+      <text>L2 Q10 Repeating a build and rolling out an update</text>
+    </name>
+    <idnumber>L2-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The Packer template selects its source image using <code>most_recent = true</code>. Its <code>base.sh</code> script runs <code>apt-get update</code> and <code>apt-get dist-upgrade</code>. A student claims: “The code is in Git, so rebuilding next month is guaranteed to produce exactly the same software versions.”</p>
+<ol>
+<li>Assess that claim. Identify two inputs that can change without a change to the Git commit, and explain how to control them when reproducible versions are required. <strong>(2 marks)</strong></li>
+<li>The team deliberately builds a patched image. Describe an immutable rollout to the running application, including validation and preservation of persistent data. <strong>(2 marks)</strong></li>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>monospaced</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>18</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<ul>
+<li><strong>1 mark:</strong> <code>most_recent = true</code> can resolve to a different source AMI later. Record or pin the approved source AMI for the relevant region/architecture when rebuilding the same version is required.</li>
+<li><strong>1 mark:</strong> Package repositories and the versions selected by <code>dist-upgrade</code> can change. Control approved package versions and their availability, for example with a versioned repository snapshot or equivalent reproducible dependency source. Versioned build instructions alone do not freeze external inputs.</li>
+<li><strong>1 mark:</strong> Build and validate the patched image, then create replacement instances and verify application health before directing traffic to them. Retain an appropriate recovery path until the replacement is proven.</li>
+<li><strong>1 mark:</strong> Keep persistent application data on suitable separately managed storage or migrate/restore it through a tested procedure before retiring old instances. Running machines are not patched merely by publishing a new AMI.</li>
+</ul>]]></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text><![CDATA[]]></text>
+    </responsetemplate>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-02</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

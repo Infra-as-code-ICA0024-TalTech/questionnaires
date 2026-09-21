@@ -1,0 +1,32 @@
+{
+  "questions": 30,
+  "total_marks": 60,
+  "moodle_live_import_tested": false,
+  "ms_forms_live_import_tested": false,
+  "lectures": [
+    {
+      "lecture": 1,
+      "questions": 10,
+      "multichoice": 4,
+      "essay": 6,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 2,
+      "questions": 10,
+      "multichoice": 4,
+      "essay": 6,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 3,
+      "questions": 10,
+      "multichoice": 4,
+      "essay": 6,
+      "marks": 20,
+      "pdf_pages": 4
+    }
+  ]
+}

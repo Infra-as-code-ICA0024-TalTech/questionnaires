@@ -16,7 +16,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Space
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLES = {1: 'Infrastructure as Code concepts', 2: 'Images and machine initialization',
-          3: 'Server state and Ansible'}
+          3: 'Server state and configuration organization'}
 
 
 def sections(text):
@@ -91,7 +91,7 @@ def moodle_export(lecture, questions):
             for tag in ['correctfeedback', 'partiallycorrectfeedback', 'incorrectfeedback']:
                 rich(doc, node, tag, '')
         else:
-            for key, value in [('responseformat','monospaced' if q['number']>=9 else 'editor'),
+            for key, value in [('responseformat','editor'),
                                ('responserequired',1), ('responsefieldlines',18 if q['number']>=9 else 8),
                                ('attachments',0), ('attachmentsrequired',0)]:
                 add(doc, node, key, value)
@@ -153,59 +153,74 @@ def forms_export(lecture, questions):
     return path
 
 
-def validate(questions):
+def validate(questions, output_format='all'):
     report = {'questions':len(questions), 'total_marks':sum(q['points'] for q in questions),
               'moodle_live_import_tested':False, 'ms_forms_live_import_tested':False, 'lectures':[]}
     assert report['questions']==30 and report['total_marks']==60
     for lecture in TITLES:
         expected = [q for q in questions if q['lecture']==lecture]
         assert sum(q['points'] for q in expected)==20
-        root = ET.parse(ROOT/f'moodle/lecture-{lecture:02}.xml').getroot()
-        nodes = [q for q in root.findall('question') if q.get('type')!='category']
-        assert len(nodes)==10
-        for source, node in zip(expected,nodes):
-            assert node.findtext('idnumber')==source['id'].replace(' ','-')
-            assert float(node.findtext('defaultgrade'))==source['points']
-            assert node.findtext('questiontext/text')==to_html(source['prompt_markdown'])
-            # Round-trip comparison catches escaped YAML/HCL characters and whitespace damage.
-            if source['kind']=='multichoice':
-                answers=node.findall('answer')
-                assert len(answers)==4
-                correct=[i for i,a in enumerate(answers) if a.get('fraction')=='100']
-                assert correct==['ABCD'.index(source['correct_option'])]
-                assert all(a.findtext('text')==to_html(o['text']) for a,o in zip(answers,source['options']))
-            else:
-                assert node.findtext('graderinfo/text')==to_html(source['grader_markdown'])
-                assert not node.findtext('generalfeedback/text')
-                assert not node.findtext('responsetemplate/text')
-        pdf = ROOT/f'ms-forms/lecture-{lecture:02}.pdf'
-        assert pdf.stat().st_size < 10_000_000
-        reader=PdfReader(pdf)
-        assert len(reader.pages)==4, f'Unexpected page count for lecture {lecture}'
-        text='\n'.join(p.extract_text() for p in reader.pages)
-        for q in expected:
-            assert f"{q['number']}. {ascii_text(q['title'])}" in text
-        assert 'Instructor copy' not in text and 'Technical reference' not in text
+        if output_format in ('all', 'moodle'):
+            root = ET.parse(ROOT/f'moodle/lecture-{lecture:02}.xml').getroot()
+            nodes = [q for q in root.findall('question') if q.get('type')!='category']
+            assert len(nodes)==10
+            for source, node in zip(expected,nodes):
+                assert node.findtext('idnumber')==source['id'].replace(' ','-')
+                assert float(node.findtext('defaultgrade'))==source['points']
+                assert node.findtext('questiontext/text')==to_html(source['prompt_markdown'])
+                # Round-trip comparison catches escaped YAML/HCL characters and whitespace damage.
+                if source['kind']=='multichoice':
+                    answers=node.findall('answer')
+                    assert len(answers)==4
+                    correct=[i for i,a in enumerate(answers) if a.get('fraction')=='100']
+                    assert correct==['ABCD'.index(source['correct_option'])]
+                    assert all(a.findtext('text')==to_html(o['text']) for a,o in zip(answers,source['options']))
+                else:
+                    assert node.findtext('graderinfo/text')==to_html(source['grader_markdown'])
+                    assert not node.findtext('generalfeedback/text')
+                    assert not node.findtext('responsetemplate/text')
+        pdf_pages = None
+        if output_format in ('all', 'forms'):
+            pdf = ROOT/f'ms-forms/lecture-{lecture:02}.pdf'
+            assert pdf.stat().st_size < 10_000_000
+            reader=PdfReader(pdf)
+            assert len(reader.pages)==4, f'Unexpected page count for lecture {lecture}'
+            text='\n'.join(p.extract_text() for p in reader.pages)
+            for q in expected:
+                assert f"{q['number']}. {ascii_text(q['title'])}" in text
+            assert 'Instructor copy' not in text and 'Technical reference' not in text
+            pdf_pages = len(reader.pages)
         report['lectures'].append(dict(lecture=lecture, questions=10, multichoice=4,
-                                      essay=6, marks=20, pdf_pages=len(reader.pages)))
+                                      essay=6, marks=20, pdf_pages=pdf_pages))
+    if output_format != 'all':
+        report['validated_format'] = output_format
     return report
 
 
 def main():
     parser=argparse.ArgumentParser()
+    parser.add_argument('--format', choices=['all', 'moodle', 'forms'], default='all',
+                        help='Output format to generate or validate (default: all)')
     parser.add_argument('--check', action='store_true', help='Validate committed exports without rebuilding')
     args=parser.parse_args()
     questions=load_questions()
     if not args.check:
-        for name in ['moodle','ms-forms']:
-            (ROOT/name).mkdir(exist_ok=True)
+        if args.format in ('all', 'moodle'):
+            (ROOT/'moodle').mkdir(exist_ok=True)
+        if args.format in ('all', 'forms'):
+            (ROOT/'ms-forms').mkdir(exist_ok=True)
         for lecture in TITLES:
             group=[q for q in questions if q['lecture']==lecture]
-            moodle_export(lecture,group)
-            forms_export(lecture,group)
-        (ROOT/'ms-forms/grading-reference.json').write_text(json.dumps(questions,indent=2,ensure_ascii=False)+'\n')
-    report=validate(questions)
-    (ROOT/'docs/validation.json').write_text(json.dumps(report,indent=2)+'\n')
+            if args.format in ('all', 'moodle'):
+                moodle_export(lecture,group)
+            if args.format in ('all', 'forms'):
+                forms_export(lecture,group)
+        if args.format in ('all', 'forms'):
+            (ROOT/'ms-forms/grading-reference.json').write_text(json.dumps(questions,indent=2,ensure_ascii=False)+'\n')
+    report=validate(questions, args.format)
+    # A partial build must not overwrite the complete validation report.
+    if args.format == 'all':
+        (ROOT/'docs/validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 
 

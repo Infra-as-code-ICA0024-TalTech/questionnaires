@@ -11,10 +11,10 @@
     </name>
     <idnumber>L3-Q1</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>What is the main purpose of an Ansible inventory?</p>]]></text>
+      <text><![CDATA[<p>What is the main purpose of an inventory in server configuration management?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Inventory identifies target hosts and groups and can associate variables such as SSH connection details with them.</p>]]></text>
+      <text><![CDATA[<p>An inventory identifies target hosts and groups and can associate relevant information with them. It supports selecting the appropriate targets for configuration; it is not a complete backup of their state.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -23,25 +23,25 @@
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>To store a binary snapshot of every server</p>]]></text>
+      <text><![CDATA[<p>To store a complete binary snapshot of every server</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>To replace all role defaults and templates</p>]]></text>
+      <text><![CDATA[<p>To replace all reusable configuration definitions</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>To identify managed hosts and groups, with variables such as connection details</p>]]></text>
+      <text><![CDATA[<p>To identify managed hosts and groups and associate relevant targeting information</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>To record only the commands that previously failed</p>]]></text>
+      <text><![CDATA[<p>To record only the operations that previously failed</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -69,14 +69,14 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L3 Q2 Partial state</text>
+      <text>L3 Q2 Partial state management</text>
     </name>
     <idnumber>L3-Q2</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A playbook ensures that Nginx is installed but says nothing about an unrelated package installed manually. What should you generally expect?</p>]]></text>
+      <text><![CDATA[<p>An automation system manages only the resources explicitly declared to it. Its declaration requires a web service but says nothing about an unrelated package installed manually. What should you expect after a successful run?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Ansible ordinarily manages the state expressed by the tasks. An omitted resource is not automatically declared absent; additional unmanaged state can remain.</p>]]></text>
+      <text><![CDATA[<p>The system in the question manages explicitly declared resources. A resource outside that scope is not automatically declared absent, so unmanaged state can remain even after successful configuration.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -85,25 +85,25 @@
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The unrelated package remains unless a task explicitly manages or removes it.</p>]]></text>
+      <text><![CDATA[<p>The unrelated package can remain because it is outside the declared scope.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Ansible removes every package absent from the playbook.</p>]]></text>
+      <text><![CDATA[<p>Every package not named in the declaration is automatically removed.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Ansible recreates the server from a stock image.</p>]]></text>
+      <text><![CDATA[<p>The machine is necessarily recreated from a stock image.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The playbook must fail because the server has additional state.</p>]]></text>
+      <text><![CDATA[<p>Success proves that every aspect of the machine matches a complete baseline.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -131,14 +131,14 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L3 Q3 Roles</text>
+      <text>L3 Q3 Reusable configuration units</text>
     </name>
     <idnumber>L3-Q3</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Why does <code>demo-03a</code> separate <code>common</code>, <code>web</code>, <code>database</code>, and <code>batch</code> into roles?</p>]]></text>
+      <text><![CDATA[<p>What is the strongest reason to organize server configuration into reusable units for common setup, web services, and databases?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Roles organize related tasks, defaults, templates, handlers, and other supporting resources into reusable units. They do not guarantee task parallelism or prohibit shared variables.</p>]]></text>
+      <text><![CDATA[<p>Grouping related responsibilities creates units that can be understood, reused, and maintained. Such units can still have dependencies and need integration testing; splitting files does not guarantee independence or parallelism.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -147,25 +147,25 @@
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Roles guarantee that all tasks run simultaneously.</p>]]></text>
+      <text><![CDATA[<p>It guarantees that all configuration actions can run simultaneously.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Each role creates its own independent Ansible installation.</p>]]></text>
+      <text><![CDATA[<p>It makes each unit independent of every other resource and input.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Roles prevent the use of variables shared across hosts.</p>]]></text>
+      <text><![CDATA[<p>It removes the need to test how the units work together.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Roles package related tasks and supporting files so they can be organized and reused.</p>]]></text>
+      <text><![CDATA[<p>It groups related responsibilities so they can be understood, reused, and maintained separately.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -193,15 +193,14 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L3 Q4 Variable precedence</text>
+      <text>L3 Q4 Configuration values and shared logic</text>
     </name>
     <idnumber>L3-Q4</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Consider a simplified version of the demo's port configuration using a scalar variable named <code>app_port</code>. Role defaults set it to <code>8080</code>, the target host's group variables set it to <code>3000</code>, and the playbook command includes <code>-e app_port=9000</code>. What value should <code>{{ app_port }}</code> produce?</p>]]></text>
+      <text><![CDATA[<p>Development and production use the same service configuration logic but need different capacity values. Which organization best supports reuse and makes the intended differences clear?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The command-line extra variable sets <code>app_port</code> to <code>9000</code>. Extra variables have higher variable precedence than the group variables and role defaults in this example. Multiple definitions are permitted; precedence determines the effective value. The scalar form in the question avoids unrelated dictionary-merging details.</p>
-<p>Technical reference: <a href="https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence">Ansible variable precedence</a>.</p>]]></text>
+      <text><![CDATA[<p>Shared logic plus explicit environment values preserves reuse and makes intentional differences reviewable. A documented configuration scheme makes the effective values understandable; copying whole definitions or hiding overrides makes divergence harder to control.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -210,25 +209,25 @@
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p><code>8080</code>, because the role owns its configuration</p>]]></text>
+      <text><![CDATA[<p>Copy the full logic for each environment and edit the copies independently.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p><code>9000</code>, because the extra variable overrides the other supplied values</p>]]></text>
+      <text><![CDATA[<p>Keep shared logic reusable and supply explicit environment-specific values through a documented configuration scheme.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p><code>3000</code>, because group variables always override command-line values</p>]]></text>
+      <text><![CDATA[<p>Hide the production values inside unrelated shared configuration files.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>An error, because the same variable cannot appear in multiple places</p>]]></text>
+      <text><![CDATA[<p>Require both environments to have identical capacity so no values differ.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -256,11 +255,11 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q5 Selecting hosts and roles</text>
+      <text>L3 Q5 Grouping by responsibility</text>
     </name>
     <idnumber>L3-Q5</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>In <code>demo-03a/provisioning/provision.yml</code>, the <code>common</code> role targets <code>fleet</code>, while the <code>web</code>, <code>database</code>, and <code>batch</code> roles target their respective host groups. Explain which roles a host belonging to <code>web_servers</code> should receive and why the grouping is useful.</p>]]></text>
+      <text><![CDATA[<p>A fleet contains web, database, and batch-processing servers. All need a common baseline, but their workload-specific configuration differs. Explain how host grouping and reusable configuration units can express both requirements without applying every workload to every server.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -275,9 +274,10 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> A web host belongs to <code>web_servers</code>, which is a child group of <code>fleet</code>, so it receives the <code>common</code> role in the first play and the <code>web</code> role in the web play during a normal full run.</li>
-<li><strong>1 mark:</strong> This applies a shared baseline to the fleet while limiting specialized configuration to the appropriate hosts. It avoids installing the entire database or batch stack everywhere.</li>
-</ul>]]></text>
+<li><strong>1 mark:</strong> Apply a common baseline to the fleet or a shared parent grouping.</li>
+<li><strong>1 mark:</strong> Apply workload-specific units only to the corresponding web, database, or batch groups. Explain that separating selection from reusable definitions avoids copying the baseline or installing every workload everywhere.</li>
+</ul>
+<p>Do not require a particular inventory syntax, directory structure, or naming convention.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -296,11 +296,11 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q6 Service state</text>
+      <text>L3 Q6 Desired state and operational actions</text>
     </name>
     <idnumber>L3-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Explain the difference between <code>state: started</code> and <code>enabled: yes</code> in a service task. Why is <code>state: restarted</code> different from <code>state: started</code> when a playbook is run repeatedly?</p>]]></text>
+      <text><![CDATA[<p>Explain the difference between declaring that a service should be running and requesting that it restart on every automation run. Why does the distinction matter for repeated execution?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -315,8 +315,8 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> <code>state: started</code> requests that the service be running now, while <code>enabled: yes</code> requests that it start automatically at boot. These are distinct aspects of service state.</li>
-<li><strong>1 mark:</strong> <code>state: restarted</code> requests a restart whenever the task executes, whereas <code>state: started</code> normally leaves an already running service running. Repeated restart operations can cause unnecessary disruption even if the final service state is “running.”</li>
+<li><strong>1 mark:</strong> Declaring a running service describes a condition; requesting a restart describes an operation even when that condition is already satisfied.</li>
+<li><strong>1 mark:</strong> Reapplying the desired state can leave an already running service undisturbed, while unconditional restarts can cause unnecessary disruption. A restart may still be appropriate when a relevant change requires it.</li>
 </ul>]]></text>
     </graderinfo>
     <responsetemplate format="html">
@@ -336,21 +336,11 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q7 Registering results</text>
+      <text>L3 Q7 Responding to configuration changes</text>
     </name>
     <idnumber>L3-Q7</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The infrastructure playbook in <code>demo-03a</code> uses:</p>
-<pre><code class="language-yaml">- name: Create web security group
-  amazon.aws.ec2_security_group:
-    # Other settings omitted
-    state: present
-  register: web_sg
-
-# A later EC2 task uses:
-# security_group: &quot;{{ web_sg.group_id }}&quot;
-</code></pre>
-<p>Explain what <code>register</code> does here and why the later task uses the returned group ID instead of a manually copied value. These are excerpts; no execution is required.</p>]]></text>
+      <text><![CDATA[<p>A service must reload to use changed configuration. Explain why it can be useful to reload only after relevant changes, and why several compatible configuration changes might be applied before a single reload.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -365,9 +355,10 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> <code>register: web_sg</code> stores the task's returned result in a variable named <code>web_sg</code>, including its <code>group_id</code>.</li>
-<li><strong>1 mark:</strong> Referencing that returned ID passes the actual created or located resource into the later task and avoids manually duplicating a changing cloud identifier. The producing task must execute before its result is consumed in this sequence.</li>
-</ul>]]></text>
+<li><strong>1 mark:</strong> Change-aware reloads apply necessary configuration changes while avoiding unnecessary disruption when relevant configuration is unchanged.</li>
+<li><strong>1 mark:</strong> Combining compatible changes before one reload avoids redundant work and lets the service consume a coherent configuration. The changes should be validated and ordered appropriately before activation.</li>
+</ul>
+<p>Assess the principle, not a product's notification rules or handler timing.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -386,11 +377,11 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q8 Provisioning and testing</text>
+      <text>L3 Q8 Configuration success and functional success</text>
     </name>
     <idnumber>L3-Q8</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The demo separates <code>00_create.sh</code>, <code>50_provision.sh</code>, and <code>60_test.sh</code>. Explain the difference between creating infrastructure and provisioning its operating-system/application state. Why is a separate functional test useful even when provisioning exits successfully?</p>]]></text>
+      <text><![CDATA[<p>Every configuration step reports success, but users still cannot use the application. Explain why these outcomes are compatible and give one functional check that could reveal a problem missed by configuration-level checks.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -405,9 +396,10 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Creation establishes infrastructure such as instances, security groups, and connection information; provisioning installs/configures the operating-system and application resources on those instances.</li>
-<li><strong>1 mark:</strong> Successful tasks do not prove that the application works end to end. Functional tests can check health endpoints, database access, or communication between components that might still be misconfigured.</li>
-</ul>]]></text>
+<li><strong>1 mark:</strong> Configuration success establishes that selected operations or resource checks succeeded, not that the complete application works for its users.</li>
+<li><strong>1 mark:</strong> A relevant functional check, such as making a representative application request, confirming database access from the application, or verifying communication between components.</li>
+</ul>
+<p>Award credit for explaining the check's purpose; a successful configuration exit status alone is not a functional check.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -426,29 +418,14 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q9 Templates and handlers</text>
+      <text>L3 Q9 Comparing codebase organizations</text>
     </name>
     <idnumber>L3-Q9</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Consider this shortened excerpt from the web role in <code>demo-03a</code>:</p>
-<pre><code class="language-yaml"># tasks/main.yml
-- name: Configure Nginx for web application
-  template:
-    src: nginx-site.conf.j2
-    dest: /etc/nginx/sites-available/{{ project_name }}
-  notify:
-    - reload nginx
-
-# handlers/main.yml
-- name: reload nginx
-  systemd:
-    name: nginx
-    state: reloaded
-</code></pre>
-<p>Assume a successful play, no forced handler flushes, and no other task notifying this handler.</p>
+      <text><![CDATA[<p>A team is choosing between one large configuration file for all server types and environments, and smaller reusable units with a separate place to select which units and values each environment uses.</p>
 <ol>
-<li>When should the handler run if rendering the template changes the destination file? What happens on the next run if the rendered file is identical? <strong>(2 marks)</strong></li>
-<li>Suppose three changed tasks notify the same handler before the normal end-of-tasks handler phase. How many times should it run in that phase, and why is this useful? <strong>(2 marks)</strong></li>
+<li>Propose sensible boundaries for the smaller units and explain one advantage over the single large file as the system grows. <strong>(2 marks)</strong></li>
+<li>Explain one cost or risk introduced by splitting the configuration, and how you would keep the resulting codebase understandable and safe to change. <strong>(2 marks)</strong></li>
 </ol>]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -457,19 +434,19 @@
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>monospaced</responseformat>
+    <responseformat>editor</responseformat>
     <responserequired>1</responserequired>
     <responsefieldlines>18</responsefieldlines>
     <attachments>0</attachments>
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> A changed template task notifies <code>reload nginx</code>; in the stated scenario it runs at the normal handler phase after the play's regular tasks.</li>
-<li><strong>1 mark:</strong> If the rendered file is unchanged on the next run, that task does not notify the handler, so it does not cause a reload.</li>
-<li><strong>1 mark:</strong> The same handler runs once in that handler phase despite three notifications.</li>
-<li><strong>1 mark:</strong> Combining notifications avoids redundant reloads and lets the service consume the completed configuration changes together.</li>
+<li><strong>1 mark:</strong> Propose coherent units, for example a common baseline plus separate web, database, and batch responsibilities, with a clear place for environment selection and values.</li>
+<li><strong>1 mark:</strong> Explain a benefit such as focused review, reuse, clearer ownership, or reducing duplicated logic as the system grows.</li>
+<li><strong>1 mark:</strong> Identify a real cost or risk: more interfaces and indirection, unclear dependencies, conflicting defaults, or excessive fragmentation that makes the effective configuration hard to follow.</li>
+<li><strong>1 mark:</strong> Address that risk with clear interfaces, documented inputs and override rules, visible composition, sensible unit size, or appropriate integration validation.</li>
 </ul>
-<p>Technical reference: <a href="https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html">Ansible handlers and notification timing</a>. A later explicit flush or later handler phase changes the scope of the “once” statement; the question intentionally excludes that complication.</p>]]></text>
+<p>A single file can be adequate for a small system. Do not award full credit for claiming that more files are always better, or require one prescribed repository layout.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -488,23 +465,14 @@
   </question>
   <question type="essay">
     <name>
-      <text>L3 Q10 A misleading idempotence guard</text>
+      <text>L3 Q10 Checking the intended state</text>
     </name>
     <idnumber>L3-Q10</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The web role contains this dependency-installation task:</p>
-<pre><code class="language-yaml">- name: Install Node.js dependencies
-  shell: |
-    cd &quot;{{ app_directory }}&quot;
-    npm install
-  become_user: &quot;{{ app_user }}&quot;
-  args:
-    creates: &quot;{{ app_directory }}/node_modules&quot;
-</code></pre>
-<p>The <code>node_modules</code> directory already exists from an earlier deployment. A new application release changes the required dependencies in <code>package.json</code>.</p>
+      <text><![CDATA[<p>A deployment process skips software setup whenever it finds a directory named "application". The directory remains after the desired application version changes. The process reports success without checking the installed version or whether the application works.</p>
 <ol>
-<li>Predict whether this task runs and explain the resulting risk. <strong>(2 marks)</strong></li>
-<li>Propose a change-aware way to install updated dependencies and one check that would show the application has the intended dependency state. Simply forcing every task to report <code>ok</code> is not a solution. <strong>(2 marks)</strong></li>
+<li>Explain why this check is insufficient and why an unchanged result does not by itself prove that automation has reached the desired state. <strong>(2 marks)</strong></li>
+<li>Propose a better way to decide whether an update is needed, and one check after the update that would provide evidence that the intended result was achieved. <strong>(2 marks)</strong></li>
 </ol>]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -513,19 +481,19 @@
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>monospaced</responseformat>
+    <responseformat>editor</responseformat>
     <responserequired>1</responserequired>
     <responsefieldlines>18</responsefieldlines>
     <attachments>0</attachments>
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> The existing <code>node_modules</code> path causes <code>creates</code> to skip the shell command.</li>
-<li><strong>1 mark:</strong> Directory existence does not prove that installed dependencies match the new manifest; the application can retain stale or missing dependencies.</li>
-<li><strong>1 mark:</strong> Propose a manifest/lockfile-aware installation step, for example register changes to deployed dependency definitions and run a suitable installation task when those change or dependencies are missing. A committed lockfile with <code>npm ci</code> is one valid approach, if the required files and installation conditions are handled correctly. A checksummed build artifact is another defensible approach.</li>
-<li><strong>1 mark:</strong> Verify installed dependency versions against the intended manifest/lockfile or run a targeted application/smoke test that exercises the changed dependency. A combination is strongest. Merely testing whether the directory exists does not establish dependency correctness.</li>
+<li><strong>1 mark:</strong> Directory existence does not establish that the intended software version or configuration is present.</li>
+<li><strong>1 mark:</strong> Repeatedly doing nothing can leave an incorrect state unchanged. Idempotence and convergence to the desired state are related but distinct properties; a no-op alone is not evidence of successful configuration.</li>
+<li><strong>1 mark:</strong> Compare a meaningful observed state, such as the installed version or artifact identity, with the desired version/configuration and update when they differ. Include handling missing or incomplete installations in a sound explanation.</li>
+<li><strong>1 mark:</strong> Verify the intended version/configuration or exercise the relevant application behavior after the update. Rechecking directory existence alone is insufficient.</li>
 </ul>
-<p>Technical references: <a href="https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/shell_module.html">Ansible shell creates guard</a> and <a href="https://docs.npmjs.com/cli/v11/commands/npm-ci/">npm ci requirements</a>.</p>]]></text>
+<p>Accept in-place reconciliation or replacement from a verified artifact if the student explains how the intended state is established and checked.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>

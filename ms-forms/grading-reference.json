@@ -10,7 +10,7 @@
     "options": [
       {
         "label": "A",
-        "text": "Git, Terraform, and Ansible"
+        "text": "Deployment, testing, and monitoring"
       },
       {
         "label": "B",
@@ -26,7 +26,7 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "Compute executes workloads, storage retains data, and networking connects components. The other choices name tools, environments, or application-level concerns."
+    "grader_markdown": "Compute executes workloads, storage retains data, and networking connects resources. The alternatives describe activities, environments, or application-level concerns rather than the three infrastructure pillars."
   },
   {
     "id": "L1 Q2",
@@ -43,11 +43,11 @@
       },
       {
         "label": "B",
-        "text": "It specifies the exact order of all API calls that a tool must make."
+        "text": "It specifies the exact sequence of operations for every starting state."
       },
       {
         "label": "C",
-        "text": "It describes the desired state, while a tool works out how to reach it."
+        "text": "It describes the desired state, while automation determines how to reach it."
       },
       {
         "label": "D",
@@ -55,7 +55,7 @@
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "A declarative definition expresses the intended state. The tool determines the required operations from that definition and the current state. Declarative syntax does not mean every operation is independent or can run concurrently."
+    "grader_markdown": "A declarative definition expresses the intended state. Automation determines the operations needed from the declaration and actual state. Declarative syntax alone does not remove dependencies or guarantee parallel execution."
   },
   {
     "id": "L1 Q3",
@@ -84,7 +84,7 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "Once the declaration is satisfied, repeating the operation under unchanged conditions should not further alter the managed state. Checking state is compatible with idempotence; duplicating or needlessly rebuilding resources is not required."
+    "grader_markdown": "Once the desired state is satisfied, repeating an idempotent operation under unchanged relevant conditions should cause no further managed-state changes. Checking the current state is compatible with idempotence; doing nothing without checking does not establish correctness."
   },
   {
     "id": "L1 Q4",
@@ -113,19 +113,19 @@
       }
     ],
     "correct_option": "D",
-    "grader_markdown": "PaaS typically transfers more operating-system and runtime-platform maintenance to the provider. The exact responsibility boundary depends on the service. The team still owns its application requirements and code."
+    "grader_markdown": "PaaS typically transfers more operating-system and runtime-platform maintenance to the provider. The exact boundary depends on the service. The application team still owns its business requirements and application code."
   },
   {
     "id": "L1 Q5",
     "lecture": 1,
     "number": 5,
-    "title": "Why keep infrastructure definitions in Git",
+    "title": "Version-controlled infrastructure definitions",
     "points": 2,
     "kind": "essay",
     "prompt_markdown": "Give two benefits of version-controlling infrastructure definitions beyond simply having a backup copy. Explain how each benefit helps a team deliver changes reliably.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "Award **1 mark each** for two benefits connected to reliable delivery, for example:\n\n- A reviewable change history helps identify what changed, who changed it, and why.\n- Pull requests and review help catch mistakes before applying changes.\n- Automated validation can run against proposed configuration changes.\n- A shared definition reduces undocumented manual differences between environments.\n- A known earlier definition helps investigate or plan recovery from a bad change.\n\nDo not award a separate benefit for “having another copy.” Reverting a Git commit does not by itself restore deleted data or guarantee a safe infrastructure rollback."
+    "grader_markdown": "Award **1 mark each** for two distinct benefits explained in relation to reliable delivery, such as a reviewable change history, peer review before application, automated validation of proposed changes, or a shared record of intended configuration that reduces undocumented edits.\n\nDo not award a separate benefit for merely keeping another copy. A prior definition can support investigation or recovery planning, but reverting a source revision does not automatically restore deleted data or guarantee safe infrastructure rollback."
   },
   {
     "id": "L1 Q6",
@@ -134,10 +134,10 @@
     "title": "Configuration drift",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "Two servers were created from the same definition. An administrator later changes a setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.",
+    "prompt_markdown": "Two servers were created from the same definition. An administrator later changes a managed setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** Actual managed configuration has diverged from its declared or intended state; the manually changed server now differs from that baseline.\n- **1 mark:** Compare actual state with the definition, for example through a plan, configuration inspection, or a configuration-management run. Investigate whether the manual change is legitimate, then either update the reviewed declaration or reapply the intended configuration."
+    "grader_markdown": "- **1 mark:** Actual managed configuration has diverged from the declared or intended state; the manual edit creates a difference from the baseline.\n- **1 mark:** A sound detection or reconciliation method: compare actual state with the declaration, investigate the difference, and either restore the approved state or review and record a legitimate change before applying it consistently."
   },
   {
     "id": "L1 Q7",
@@ -149,43 +149,43 @@
     "prompt_markdown": "A server needs a new operating-system configuration. Contrast an in-place mutable update with an immutable replacement. Explain what must happen to persistent application data when using the replacement approach.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** Mutable updates modify the existing server; immutable updates create a replacement from a newly prepared definition or image and switch the workload to it.\n- **1 mark:** Preserve persistent data separately or use a tested backup/migration/restore procedure before retiring the old server. Replacement must not discard the only copy of application data."
+    "grader_markdown": "- **1 mark:** A mutable update modifies the existing server; an immutable update replaces it with one prepared from the updated definition or image.\n- **1 mark:** Preserve persistent data separately or use a tested migration/backup/restore process before retiring the old server. Replacement must not discard the only copy of application data."
   },
   {
     "id": "L1 Q8",
     "lecture": 1,
     "number": 8,
-    "title": "Tool responsibilities in demo 01",
+    "title": "Separating infrastructure and server configuration",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "In `demo-01`, `main.tf` creates an EC2 instance and writes an Ansible inventory; `playbook.yml` installs and configures Nginx. Explain the distinct responsibilities of Terraform and Ansible in this workflow.",
+    "prompt_markdown": "A deployment needs networks and virtual machines, as well as software and service configuration inside those machines. Explain the distinction between these two responsibilities and one benefit of keeping their definitions organized separately.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** In this demo, Terraform defines and provisions AWS resources and produces connection information, including the inventory.\n- **1 mark:** Ansible connects to the target and manages software, files, and service configuration inside the operating system.\n\nThese are the roles of the tools in this particular workflow, not an assertion that Ansible cannot manage cloud resources. `demo-03a` demonstrates that it can."
+    "grader_markdown": "- **1 mark:** Infrastructure definitions establish resources and connectivity; server configuration establishes software, files, and service state within those resources.\n- **1 mark:** A justified benefit of separating these concerns, such as clearer ownership, reuse of configuration across different resource layouts, focused review, or separate validation of different change types.\n\nDo not require separate repositories or separate products. Separation can exist within a single codebase with a clear interface between responsibilities."
   },
   {
     "id": "L1 Q9",
     "lecture": 1,
     "number": 9,
-    "title": "Dependencies and generated inventory",
+    "title": "Dependencies and changing resource information",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "Consider these excerpts from `demo-01/main.tf`:\n\n```hcl\n# Within aws_instance.server\nkey_name               = aws_key_pair.main_key.key_name\nvpc_security_group_ids = [aws_security_group.main_security_group.id]\n```\n\n```yaml\n# Within the Terraform-generated inventory template\nansible_host: ${aws_instance.server.public_ip}\n```\n\n1. Identify the two resources that the instance references and explain what those references tell Terraform about dependency ordering. **(2 marks)**\n2. Explain why generating `ansible_host` from the instance output is more reliable than copying an IP address into a separate inventory by hand. Include what must happen to the inventory when a replacement instance receives a new public IP. **(2 marks)**",
+    "prompt_markdown": "An application server needs a network before it can be created. A later configuration step needs the server's assigned address. A team records that address manually in several places. Replacing the server may change the address.\n\n1. Explain the dependency order and which resource information should pass between stages. Why is arranging files in a particular order not enough to express these relationships reliably? **(2 marks)**\n2. Propose a way to keep dependent configuration consistent when a server is replaced. Explain why it is preferable to maintaining several handwritten copies of the address. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** `aws_key_pair.main_key` is referenced for the instance's SSH key-pair name.\n- **1 mark:** `aws_security_group.main_security_group` is referenced for the attached security-group ID. Both resource references contribute implicit dependencies, so Terraform must obtain the required resource values before completing the dependent operation. Moving blocks up or down the file is not the dependency mechanism.\n- **1 mark:** Using `aws_instance.server.public_ip` connects the inventory to the provisioned instance's actual output and avoids a separately maintained, potentially stale IP address.\n- **1 mark:** Apply/regenerate the inventory after replacement and use that updated inventory for Ansible. A previously copied inventory does not update itself simply because a new instance exists.\n\nTechnical reference: [Terraform references and dependencies](https://developer.hashicorp.com/terraform/language/expressions/references)."
+    "grader_markdown": "- **1 mark:** The network must exist before the dependent server can be created, and the server's assigned address must be known before the dependent configuration step can use it.\n- **1 mark:** Dependencies and required outputs should be explicitly represented; file ordering alone does not describe or maintain the resource relationships reliably.\n- **1 mark:** Have the authoritative resource information supply the dependent configuration, and refresh that information when the server is replaced.\n- **1 mark:** This avoids independently maintained copies becoming stale or inconsistent and reduces the chance of configuring the wrong machine.\n\nAccept generated configuration, a maintained inventory fed by resource outputs, or another clearly explained way of resolving current information. Do not require a particular dependency syntax or product."
   },
   {
     "id": "L1 Q10",
     "lecture": 1,
     "number": 10,
-    "title": "Predicting a repeated run",
+    "title": "Shared definitions and environment differences",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "The following is a shortened version of tasks in `demo-01/playbook.yml`:\n\n```yaml\n- name: Install nginx\n  apt:\n    name: nginx\n    state: present\n\n- name: Create custom index.html\n  copy:\n    content: \"Course homepage\\n\"\n    dest: /var/www/html/index.html\n\n- name: Start and enable nginx\n  systemd:\n    name: nginx\n    state: started\n    enabled: yes\n```\n\nAssume the first run succeeds and all relevant inputs remain unchanged.\n\n1. Predict the effect of a second run on the package, file, and service. Explain why this illustrates idempotence. **(2 marks)**\n2. Someone then manually changes the contents of `index.html`. What should the next run do, and why? **(2 marks)**",
+    "prompt_markdown": "Development and production started from copied infrastructure definitions. They are intended to share the same application structure, but production needs greater capacity. After several independent edits, nobody knows whether other differences are intentional.\n\n1. Propose how to organize the shared definitions and environment-specific values. Explain which differences should remain explicit. **(2 marks)**\n2. Explain how the team could discover accidental differences and keep future changes reviewable while still allowing the legitimate capacity difference. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** The installed package remains present; the matching file does not need rewriting; a running and enabled service remains in that state.\n- **1 mark:** This is idempotence: once the requested state is reached, repetition with unchanged relevant inputs does not produce additional managed-state changes. The shown `state: present` does not mean “upgrade to whatever version is newest.”\n- **1 mark:** A manual edit makes the managed file differ from the declared content, so the next successful `copy` task restores the declared contents.\n- **1 mark:** The restoration reconciles drift against the declaration. It does not require replacing the whole server or reinstalling Nginx."
+    "grader_markdown": "- **1 mark:** Keep the common application structure in a shared, reusable definition rather than independently editing full copies.\n- **1 mark:** Keep legitimate environment values, including capacity, explicit and associated with the intended environment. Shared structure need not imply identical values everywhere.\n- **1 mark:** Compare existing definitions and actual state against the intended baseline and documented exceptions to identify accidental differences.\n- **1 mark:** Review and version shared changes and environment values, validating their effects in the relevant environments before applying them.\n\nAccept different folder or repository layouts if they preserve a clear shared definition and explicit differences. Do not require a particular layout or insist that all differences are drift."
   },
   {
     "id": "L2 Q1",
@@ -202,7 +202,7 @@
       },
       {
         "label": "B",
-        "text": "One image can be used to initialize multiple VM instances, which can later develop different state."
+        "text": "One image can initialize multiple VM instances, which can later develop different state."
       },
       {
         "label": "C",
@@ -214,36 +214,36 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "An image supplies the starting state for instances. The instances can subsequently change independently; their changes do not automatically rewrite the source image."
+    "grader_markdown": "An image provides the starting state for multiple instances. The instances can change independently after launch; those changes do not automatically rewrite the image."
   },
   {
     "id": "L2 Q2",
     "lecture": 2,
     "number": 2,
-    "title": "Packer output",
+    "title": "Image building and deployment",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "What is the principal artifact produced by the AWS Packer build in `demo-02`?",
+    "prompt_markdown": "What distinguishes building a machine image from deploying machines based on that image?",
     "options": [
       {
         "label": "A",
-        "text": "A continuously reconciled Kubernetes deployment"
+        "text": "Building an image automatically replaces every running machine."
       },
       {
         "label": "B",
-        "text": "A Terraform state file describing the production fleet"
+        "text": "Deployment modifies the shared source image whenever an instance changes."
       },
       {
         "label": "C",
-        "text": "An Ansible inventory containing all running servers"
+        "text": "Building an image removes the need for any instance-specific configuration."
       },
       {
         "label": "D",
-        "text": "A custom AMI built using a temporary instance"
+        "text": "Building creates a reusable starting artifact; deployment creates running instances from it."
       }
     ],
     "correct_option": "D",
-    "grader_markdown": "The Packer build prepares a temporary instance and captures a reusable AMI. It does not, by itself, operate the long-lived production fleet."
+    "grader_markdown": "Image building prepares a reusable artifact. Deployment uses that artifact to create running instances. Producing a new image does not automatically update existing machines or eliminate instance-specific initialization."
   },
   {
     "id": "L2 Q3",
@@ -252,7 +252,7 @@
     "title": "Rebuildability",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "The lecture describes a problematic form of a “golden image.” What makes that example an anti-pattern?",
+    "prompt_markdown": "The lecture describes a problematic form of a \"golden image.\" What makes that example an anti-pattern?",
     "options": [
       {
         "label": "A",
@@ -272,36 +272,36 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "The problem is the unrepeatable manual creation process and accumulated hidden changes. The lecturer explicitly distinguishes this from an automated, rebuildable image that an organization may also call a “golden image.” The name alone is not the anti-pattern."
+    "grader_markdown": "The problem is hidden manual changes and the lack of a maintained, repeatable creation process. A shared baseline or an automated, rebuildable image is not inherently an anti-pattern, even if the team calls it a golden image."
   },
   {
     "id": "L2 Q4",
     "lecture": 2,
     "number": 4,
-    "title": "Regions and architectures",
+    "title": "Image compatibility",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A team needs equivalent Ubuntu-based machines in two AWS regions and on both x86-64 and ARM64 processors. Which assumption is sound?",
+    "prompt_markdown": "A team wants to use the same machine baseline on two virtualization platforms and on different processor architectures. Which assumption is sound?",
     "options": [
       {
         "label": "A",
-        "text": "One AMI ID is valid in every region and on both architectures."
+        "text": "Any machine image can boot unchanged on every platform and processor architecture."
       },
       {
         "label": "B",
-        "text": "The VM instance type converts any image to the required architecture automatically."
+        "text": "Matching the application's name guarantees that its machine image is compatible."
       },
       {
         "label": "C",
-        "text": "The team must select suitable images for each region and architecture combination."
+        "text": "The team must check platform and architecture compatibility and may need separate image variants."
       },
       {
         "label": "D",
-        "text": "Only the size of the VM's disk determines whether the image can boot."
+        "text": "Only disk size determines whether the image can boot."
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "Image selection must match the target region and CPU architecture. Equivalent image contents in different regions do not imply the same AMI ID."
+    "grader_markdown": "Machine images must be compatible with the destination platform and processor architecture. A common intended baseline can require different artifacts or formats for different targets; the exact requirements depend on the target platforms."
   },
   {
     "id": "L2 Q5",
@@ -313,7 +313,7 @@
     "prompt_markdown": "Explain the difference between a stock image and a custom image. Give one reason an organization would maintain a custom image instead of configuring every new machine entirely from a stock image at launch time.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** A stock image is a supplied starting image, such as a distribution vendor's Ubuntu image; a custom image adds an organization's chosen software or configuration.\n- **1 mark:** A relevant reason, such as consistently applying a security baseline, reducing repeated installation work, shortening launch time, or maintaining a tested organization-specific starting state."
+    "grader_markdown": "- **1 mark:** A stock image is a supplied starting image; a custom image adds selected organizational software or configuration to a starting image.\n- **1 mark:** A sound reason, such as a consistent security baseline, less repeated installation, faster initialization, or a tested common starting state."
   },
   {
     "id": "L2 Q6",
@@ -322,10 +322,10 @@
     "title": "Build time and boot time",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "Explain the difference between Packer provisioning during an image build and cloud-init configuration when a machine boots. Give one suitable example for each stage.",
+    "prompt_markdown": "Explain how configuration prepared during image building differs from configuration applied when an instance first starts. Give one suitable example for each stage.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** Packer provisioning prepares the image before it is reused, for example installing shared tooling or applying a common baseline.\n- **1 mark:** Cloud-init can initialize an instance at boot using supplied metadata/user data, for example setting instance-specific configuration or running initial setup. It is not a general continuously running reconciliation loop; whether an individual action repeats depends on cloud-init configuration and module frequency.\n\nAccept reasonable alternative placements if the student explains the trade-off between a larger prepared baseline and more work at launch."
+    "grader_markdown": "- **1 mark:** Build-time configuration becomes part of a reusable image, for example common software or a shared security baseline.\n- **1 mark:** Boot-time initialization configures a particular instance when it starts, for example its environment-specific settings or instance identity.\n\nAccept different placements if the distinction and trade-off are sound. First-start initialization is not automatically ongoing state reconciliation."
   },
   {
     "id": "L2 Q7",
@@ -337,43 +337,43 @@
     "prompt_markdown": "Explain one important difference between a typical Linux container and a virtual machine in how they use the operating-system kernel. State one practical consequence for their isolation or compatibility.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** Typical Linux containers share the host's Linux kernel, while VMs run a guest operating system with its own kernel over virtualized hardware.\n- **1 mark:** A valid consequence: containers generally have a smaller startup/runtime overhead, share a kernel-level boundary, or require compatibility with the host kernel. VMs can provide different guest kernels. On a non-Linux desktop, Linux containers normally use a Linux VM underneath.\n\nDo not accept “containers have no isolation” or “any container can run unchanged on any operating system and architecture.”"
+    "grader_markdown": "- **1 mark:** Typical Linux containers share a host kernel; virtual machines run a guest operating system with its own kernel over virtualized hardware.\n- **1 mark:** A valid consequence for isolation or compatibility, such as sharing a kernel-level boundary, needing a compatible host kernel, or being able to run a different guest kernel in a VM.\n\nDo not accept claims that containers have no isolation or that any image runs unchanged on any operating system and processor architecture."
   },
   {
     "id": "L2 Q8",
     "lecture": 2,
     "number": 8,
-    "title": "Image layers",
+    "title": "Snapshot and rebuildable definition",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "A company needs web-server and database-server images with the same security baseline. Propose a simple image hierarchy and explain one maintenance benefit compared with independently repeating the baseline setup in every image build.",
+    "prompt_markdown": "A team keeps a snapshot of a working server but has no maintained instructions for recreating its configuration. Explain one thing the snapshot provides and one reason it does not replace a rebuildable definition.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** A suitable hierarchy is vendor Ubuntu → shared organization baseline → separate web and database images.\n- **1 mark:** Shared baseline changes can be maintained centrally and reused, reducing duplicated provisioning logic and inconsistent baseline setup. Descendant images still need rebuilding and testing when the baseline changes; existing instances do not inherit the changes automatically."
+    "grader_markdown": "- **1 mark:** A snapshot captures a point-in-time state that may help restore or clone a machine, subject to its scope and consistency.\n- **1 mark:** It does not explain or maintain the intended construction process; hidden configuration and manual changes remain difficult to review, modify, and recreate deliberately. A maintained build definition makes those inputs and steps explicit.\n\nDo not imply snapshots are useless or that definitions replace backups of persistent data."
   },
   {
     "id": "L2 Q9",
     "lecture": 2,
     "number": 9,
-    "title": "Reading the image build",
+    "title": "Organizing an image family",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "`demo-02/devops-ubuntu-26.04-aws.pkr.hcl` defines two build sources:\n\n```hcl\nsource \"amazon-ebs\" \"ubuntu-north\" {\n  region = \"eu-north-1\"\n  # Other settings omitted\n}\n\nsource \"amazon-ebs\" \"ubuntu-west\" {\n  region = \"eu-west-1\"\n  # Other settings omitted\n}\n\n# The build uses both sources. Its provisioning scripts include,\n# in this order:\n# cloud-init.sh, base.sh, git.sh, aws-cli.sh, motd.sh,\n# disable-auto-updates.sh, cleanup.sh, zerodisk.sh\n```\n\nThe first script waits for the initial cloud-init process to finish. The final scripts clean temporary files and prepare the disk before the image is captured.\n\n1. Describe the build lifecycle from source image to resulting AMI, including the role of the temporary VM and what happens to it after a successful build. **(2 marks)**\n2. Why does the build wait for cloud-init before changing the operating system, and why does cleanup belong after software installation? **(2 marks)**",
+    "prompt_markdown": "A company needs web-server and database-server images. Both must share a security baseline, but each needs different software. Today, two separate build definitions contain copied baseline steps. A policy update was applied to only one copy.\n\n1. Propose an organization for the image definitions that separates shared baseline work from workload-specific work. Explain how it reduces the risk illustrated here. **(2 marks)**\n2. Explain what must happen to the derived images and running machines after the shared baseline changes. Include a check before the new baseline is used in production. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** For each configured source, Packer starts a temporary VM from the selected stock image and runs the provisioners against it.\n- **1 mark:** It captures the prepared machine state as a custom AMI and, on normal successful completion, removes the temporary build instance. The two configured targets produce regional AMIs; the image artifacts remain available.\n- **1 mark:** Waiting for cloud-init avoids racing initial configuration, package-manager activity, or related boot-time setup.\n- **1 mark:** Final cleanup removes build-time leftovers after installation has finished, so temporary files and caches are not needlessly captured in the reusable image. Cleanup is not proof that every secret or machine-specific identity has been sanitized."
+    "grader_markdown": "- **1 mark:** Define a common baseline once and build separate workload-specific images from it, or reuse an equivalent common build unit in both image definitions.\n- **1 mark:** Central ownership of shared baseline logic reduces duplicated edits and inconsistent policy implementation while keeping workload differences separate.\n- **1 mark:** Rebuild the affected derived images and explicitly roll out or replace the running machines; changes to a shared definition do not propagate automatically into existing artifacts or instances.\n- **1 mark:** Validate the new baseline and derived workload behavior before production use, such as checking the policy setting and exercising the application on a candidate image.\n\nAccept a dependency diagram or prose. Reuse alone does not prove that a built artifact or running fleet is current."
   },
   {
     "id": "L2 Q10",
     "lecture": 2,
     "number": 10,
-    "title": "Repeating a build and rolling out an update",
+    "title": "Reproducible builds and immutable updates",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "The Packer template selects its source image using `most_recent = true`. Its `base.sh` script runs `apt-get update` and `apt-get dist-upgrade`. A student claims: “The code is in Git, so rebuilding next month is guaranteed to produce exactly the same software versions.”\n\n1. Assess that claim. Identify two inputs that can change without a change to the Git commit, and explain how to control them when reproducible versions are required. **(2 marks)**\n2. The team deliberately builds a patched image. Describe an immutable rollout to the running application, including validation and preservation of persistent data. **(2 marks)**",
+    "prompt_markdown": "An image build always selects the latest available base image and software packages. A team claims: \"Our build instructions are version-controlled, so running them next month must produce the same software versions.\"\n\n1. Assess the claim. Identify two inputs that can change independently of the instructions and explain how to control them when reproducing an approved version. **(2 marks)**\n2. The team deliberately prepares a patched image. Describe an immutable update to the running application, including validation and preservation of persistent data. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** `most_recent = true` can resolve to a different source AMI later. Record or pin the approved source AMI for the relevant region/architecture when rebuilding the same version is required.\n- **1 mark:** Package repositories and the versions selected by `dist-upgrade` can change. Control approved package versions and their availability, for example with a versioned repository snapshot or equivalent reproducible dependency source. Versioned build instructions alone do not freeze external inputs.\n- **1 mark:** Build and validate the patched image, then create replacement instances and verify application health before directing traffic to them. Retain an appropriate recovery path until the replacement is proven.\n- **1 mark:** Keep persistent application data on suitable separately managed storage or migrate/restore it through a tested procedure before retiring old instances. Running machines are not patched merely by publishing a new AMI."
+    "grader_markdown": "- **1 mark:** The selected base image can change independently of the build instructions; record and select the approved version when reproducing it.\n- **1 mark:** Software package versions or their source contents can change; control the approved versions and ensure the required artifacts remain available. Versioned instructions alone do not freeze external inputs.\n- **1 mark:** Build and validate the patched image, create replacement instances, check application health, and move the workload to the replacements with a considered recovery path.\n- **1 mark:** Preserve persistent data on suitably managed storage or use a tested migration/restore process before retiring old instances.\n\nDo not require a specific package manager, image identifier, or artifact-storage product."
   },
   {
     "id": "L3 Q1",
@@ -382,185 +382,185 @@
     "title": "Inventory",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "What is the main purpose of an Ansible inventory?",
+    "prompt_markdown": "What is the main purpose of an inventory in server configuration management?",
     "options": [
       {
         "label": "A",
-        "text": "To store a binary snapshot of every server"
+        "text": "To store a complete binary snapshot of every server"
       },
       {
         "label": "B",
-        "text": "To replace all role defaults and templates"
+        "text": "To replace all reusable configuration definitions"
       },
       {
         "label": "C",
-        "text": "To identify managed hosts and groups, with variables such as connection details"
+        "text": "To identify managed hosts and groups and associate relevant targeting information"
       },
       {
         "label": "D",
-        "text": "To record only the commands that previously failed"
+        "text": "To record only the operations that previously failed"
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "Inventory identifies target hosts and groups and can associate variables such as SSH connection details with them."
+    "grader_markdown": "An inventory identifies target hosts and groups and can associate relevant information with them. It supports selecting the appropriate targets for configuration; it is not a complete backup of their state."
   },
   {
     "id": "L3 Q2",
     "lecture": 3,
     "number": 2,
-    "title": "Partial state",
+    "title": "Partial state management",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A playbook ensures that Nginx is installed but says nothing about an unrelated package installed manually. What should you generally expect?",
+    "prompt_markdown": "An automation system manages only the resources explicitly declared to it. Its declaration requires a web service but says nothing about an unrelated package installed manually. What should you expect after a successful run?",
     "options": [
       {
         "label": "A",
-        "text": "The unrelated package remains unless a task explicitly manages or removes it."
+        "text": "The unrelated package can remain because it is outside the declared scope."
       },
       {
         "label": "B",
-        "text": "Ansible removes every package absent from the playbook."
+        "text": "Every package not named in the declaration is automatically removed."
       },
       {
         "label": "C",
-        "text": "Ansible recreates the server from a stock image."
+        "text": "The machine is necessarily recreated from a stock image."
       },
       {
         "label": "D",
-        "text": "The playbook must fail because the server has additional state."
+        "text": "Success proves that every aspect of the machine matches a complete baseline."
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "Ansible ordinarily manages the state expressed by the tasks. An omitted resource is not automatically declared absent; additional unmanaged state can remain."
+    "grader_markdown": "The system in the question manages explicitly declared resources. A resource outside that scope is not automatically declared absent, so unmanaged state can remain even after successful configuration."
   },
   {
     "id": "L3 Q3",
     "lecture": 3,
     "number": 3,
-    "title": "Roles",
+    "title": "Reusable configuration units",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "Why does `demo-03a` separate `common`, `web`, `database`, and `batch` into roles?",
+    "prompt_markdown": "What is the strongest reason to organize server configuration into reusable units for common setup, web services, and databases?",
     "options": [
       {
         "label": "A",
-        "text": "Roles guarantee that all tasks run simultaneously."
+        "text": "It guarantees that all configuration actions can run simultaneously."
       },
       {
         "label": "B",
-        "text": "Each role creates its own independent Ansible installation."
+        "text": "It makes each unit independent of every other resource and input."
       },
       {
         "label": "C",
-        "text": "Roles prevent the use of variables shared across hosts."
+        "text": "It removes the need to test how the units work together."
       },
       {
         "label": "D",
-        "text": "Roles package related tasks and supporting files so they can be organized and reused."
+        "text": "It groups related responsibilities so they can be understood, reused, and maintained separately."
       }
     ],
     "correct_option": "D",
-    "grader_markdown": "Roles organize related tasks, defaults, templates, handlers, and other supporting resources into reusable units. They do not guarantee task parallelism or prohibit shared variables."
+    "grader_markdown": "Grouping related responsibilities creates units that can be understood, reused, and maintained. Such units can still have dependencies and need integration testing; splitting files does not guarantee independence or parallelism."
   },
   {
     "id": "L3 Q4",
     "lecture": 3,
     "number": 4,
-    "title": "Variable precedence",
+    "title": "Configuration values and shared logic",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "Consider a simplified version of the demo's port configuration using a scalar variable named `app_port`. Role defaults set it to `8080`, the target host's group variables set it to `3000`, and the playbook command includes `-e app_port=9000`. What value should `{{ app_port }}` produce?",
+    "prompt_markdown": "Development and production use the same service configuration logic but need different capacity values. Which organization best supports reuse and makes the intended differences clear?",
     "options": [
       {
         "label": "A",
-        "text": "`8080`, because the role owns its configuration"
+        "text": "Copy the full logic for each environment and edit the copies independently."
       },
       {
         "label": "B",
-        "text": "`9000`, because the extra variable overrides the other supplied values"
+        "text": "Keep shared logic reusable and supply explicit environment-specific values through a documented configuration scheme."
       },
       {
         "label": "C",
-        "text": "`3000`, because group variables always override command-line values"
+        "text": "Hide the production values inside unrelated shared configuration files."
       },
       {
         "label": "D",
-        "text": "An error, because the same variable cannot appear in multiple places"
+        "text": "Require both environments to have identical capacity so no values differ."
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "The command-line extra variable sets `app_port` to `9000`. Extra variables have higher variable precedence than the group variables and role defaults in this example. Multiple definitions are permitted; precedence determines the effective value. The scalar form in the question avoids unrelated dictionary-merging details.\n\nTechnical reference: [Ansible variable precedence](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence)."
+    "grader_markdown": "Shared logic plus explicit environment values preserves reuse and makes intentional differences reviewable. A documented configuration scheme makes the effective values understandable; copying whole definitions or hiding overrides makes divergence harder to control."
   },
   {
     "id": "L3 Q5",
     "lecture": 3,
     "number": 5,
-    "title": "Selecting hosts and roles",
+    "title": "Grouping by responsibility",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "In `demo-03a/provisioning/provision.yml`, the `common` role targets `fleet`, while the `web`, `database`, and `batch` roles target their respective host groups. Explain which roles a host belonging to `web_servers` should receive and why the grouping is useful.",
+    "prompt_markdown": "A fleet contains web, database, and batch-processing servers. All need a common baseline, but their workload-specific configuration differs. Explain how host grouping and reusable configuration units can express both requirements without applying every workload to every server.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** A web host belongs to `web_servers`, which is a child group of `fleet`, so it receives the `common` role in the first play and the `web` role in the web play during a normal full run.\n- **1 mark:** This applies a shared baseline to the fleet while limiting specialized configuration to the appropriate hosts. It avoids installing the entire database or batch stack everywhere."
+    "grader_markdown": "- **1 mark:** Apply a common baseline to the fleet or a shared parent grouping.\n- **1 mark:** Apply workload-specific units only to the corresponding web, database, or batch groups. Explain that separating selection from reusable definitions avoids copying the baseline or installing every workload everywhere.\n\nDo not require a particular inventory syntax, directory structure, or naming convention."
   },
   {
     "id": "L3 Q6",
     "lecture": 3,
     "number": 6,
-    "title": "Service state",
+    "title": "Desired state and operational actions",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "Explain the difference between `state: started` and `enabled: yes` in a service task. Why is `state: restarted` different from `state: started` when a playbook is run repeatedly?",
+    "prompt_markdown": "Explain the difference between declaring that a service should be running and requesting that it restart on every automation run. Why does the distinction matter for repeated execution?",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** `state: started` requests that the service be running now, while `enabled: yes` requests that it start automatically at boot. These are distinct aspects of service state.\n- **1 mark:** `state: restarted` requests a restart whenever the task executes, whereas `state: started` normally leaves an already running service running. Repeated restart operations can cause unnecessary disruption even if the final service state is “running.”"
+    "grader_markdown": "- **1 mark:** Declaring a running service describes a condition; requesting a restart describes an operation even when that condition is already satisfied.\n- **1 mark:** Reapplying the desired state can leave an already running service undisturbed, while unconditional restarts can cause unnecessary disruption. A restart may still be appropriate when a relevant change requires it."
   },
   {
     "id": "L3 Q7",
     "lecture": 3,
     "number": 7,
-    "title": "Registering results",
+    "title": "Responding to configuration changes",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "The infrastructure playbook in `demo-03a` uses:\n\n```yaml\n- name: Create web security group\n  amazon.aws.ec2_security_group:\n    # Other settings omitted\n    state: present\n  register: web_sg\n\n# A later EC2 task uses:\n# security_group: \"{{ web_sg.group_id }}\"\n```\n\nExplain what `register` does here and why the later task uses the returned group ID instead of a manually copied value. These are excerpts; no execution is required.",
+    "prompt_markdown": "A service must reload to use changed configuration. Explain why it can be useful to reload only after relevant changes, and why several compatible configuration changes might be applied before a single reload.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** `register: web_sg` stores the task's returned result in a variable named `web_sg`, including its `group_id`.\n- **1 mark:** Referencing that returned ID passes the actual created or located resource into the later task and avoids manually duplicating a changing cloud identifier. The producing task must execute before its result is consumed in this sequence."
+    "grader_markdown": "- **1 mark:** Change-aware reloads apply necessary configuration changes while avoiding unnecessary disruption when relevant configuration is unchanged.\n- **1 mark:** Combining compatible changes before one reload avoids redundant work and lets the service consume a coherent configuration. The changes should be validated and ordered appropriately before activation.\n\nAssess the principle, not a product's notification rules or handler timing."
   },
   {
     "id": "L3 Q8",
     "lecture": 3,
     "number": 8,
-    "title": "Provisioning and testing",
+    "title": "Configuration success and functional success",
     "points": 2,
     "kind": "essay",
-    "prompt_markdown": "The demo separates `00_create.sh`, `50_provision.sh`, and `60_test.sh`. Explain the difference between creating infrastructure and provisioning its operating-system/application state. Why is a separate functional test useful even when provisioning exits successfully?",
+    "prompt_markdown": "Every configuration step reports success, but users still cannot use the application. Explain why these outcomes are compatible and give one functional check that could reveal a problem missed by configuration-level checks.",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** Creation establishes infrastructure such as instances, security groups, and connection information; provisioning installs/configures the operating-system and application resources on those instances.\n- **1 mark:** Successful tasks do not prove that the application works end to end. Functional tests can check health endpoints, database access, or communication between components that might still be misconfigured."
+    "grader_markdown": "- **1 mark:** Configuration success establishes that selected operations or resource checks succeeded, not that the complete application works for its users.\n- **1 mark:** A relevant functional check, such as making a representative application request, confirming database access from the application, or verifying communication between components.\n\nAward credit for explaining the check's purpose; a successful configuration exit status alone is not a functional check."
   },
   {
     "id": "L3 Q9",
     "lecture": 3,
     "number": 9,
-    "title": "Templates and handlers",
+    "title": "Comparing codebase organizations",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "Consider this shortened excerpt from the web role in `demo-03a`:\n\n```yaml\n# tasks/main.yml\n- name: Configure Nginx for web application\n  template:\n    src: nginx-site.conf.j2\n    dest: /etc/nginx/sites-available/{{ project_name }}\n  notify:\n    - reload nginx\n\n# handlers/main.yml\n- name: reload nginx\n  systemd:\n    name: nginx\n    state: reloaded\n```\n\nAssume a successful play, no forced handler flushes, and no other task notifying this handler.\n\n1. When should the handler run if rendering the template changes the destination file? What happens on the next run if the rendered file is identical? **(2 marks)**\n2. Suppose three changed tasks notify the same handler before the normal end-of-tasks handler phase. How many times should it run in that phase, and why is this useful? **(2 marks)**",
+    "prompt_markdown": "A team is choosing between one large configuration file for all server types and environments, and smaller reusable units with a separate place to select which units and values each environment uses.\n\n1. Propose sensible boundaries for the smaller units and explain one advantage over the single large file as the system grows. **(2 marks)**\n2. Explain one cost or risk introduced by splitting the configuration, and how you would keep the resulting codebase understandable and safe to change. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** A changed template task notifies `reload nginx`; in the stated scenario it runs at the normal handler phase after the play's regular tasks.\n- **1 mark:** If the rendered file is unchanged on the next run, that task does not notify the handler, so it does not cause a reload.\n- **1 mark:** The same handler runs once in that handler phase despite three notifications.\n- **1 mark:** Combining notifications avoids redundant reloads and lets the service consume the completed configuration changes together.\n\nTechnical reference: [Ansible handlers and notification timing](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html). A later explicit flush or later handler phase changes the scope of the “once” statement; the question intentionally excludes that complication."
+    "grader_markdown": "- **1 mark:** Propose coherent units, for example a common baseline plus separate web, database, and batch responsibilities, with a clear place for environment selection and values.\n- **1 mark:** Explain a benefit such as focused review, reuse, clearer ownership, or reducing duplicated logic as the system grows.\n- **1 mark:** Identify a real cost or risk: more interfaces and indirection, unclear dependencies, conflicting defaults, or excessive fragmentation that makes the effective configuration hard to follow.\n- **1 mark:** Address that risk with clear interfaces, documented inputs and override rules, visible composition, sensible unit size, or appropriate integration validation.\n\nA single file can be adequate for a small system. Do not award full credit for claiming that more files are always better, or require one prescribed repository layout."
   },
   {
     "id": "L3 Q10",
     "lecture": 3,
     "number": 10,
-    "title": "A misleading idempotence guard",
+    "title": "Checking the intended state",
     "points": 4,
     "kind": "essay",
-    "prompt_markdown": "The web role contains this dependency-installation task:\n\n```yaml\n- name: Install Node.js dependencies\n  shell: |\n    cd \"{{ app_directory }}\"\n    npm install\n  become_user: \"{{ app_user }}\"\n  args:\n    creates: \"{{ app_directory }}/node_modules\"\n```\n\nThe `node_modules` directory already exists from an earlier deployment. A new application release changes the required dependencies in `package.json`.\n\n1. Predict whether this task runs and explain the resulting risk. **(2 marks)**\n2. Propose a change-aware way to install updated dependencies and one check that would show the application has the intended dependency state. Simply forcing every task to report `ok` is not a solution. **(2 marks)**",
+    "prompt_markdown": "A deployment process skips software setup whenever it finds a directory named \"application\". The directory remains after the desired application version changes. The process reports success without checking the installed version or whether the application works.\n\n1. Explain why this check is insufficient and why an unchanged result does not by itself prove that automation has reached the desired state. **(2 marks)**\n2. Propose a better way to decide whether an update is needed, and one check after the update that would provide evidence that the intended result was achieved. **(2 marks)**",
     "options": [],
     "correct_option": null,
-    "grader_markdown": "- **1 mark:** The existing `node_modules` path causes `creates` to skip the shell command.\n- **1 mark:** Directory existence does not prove that installed dependencies match the new manifest; the application can retain stale or missing dependencies.\n- **1 mark:** Propose a manifest/lockfile-aware installation step, for example register changes to deployed dependency definitions and run a suitable installation task when those change or dependencies are missing. A committed lockfile with `npm ci` is one valid approach, if the required files and installation conditions are handled correctly. A checksummed build artifact is another defensible approach.\n- **1 mark:** Verify installed dependency versions against the intended manifest/lockfile or run a targeted application/smoke test that exercises the changed dependency. A combination is strongest. Merely testing whether the directory exists does not establish dependency correctness.\n\nTechnical references: [Ansible shell creates guard](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/shell_module.html) and [npm ci requirements](https://docs.npmjs.com/cli/v11/commands/npm-ci/)."
+    "grader_markdown": "- **1 mark:** Directory existence does not establish that the intended software version or configuration is present.\n- **1 mark:** Repeatedly doing nothing can leave an incorrect state unchanged. Idempotence and convergence to the desired state are related but distinct properties; a no-op alone is not evidence of successful configuration.\n- **1 mark:** Compare a meaningful observed state, such as the installed version or artifact identity, with the desired version/configuration and update when they differ. Include handling missing or incomplete installations in a sound explanation.\n- **1 mark:** Verify the intended version/configuration or exercise the relevant application behavior after the update. Rechecking directory existence alone is insufficient.\n\nAccept in-place reconciliation or replacement from a verified artifact if the student explains how the intended state is established and checked."
   }
 ]

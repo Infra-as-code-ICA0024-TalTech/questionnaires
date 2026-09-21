@@ -14,7 +14,7 @@
       <text><![CDATA[<p>Which set contains the three infrastructure pillars introduced in the lecture?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Compute executes workloads, storage retains data, and networking connects components. The other choices name tools, environments, or application-level concerns.</p>]]></text>
+      <text><![CDATA[<p>Compute executes workloads, storage retains data, and networking connects resources. The alternatives describe activities, environments, or application-level concerns rather than the three infrastructure pillars.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -23,7 +23,7 @@
     <shuffleanswers>false</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Git, Terraform, and Ansible</p>]]></text>
+      <text><![CDATA[<p>Deployment, testing, and monitoring</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -76,7 +76,7 @@
       <text><![CDATA[<p>Which statement best describes a declarative infrastructure definition?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>A declarative definition expresses the intended state. The tool determines the required operations from that definition and the current state. Declarative syntax does not mean every operation is independent or can run concurrently.</p>]]></text>
+      <text><![CDATA[<p>A declarative definition expresses the intended state. Automation determines the operations needed from the declaration and actual state. Declarative syntax alone does not remove dependencies or guarantee parallel execution.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -91,13 +91,13 @@
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It specifies the exact order of all API calls that a tool must make.</p>]]></text>
+      <text><![CDATA[<p>It specifies the exact sequence of operations for every starting state.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>It describes the desired state, while a tool works out how to reach it.</p>]]></text>
+      <text><![CDATA[<p>It describes the desired state, while automation determines how to reach it.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -138,7 +138,7 @@
       <text><![CDATA[<p>An automation run has successfully reached the desired state. Its inputs and the relevant external state then remain unchanged. What should a second idempotent run do?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Once the declaration is satisfied, repeating the operation under unchanged conditions should not further alter the managed state. Checking state is compatible with idempotence; duplicating or needlessly rebuilding resources is not required.</p>]]></text>
+      <text><![CDATA[<p>Once the desired state is satisfied, repeating an idempotent operation under unchanged relevant conditions should cause no further managed-state changes. Checking the current state is compatible with idempotence; doing nothing without checking does not establish correctness.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -200,7 +200,7 @@
       <text><![CDATA[<p>A team moves from managing virtual machines under IaaS to a managed application platform under PaaS. Which responsibility would typically move towards the provider?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>PaaS typically transfers more operating-system and runtime-platform maintenance to the provider. The exact responsibility boundary depends on the service. The team still owns its application requirements and code.</p>]]></text>
+      <text><![CDATA[<p>PaaS typically transfers more operating-system and runtime-platform maintenance to the provider. The exact boundary depends on the service. The application team still owns its business requirements and application code.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -255,7 +255,7 @@
   </question>
   <question type="essay">
     <name>
-      <text>L1 Q5 Why keep infrastructure definitions in Git</text>
+      <text>L1 Q5 Version-controlled infrastructure definitions</text>
     </name>
     <idnumber>L1-Q5</idnumber>
     <questiontext format="html">
@@ -273,15 +273,8 @@
     <attachments>0</attachments>
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
-      <text><![CDATA[<p>Award <strong>1 mark each</strong> for two benefits connected to reliable delivery, for example:</p>
-<ul>
-<li>A reviewable change history helps identify what changed, who changed it, and why.</li>
-<li>Pull requests and review help catch mistakes before applying changes.</li>
-<li>Automated validation can run against proposed configuration changes.</li>
-<li>A shared definition reduces undocumented manual differences between environments.</li>
-<li>A known earlier definition helps investigate or plan recovery from a bad change.</li>
-</ul>
-<p>Do not award a separate benefit for “having another copy.” Reverting a Git commit does not by itself restore deleted data or guarantee a safe infrastructure rollback.</p>]]></text>
+      <text><![CDATA[<p>Award <strong>1 mark each</strong> for two distinct benefits explained in relation to reliable delivery, such as a reviewable change history, peer review before application, automated validation of proposed changes, or a shared record of intended configuration that reduces undocumented edits.</p>
+<p>Do not award a separate benefit for merely keeping another copy. A prior definition can support investigation or recovery planning, but reverting a source revision does not automatically restore deleted data or guarantee safe infrastructure rollback.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -304,7 +297,7 @@
     </name>
     <idnumber>L1-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Two servers were created from the same definition. An administrator later changes a setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.</p>]]></text>
+      <text><![CDATA[<p>Two servers were created from the same definition. An administrator later changes a managed setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -319,8 +312,8 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Actual managed configuration has diverged from its declared or intended state; the manually changed server now differs from that baseline.</li>
-<li><strong>1 mark:</strong> Compare actual state with the definition, for example through a plan, configuration inspection, or a configuration-management run. Investigate whether the manual change is legitimate, then either update the reviewed declaration or reapply the intended configuration.</li>
+<li><strong>1 mark:</strong> Actual managed configuration has diverged from the declared or intended state; the manual edit creates a difference from the baseline.</li>
+<li><strong>1 mark:</strong> A sound detection or reconciliation method: compare actual state with the declaration, investigate the difference, and either restore the approved state or review and record a legitimate change before applying it consistently.</li>
 </ul>]]></text>
     </graderinfo>
     <responsetemplate format="html">
@@ -359,8 +352,8 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Mutable updates modify the existing server; immutable updates create a replacement from a newly prepared definition or image and switch the workload to it.</li>
-<li><strong>1 mark:</strong> Preserve persistent data separately or use a tested backup/migration/restore procedure before retiring the old server. Replacement must not discard the only copy of application data.</li>
+<li><strong>1 mark:</strong> A mutable update modifies the existing server; an immutable update replaces it with one prepared from the updated definition or image.</li>
+<li><strong>1 mark:</strong> Preserve persistent data separately or use a tested migration/backup/restore process before retiring the old server. Replacement must not discard the only copy of application data.</li>
 </ul>]]></text>
     </graderinfo>
     <responsetemplate format="html">
@@ -380,11 +373,11 @@
   </question>
   <question type="essay">
     <name>
-      <text>L1 Q8 Tool responsibilities in demo 01</text>
+      <text>L1 Q8 Separating infrastructure and server configuration</text>
     </name>
     <idnumber>L1-Q8</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>In <code>demo-01</code>, <code>main.tf</code> creates an EC2 instance and writes an Ansible inventory; <code>playbook.yml</code> installs and configures Nginx. Explain the distinct responsibilities of Terraform and Ansible in this workflow.</p>]]></text>
+      <text><![CDATA[<p>A deployment needs networks and virtual machines, as well as software and service configuration inside those machines. Explain the distinction between these two responsibilities and one benefit of keeping their definitions organized separately.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[]]></text>
@@ -399,10 +392,10 @@
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> In this demo, Terraform defines and provisions AWS resources and produces connection information, including the inventory.</li>
-<li><strong>1 mark:</strong> Ansible connects to the target and manages software, files, and service configuration inside the operating system.</li>
+<li><strong>1 mark:</strong> Infrastructure definitions establish resources and connectivity; server configuration establishes software, files, and service state within those resources.</li>
+<li><strong>1 mark:</strong> A justified benefit of separating these concerns, such as clearer ownership, reuse of configuration across different resource layouts, focused review, or separate validation of different change types.</li>
 </ul>
-<p>These are the roles of the tools in this particular workflow, not an assertion that Ansible cannot manage cloud resources. <code>demo-03a</code> demonstrates that it can.</p>]]></text>
+<p>Do not require separate repositories or separate products. Separation can exist within a single codebase with a clear interface between responsibilities.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -421,21 +414,14 @@
   </question>
   <question type="essay">
     <name>
-      <text>L1 Q9 Dependencies and generated inventory</text>
+      <text>L1 Q9 Dependencies and changing resource information</text>
     </name>
     <idnumber>L1-Q9</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Consider these excerpts from <code>demo-01/main.tf</code>:</p>
-<pre><code class="language-hcl"># Within aws_instance.server
-key_name               = aws_key_pair.main_key.key_name
-vpc_security_group_ids = [aws_security_group.main_security_group.id]
-</code></pre>
-<pre><code class="language-yaml"># Within the Terraform-generated inventory template
-ansible_host: ${aws_instance.server.public_ip}
-</code></pre>
+      <text><![CDATA[<p>An application server needs a network before it can be created. A later configuration step needs the server's assigned address. A team records that address manually in several places. Replacing the server may change the address.</p>
 <ol>
-<li>Identify the two resources that the instance references and explain what those references tell Terraform about dependency ordering. <strong>(2 marks)</strong></li>
-<li>Explain why generating <code>ansible_host</code> from the instance output is more reliable than copying an IP address into a separate inventory by hand. Include what must happen to the inventory when a replacement instance receives a new public IP. <strong>(2 marks)</strong></li>
+<li>Explain the dependency order and which resource information should pass between stages. Why is arranging files in a particular order not enough to express these relationships reliably? <strong>(2 marks)</strong></li>
+<li>Propose a way to keep dependent configuration consistent when a server is replaced. Explain why it is preferable to maintaining several handwritten copies of the address. <strong>(2 marks)</strong></li>
 </ol>]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -444,19 +430,19 @@ ansible_host: ${aws_instance.server.public_ip}
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>monospaced</responseformat>
+    <responseformat>editor</responseformat>
     <responserequired>1</responserequired>
     <responsefieldlines>18</responsefieldlines>
     <attachments>0</attachments>
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> <code>aws_key_pair.main_key</code> is referenced for the instance's SSH key-pair name.</li>
-<li><strong>1 mark:</strong> <code>aws_security_group.main_security_group</code> is referenced for the attached security-group ID. Both resource references contribute implicit dependencies, so Terraform must obtain the required resource values before completing the dependent operation. Moving blocks up or down the file is not the dependency mechanism.</li>
-<li><strong>1 mark:</strong> Using <code>aws_instance.server.public_ip</code> connects the inventory to the provisioned instance's actual output and avoids a separately maintained, potentially stale IP address.</li>
-<li><strong>1 mark:</strong> Apply/regenerate the inventory after replacement and use that updated inventory for Ansible. A previously copied inventory does not update itself simply because a new instance exists.</li>
+<li><strong>1 mark:</strong> The network must exist before the dependent server can be created, and the server's assigned address must be known before the dependent configuration step can use it.</li>
+<li><strong>1 mark:</strong> Dependencies and required outputs should be explicitly represented; file ordering alone does not describe or maintain the resource relationships reliably.</li>
+<li><strong>1 mark:</strong> Have the authoritative resource information supply the dependent configuration, and refresh that information when the server is replaced.</li>
+<li><strong>1 mark:</strong> This avoids independently maintained copies becoming stale or inconsistent and reduces the chance of configuring the wrong machine.</li>
 </ul>
-<p>Technical reference: <a href="https://developer.hashicorp.com/terraform/language/expressions/references">Terraform references and dependencies</a>.</p>]]></text>
+<p>Accept generated configuration, a maintained inventory fed by resource outputs, or another clearly explained way of resolving current information. Do not require a particular dependency syntax or product.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>
@@ -475,31 +461,14 @@ ansible_host: ${aws_instance.server.public_ip}
   </question>
   <question type="essay">
     <name>
-      <text>L1 Q10 Predicting a repeated run</text>
+      <text>L1 Q10 Shared definitions and environment differences</text>
     </name>
     <idnumber>L1-Q10</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The following is a shortened version of tasks in <code>demo-01/playbook.yml</code>:</p>
-<pre><code class="language-yaml">- name: Install nginx
-  apt:
-    name: nginx
-    state: present
-
-- name: Create custom index.html
-  copy:
-    content: &quot;Course homepage\n&quot;
-    dest: /var/www/html/index.html
-
-- name: Start and enable nginx
-  systemd:
-    name: nginx
-    state: started
-    enabled: yes
-</code></pre>
-<p>Assume the first run succeeds and all relevant inputs remain unchanged.</p>
+      <text><![CDATA[<p>Development and production started from copied infrastructure definitions. They are intended to share the same application structure, but production needs greater capacity. After several independent edits, nobody knows whether other differences are intentional.</p>
 <ol>
-<li>Predict the effect of a second run on the package, file, and service. Explain why this illustrates idempotence. <strong>(2 marks)</strong></li>
-<li>Someone then manually changes the contents of <code>index.html</code>. What should the next run do, and why? <strong>(2 marks)</strong></li>
+<li>Propose how to organize the shared definitions and environment-specific values. Explain which differences should remain explicit. <strong>(2 marks)</strong></li>
+<li>Explain how the team could discover accidental differences and keep future changes reviewable while still allowing the legitimate capacity difference. <strong>(2 marks)</strong></li>
 </ol>]]></text>
     </questiontext>
     <generalfeedback format="html">
@@ -508,18 +477,19 @@ ansible_host: ${aws_instance.server.public_ip}
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>monospaced</responseformat>
+    <responseformat>editor</responseformat>
     <responserequired>1</responserequired>
     <responsefieldlines>18</responsefieldlines>
     <attachments>0</attachments>
     <attachmentsrequired>0</attachmentsrequired>
     <graderinfo format="html">
       <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> The installed package remains present; the matching file does not need rewriting; a running and enabled service remains in that state.</li>
-<li><strong>1 mark:</strong> This is idempotence: once the requested state is reached, repetition with unchanged relevant inputs does not produce additional managed-state changes. The shown <code>state: present</code> does not mean “upgrade to whatever version is newest.”</li>
-<li><strong>1 mark:</strong> A manual edit makes the managed file differ from the declared content, so the next successful <code>copy</code> task restores the declared contents.</li>
-<li><strong>1 mark:</strong> The restoration reconciles drift against the declaration. It does not require replacing the whole server or reinstalling Nginx.</li>
-</ul>]]></text>
+<li><strong>1 mark:</strong> Keep the common application structure in a shared, reusable definition rather than independently editing full copies.</li>
+<li><strong>1 mark:</strong> Keep legitimate environment values, including capacity, explicit and associated with the intended environment. Shared structure need not imply identical values everywhere.</li>
+<li><strong>1 mark:</strong> Compare existing definitions and actual state against the intended baseline and documented exceptions to identify accidental differences.</li>
+<li><strong>1 mark:</strong> Review and version shared changes and environment values, validating their effects in the relevant environments before applying them.</li>
+</ul>
+<p>Accept different folder or repository layouts if they preserve a clear shared definition and explicit differences. Do not require a particular layout or insist that all differences are drift.</p>]]></text>
     </graderinfo>
     <responsetemplate format="html">
       <text><![CDATA[]]></text>

@@ -47,7 +47,7 @@
     },
     {
       "label": "Questions: Convert all formats",
-      "detail": "Build and validate question exports and the glossary (HTML, PDF, Moodle XML).",
+      "detail": "Build and validate Moodle XML, Forms PDFs, and the grading reference from Markdown.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": {
@@ -107,7 +107,7 @@
     },
     {
       "label": "Questions: Validate exports",
-      "detail": "Check all question and glossary exports without rebuilding them.",
+      "detail": "Check all existing question exports without rebuilding them.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": {
@@ -122,43 +122,6 @@
       },
       "group": "test",
       "problemMatcher": []
-    },
-    {
-      "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "label": "Glossary: Convert all formats",
-      "args": [
-        "scripts/build.py",
-        "--format",
-        "glossary"
-      ],
-      "group": "build"
-    },
-    {
-      "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "label": "Glossary: Validate exports",
-      "args": [
-        "scripts/build.py",
-        "--format",
-        "glossary",
-        "--check"
-      ],
-      "group": "test"
     }
   ]
 }

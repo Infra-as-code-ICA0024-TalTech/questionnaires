@@ -45,9 +45,3 @@ Run `python scripts/build.py` from the repository's Python environment after edi
 You can also use **Terminal > Run Task** in VS Code. Run **Questions: Set up dependencies** first, then select a conversion task. The individual conversion commands are `python scripts/build.py --format moodle` and `python scripts/build.py --format forms`; each validates only its selected exports. Run the all-formats task before committing changes to the sources.
 
 Changing lecture counts, question counts, ordering, or mark totals requires updating the corresponding structure and validation in `scripts/build.py`. Changes that increase question length may require adapting PDF page breaks. Render and review changed PDFs, and preview the imported quizzes before student use.
-
-## Glossary source
-
-Edit `source/Glossary.md`. Use one `#` title followed by an introduction, `## Lecture 1: ...` through `## Lecture 3: ...` headings, and a `### Term` heading followed by its definition for each entry. Keep definitions in prose paragraphs; inline Markdown such as emphasis is supported. Term names must be unique. The exporter sorts entries alphabetically within each lecture.
-
-Run `python scripts/build.py --format glossary` to generate `glossary/glossary.html`, `glossary/glossary.pdf`, and `glossary/moodle-glossary.xml`. The same task is available as **Glossary: Convert all formats** in VS Code. Add `--check` to detect stale exports. The all-formats build also generates the glossary. The XML targets Moodle's Glossary activity and preserves lecture categories; it is separate from question-bank XML.

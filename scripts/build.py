@@ -10,7 +10,6 @@ from xml.dom.minidom import Document
 from pypdf import PdfReader
 
 from formatting import ascii_text, inline, to_html
-from glossary import build_glossary
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Spacer, PageBreak
@@ -185,13 +184,10 @@ def validate(questions, output_format='all'):
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--format', choices=['all', 'moodle', 'forms', 'glossary'], default='all',
+    parser.add_argument('--format', choices=['all', 'moodle', 'forms'], default='all',
                         help='Output format to generate or validate (default: all)')
     parser.add_argument('--check', action='store_true', help='Validate committed exports without rebuilding')
     args=parser.parse_args()
-    if args.format == 'glossary':
-        print(json.dumps(build_glossary(ROOT, check=args.check), indent=2))
-        return
     questions=load_questions()
     if not args.check:
         if args.format in ('all', 'moodle'):
@@ -209,7 +205,6 @@ def main():
     report=validate(questions, args.format)
     # A partial build must not overwrite the complete validation report.
     if args.format == 'all':
-        report['glossary'] = build_glossary(ROOT, check=args.check)
         (ROOT/'docs/validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

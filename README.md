@@ -20,15 +20,7 @@ The editable sources are [Student_questionnaire.md](source/Student_questionnaire
 
 ## Concept glossary
 
-The [editable glossary](source/Glossary.md) explains 45 concepts from the three lectures, grouped by lecture and alphabetized within each group. It uses the same Markdown, HTML, and ReportLab formatting code and Python dependencies as the questionnaire exports.
-
-Generated study materials: [HTML](glossary/glossary.html), [PDF](glossary/glossary.pdf), and [Moodle Glossary XML](glossary/moodle-glossary.xml).
-
-Use **Glossary: Convert all formats** or `python scripts/build.py --format glossary` to rebuild just the glossary. **Glossary: Validate exports** adds `--check`. The existing all-formats build and validation tasks also include it.
-
-To publish in Moodle, create or open a **Glossary** activity, choose **Import entries**, upload `glossary/moodle-glossary.xml`, and enable category import to retain the lecture groups. This uses Moodle's glossary importer, not the quiz question-bank importer. Definitions are supplied as HTML; automatic linking is disabled in the exported entries. Preview after importing. See [Moodle glossary import documentation](https://docs.moodle.org/501/en/Import_glossary_entries). Live glossary import has not yet been tested.
-
-The glossary PDF and HTML are reading materials. Microsoft Forms Quick Import is for questionnaires; it is not needed for the glossary.
+The glossary has moved to the separate [ICA0024 glossary repository](https://github.com/Infra-as-code-ICA0024-TalTech/glossary). It contains the editable Markdown, HTML/PDF/Moodle Glossary exports, its own Python converter, and VS Code tasks. Build and maintain it there; this repository contains the questionnaires and their exporters.
 
 ## Import into Moodle
 

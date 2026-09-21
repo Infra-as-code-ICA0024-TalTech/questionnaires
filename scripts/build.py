@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """Compile the reviewed Markdown questions into Moodle XML and Forms import PDFs."""
 import argparse
-import html
 import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from xml.dom.minidom import Document
 
-import markdown
 from pypdf import PdfReader
+
+from formatting import ascii_text, inline, to_html
+from glossary import build_glossary
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Spacer, PageBreak
@@ -44,10 +45,6 @@ def load_questions():
             prompt_markdown=body, options=[dict(label=k, text=v) for k, v in options],
             correct_option=correct.group(1) if correct else None, grader_markdown=guidance))
     return questions
-
-
-def to_html(value):
-    return markdown.markdown(value, extensions=['fenced_code', 'sane_lists'])
 
 
 def add(doc, parent, name, text=None, **attrs):
@@ -103,17 +100,6 @@ def moodle_export(lecture, questions):
     path = ROOT/f'moodle/lecture-{lecture:02}.xml'
     path.write_bytes(doc.toprettyxml(indent='  ', encoding='UTF-8'))
     return path
-
-
-def ascii_text(value):
-    return value.translate(str.maketrans({'—':'-', '–':'-', '−':'-', '“':'"', '”':'"', '’':"'", '‘':"'", '\u00a0':' '}))
-
-
-def inline(value):
-    value = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', value)
-    value = html.escape(ascii_text(value))
-    value = re.sub(r'`([^`]+)`', r'<font name="Courier">\1</font>', value)
-    return re.sub(r'\*\*([^*]+)\*\*', r'<b>\1</b>', value)
 
 
 def forms_export(lecture, questions):
@@ -199,10 +185,13 @@ def validate(questions, output_format='all'):
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--format', choices=['all', 'moodle', 'forms'], default='all',
+    parser.add_argument('--format', choices=['all', 'moodle', 'forms', 'glossary'], default='all',
                         help='Output format to generate or validate (default: all)')
     parser.add_argument('--check', action='store_true', help='Validate committed exports without rebuilding')
     args=parser.parse_args()
+    if args.format == 'glossary':
+        print(json.dumps(build_glossary(ROOT, check=args.check), indent=2))
+        return
     questions=load_questions()
     if not args.check:
         if args.format in ('all', 'moodle'):
@@ -220,6 +209,7 @@ def main():
     report=validate(questions, args.format)
     # A partial build must not overwrite the complete validation report.
     if args.format == 'all':
+        report['glossary'] = build_glossary(ROOT, check=args.check)
         (ROOT/'docs/validation.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

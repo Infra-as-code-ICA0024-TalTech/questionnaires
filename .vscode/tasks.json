@@ -5,12 +5,23 @@
       "label": "Questions: Create Python environment",
       "type": "process",
       "command": "python3",
-      "args": ["-m", "venv", ".venv"],
+      "args": [
+        "-m",
+        "venv",
+        ".venv"
+      ],
       "windows": {
         "command": "py",
-        "args": ["-3", "-m", "venv", ".venv"]
+        "args": [
+          "-3",
+          "-m",
+          "venv",
+          ".venv"
+        ]
       },
-      "options": {"cwd": "${workspaceFolder}"},
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "problemMatcher": []
     },
     {
@@ -18,21 +29,42 @@
       "detail": "Run once after cloning, or after requirements.txt changes. Requires Python 3.12+ and internet access.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
-      "args": ["-m", "pip", "install", "-r", "requirements.txt"],
-      "options": {"cwd": "${workspaceFolder}"},
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements.txt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "dependsOn": "Questions: Create Python environment",
       "problemMatcher": []
     },
     {
       "label": "Questions: Convert all formats",
-      "detail": "Build and validate Moodle XML, Forms PDFs, and the grading reference from Markdown.",
+      "detail": "Build and validate question exports and the glossary (HTML, PDF, Moodle XML).",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
-      "args": ["scripts/build.py", "--format", "all"],
-      "options": {"cwd": "${workspaceFolder}"},
-      "group": {"kind": "build", "isDefault": true},
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "all"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "problemMatcher": []
     },
     {
@@ -40,9 +72,17 @@
       "detail": "Build and validate only the three Moodle XML files.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
-      "args": ["scripts/build.py", "--format", "moodle"],
-      "options": {"cwd": "${workspaceFolder}"},
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "moodle"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": "build",
       "problemMatcher": []
     },
@@ -51,22 +91,74 @@
       "detail": "Build and validate only the three Forms import PDFs and regenerate the grading reference.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
-      "args": ["scripts/build.py", "--format", "forms"],
-      "options": {"cwd": "${workspaceFolder}"},
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "forms"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": "build",
       "problemMatcher": []
     },
     {
       "label": "Questions: Validate exports",
-      "detail": "Check all existing exports against the Markdown sources without rebuilding them.",
+      "detail": "Check all question and glossary exports without rebuilding them.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {"command": "${workspaceFolder}/.venv/Scripts/python.exe"},
-      "args": ["scripts/build.py", "--check"],
-      "options": {"cwd": "${workspaceFolder}"},
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "scripts/build.py",
+        "--check"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": "test",
       "problemMatcher": []
+    },
+    {
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "label": "Glossary: Convert all formats",
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "glossary"
+      ],
+      "group": "build"
+    },
+    {
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "label": "Glossary: Validate exports",
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "glossary",
+        "--check"
+      ],
+      "group": "test"
     }
   ]
 }

@@ -18,6 +18,18 @@ The editable sources are [Student_questionnaire.md](source/Student_questionnaire
 
 **Solutions included:** XML files, the answer key, and the grading reference contain solutions. Only the student questionnaire and Quick Import PDFs exclude the answers. Organization members can read this repository under the existing permissions; this is intentional for the work in progress. See [GitHub access](docs/github-access.md).
 
+## Concept glossary
+
+The [editable glossary](source/Glossary.md) explains 45 concepts from the three lectures, grouped by lecture and alphabetized within each group. It uses the same Markdown, HTML, and ReportLab formatting code and Python dependencies as the questionnaire exports.
+
+Generated study materials: [HTML](glossary/glossary.html), [PDF](glossary/glossary.pdf), and [Moodle Glossary XML](glossary/moodle-glossary.xml).
+
+Use **Glossary: Convert all formats** or `python scripts/build.py --format glossary` to rebuild just the glossary. **Glossary: Validate exports** adds `--check`. The existing all-formats build and validation tasks also include it.
+
+To publish in Moodle, create or open a **Glossary** activity, choose **Import entries**, upload `glossary/moodle-glossary.xml`, and enable category import to retain the lecture groups. This uses Moodle's glossary importer, not the quiz question-bank importer. Definitions are supplied as HTML; automatic linking is disabled in the exported entries. Preview after importing. See [Moodle glossary import documentation](https://docs.moodle.org/501/en/Import_glossary_entries). Live glossary import has not yet been tested.
+
+The glossary PDF and HTML are reading materials. Microsoft Forms Quick Import is for questionnaires; it is not needed for the glossary.
+
 ## Import into Moodle
 
 1. Open the course's **Question bank**, then use its **Questions** dropdown to select **Import**.

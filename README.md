@@ -1,5 +1,7 @@
 # ICA0024 lecture questionnaires
 
+**Work in progress.** Questions and grading guidance are open to revision. Exports pass local validation; live Moodle and Microsoft Forms imports still need review.
+
 English assessments for the first three Infrastructure as Code lectures, grounded in the recordings, slides, and `demo-01`, `demo-02`, and `demo-03a`.
 
 Each lecture contains **10 questions worth 20 marks**: four multiple-choice questions (1 mark each), four short explanations (2 marks each), and two practical scenarios (4 marks each). There are 30 questions and 60 marks overall. The term **infrastructure pillars** is used throughout.
@@ -14,7 +16,7 @@ Each lecture contains **10 questions worth 20 marks**: four multiple-choice ques
 
 The editable sources are [Student_questionnaire.md](source/Student_questionnaire.md) and [Answer_key.md](source/Answer_key.md). The [source map](source/Source_map.md) records lecture review windows and demo references. [grading-reference.json](ms-forms/grading-reference.json) provides the same question IDs, choices, correct answers, points, and marking guidance in a structured form; it is **not** a Forms import format.
 
-**Instructor repository:** XML files, the answer key, and the grading reference contain solutions. Only the student questionnaire and Quick Import PDFs exclude the answers. See [GitHub access](docs/github-access.md) before publishing this repository.
+**Solutions included:** XML files, the answer key, and the grading reference contain solutions. Only the student questionnaire and Quick Import PDFs exclude the answers. Organization members can read this repository under the existing permissions; this is intentional for the work in progress. See [GitHub access](docs/github-access.md).
 
 ## Import into Moodle
 

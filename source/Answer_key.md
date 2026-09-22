@@ -2,9 +2,9 @@
 
 ## Answer key and marking guidance for Lectures 1 to 3
 
-**Instructor copy.** The student questionnaire contains 30 questions worth **60 marks**, with **20 marks per lecture**. Each lecture has four multiple-choice questions worth 1 mark each, four short explanations worth 2 marks each, and two practical scenarios worth 4 marks each.
+**Instructor copy.** The student questionnaire contains 30 single-answer multiple-choice questions worth **60 marks**, with **20 marks per lecture**. In each lecture, Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4. Scenarios also use multiple-choice answers.
 
-Award credit for equivalent explanations and defensible design choices. Grade the reasoning, responsibilities, and trade-offs rather than exact vocabulary, directory names, or any product's syntax. No code or command is required. The [source map](Source_map.md) identifies the lecture concepts behind the questions and distinguishes applied design scenarios from direct recall. No negative marking is suggested; any pass threshold should follow the course assessment policy.
+Award the full question value for the correct choice and zero otherwise, with no negative marking. Explanations below provide feedback; students do not submit free-form answers. Questions assess principles, responsibilities, and design trade-offs without requiring product syntax. The [source map](Source_map.md) identifies the lecture concepts behind each question. Any pass threshold should follow the course assessment policy.
 
 ## Lecture 1 Infrastructure as Code concepts
 
@@ -24,46 +24,29 @@ Once the desired state is satisfied, repeating an idempotent operation under unc
 
 PaaS typically transfers more operating-system and runtime-platform maintenance to the provider. The exact boundary depends on the service. The application team still owns its business requirements and application code.
 
-### L1 Q5 Version control — 2 marks
+### L1 Q5 Answer C — 2 marks
 
-Award **1 mark each** for two distinct benefits explained in relation to reliable delivery, such as a reviewable change history, peer review before application, automated validation of proposed changes, or a shared record of intended configuration that reduces undocumented edits.
+Review before application can catch mistakes, and a traceable history helps explain and investigate changes. Version control alone neither applies changes nor restores deleted data; reviewed changes still need validation.
 
-Do not award a separate benefit for merely keeping another copy. A prior definition can support investigation or recovery planning, but reverting a source revision does not automatically restore deleted data or guarantee safe infrastructure rollback.
+### L1 Q6 Answer A — 2 marks
 
-### L1 Q6 Configuration drift — 2 marks
+Drift is a difference between actual managed state and intended state. Investigate it before reconciliation: an unauthorized change may need reversal, while a legitimate change should be reviewed and recorded in the definition. A shared origin does not guarantee continued consistency.
 
-- **1 mark:** Actual managed configuration has diverged from the declared or intended state; the manual edit creates a difference from the baseline.
-- **1 mark:** A sound detection or reconciliation method: compare actual state with the declaration, investigate the difference, and either restore the approved state or review and record a legitimate change before applying it consistently.
+### L1 Q7 Answer D — 2 marks
 
-### L1 Q7 Mutable and immutable changes — 2 marks
+Mutable updates change an existing instance. Immutable updates replace it with an instance prepared from the updated definition or image. Persistent application data needs separate storage or a verified transfer/recovery process; infrastructure definitions do not generally contain that data.
 
-- **1 mark:** A mutable update modifies the existing server; an immutable update replaces it with one prepared from the updated definition or image.
-- **1 mark:** Preserve persistent data separately or use a tested migration/backup/restore process before retiring the old server. Replacement must not discard the only copy of application data.
+### L1 Q8 Answer B — 2 marks
 
-### L1 Q8 Separating responsibilities — 2 marks
+Provisioning establishes resources and connectivity; server configuration establishes software, files, and service state. Clear boundaries with explicit information flow support focused review and reuse. Separate repositories are optional and do not by themselves keep dependencies synchronized.
 
-- **1 mark:** Infrastructure definitions establish resources and connectivity; server configuration establishes software, files, and service state within those resources.
-- **1 mark:** A justified benefit of separating these concerns, such as clearer ownership, reuse of configuration across different resource layouts, focused review, or separate validation of different change types.
+### L1 Q9 Answer A — 4 marks
 
-Do not require separate repositories or separate products. Separation can exist within a single codebase with a clear interface between responsibilities.
+Explicit dependencies identify what must exist or be known before another step can proceed. Passing current resource outputs avoids stale, duplicated addresses after replacement. File names alone do not encode those resource relationships, and correct ordering alone does not keep copied values current.
 
-### L1 Q9 Dependencies and resource information — 4 marks
+### L1 Q10 Answer C — 4 marks
 
-- **1 mark:** The network must exist before the dependent server can be created, and the server's assigned address must be known before the dependent configuration step can use it.
-- **1 mark:** Dependencies and required outputs should be explicitly represented; file ordering alone does not describe or maintain the resource relationships reliably.
-- **1 mark:** Have the authoritative resource information supply the dependent configuration, and refresh that information when the server is replaced.
-- **1 mark:** This avoids independently maintained copies becoming stale or inconsistent and reduces the chance of configuring the wrong machine.
-
-Accept generated configuration, a maintained inventory fed by resource outputs, or another clearly explained way of resolving current information. Do not require a particular dependency syntax or product.
-
-### L1 Q10 Shared definitions and environment differences — 4 marks
-
-- **1 mark:** Keep the common application structure in a shared, reusable definition rather than independently editing full copies.
-- **1 mark:** Keep legitimate environment values, including capacity, explicit and associated with the intended environment. Shared structure need not imply identical values everywhere.
-- **1 mark:** Compare existing definitions and actual state against the intended baseline and documented exceptions to identify accidental differences.
-- **1 mark:** Review and version shared changes and environment values, validating their effects in the relevant environments before applying them.
-
-Accept different folder or repository layouts if they preserve a clear shared definition and explicit differences. Do not require a particular layout or insist that all differences are drift.
+A shared definition captures the common structure, while explicit environment values retain intended capacity differences. Compare definitions and actual state with the agreed design, then review and validate changes. Identical values are not required, and undocumented manual exceptions undermine the shared source of truth.
 
 ## Lecture 2 Images and machine initialization
 
@@ -83,49 +66,29 @@ The problem is hidden manual changes and the lack of a maintained, repeatable cr
 
 Machine images must be compatible with the destination platform and processor architecture. A common intended baseline can require different artifacts or formats for different targets; the exact requirements depend on the target platforms.
 
-### L2 Q5 Stock and custom images — 2 marks
+### L2 Q5 Answer B — 2 marks
 
-- **1 mark:** A stock image is a supplied starting image; a custom image adds selected organizational software or configuration to a starting image.
-- **1 mark:** A sound reason, such as a consistent security baseline, less repeated installation, faster initialization, or a tested common starting state.
+A stock image is a supplied starting point. A custom image adds selected software and configuration, providing a tested baseline and reducing repeated initialization. It still requires maintenance, instance-specific settings, and separate protection of persistent data.
 
-### L2 Q6 Build time and boot time — 2 marks
+### L2 Q6 Answer D — 2 marks
 
-- **1 mark:** Build-time configuration becomes part of a reusable image, for example common software or a shared security baseline.
-- **1 mark:** Boot-time initialization configures a particular instance when it starts, for example its environment-specific settings or instance identity.
+Build-time work becomes part of a reusable image; first-start initialization can supply values specific to an instance or environment. Other divisions may be valid, but this one directly separates the stable shared baseline from the varying inputs. First-start initialization alone is not ongoing reconciliation.
 
-Accept different placements if the distinction and trade-off are sound. First-start initialization is not automatically ongoing state reconciliation.
+### L2 Q7 Answer A — 2 marks
 
-### L2 Q7 Containers and virtual machines — 2 marks
+Typical Linux containers share a host kernel while isolating aspects of their execution environment. A VM has a guest kernel over virtualized hardware. Kernel sharing affects compatibility and isolation; neither approach guarantees that arbitrary images work on every platform.
 
-- **1 mark:** Typical Linux containers share a host kernel; virtual machines run a guest operating system with its own kernel over virtualized hardware.
-- **1 mark:** A valid consequence for isolation or compatibility, such as sharing a kernel-level boundary, needing a compatible host kernel, or being able to run a different guest kernel in a VM.
+### L2 Q8 Answer C — 2 marks
 
-Do not accept claims that containers have no isolation or that any image runs unchanged on any operating system and processor architecture.
+A snapshot captures state at a point in time, within its scope and consistency limits. It can support restoration but does not explain the intended build process or make hidden manual changes reviewable. Rebuildable definitions and data backups serve different purposes.
 
-### L2 Q8 Snapshot and rebuildable definition — 2 marks
+### L2 Q9 Answer B — 4 marks
 
-- **1 mark:** A snapshot captures a point-in-time state that may help restore or clone a machine, subject to its scope and consistency.
-- **1 mark:** It does not explain or maintain the intended construction process; hidden configuration and manual changes remain difficult to review, modify, and recreate deliberately. A maintained build definition makes those inputs and steps explicit.
+A shared baseline reduces inconsistent copies while workload-specific definitions preserve useful differences. Updating source does not update existing artifacts or instances: affected images must be rebuilt, tested, and deliberately rolled out. Validation should cover both the policy and the workloads.
 
-Do not imply snapshots are useless or that definitions replace backups of persistent data.
+### L2 Q10 Answer D — 4 marks
 
-### L2 Q9 Organizing an image family — 4 marks
-
-- **1 mark:** Define a common baseline once and build separate workload-specific images from it, or reuse an equivalent common build unit in both image definitions.
-- **1 mark:** Central ownership of shared baseline logic reduces duplicated edits and inconsistent policy implementation while keeping workload differences separate.
-- **1 mark:** Rebuild the affected derived images and explicitly roll out or replace the running machines; changes to a shared definition do not propagate automatically into existing artifacts or instances.
-- **1 mark:** Validate the new baseline and derived workload behavior before production use, such as checking the policy setting and exercising the application on a candidate image.
-
-Accept a dependency diagram or prose. Reuse alone does not prove that a built artifact or running fleet is current.
-
-### L2 Q10 Reproducibility and immutable updates — 4 marks
-
-- **1 mark:** The selected base image can change independently of the build instructions; record and select the approved version when reproducing it.
-- **1 mark:** Software package versions or their source contents can change; control the approved versions and ensure the required artifacts remain available. Versioned instructions alone do not freeze external inputs.
-- **1 mark:** Build and validate the patched image, create replacement instances, check application health, and move the workload to the replacements with a considered recovery path.
-- **1 mark:** Preserve persistent data on suitably managed storage or use a tested migration/restore process before retiring old instances.
-
-Do not require a specific package manager, image identifier, or artifact-storage product.
+Version-controlled instructions do not freeze external inputs such as base images and packages. Reproduction requires controlled versions and available artifacts. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through suitable storage or a verified migration/recovery process.
 
 ## Lecture 3 Server state and configuration organization
 
@@ -145,49 +108,29 @@ Grouping related responsibilities creates units that can be understood, reused, 
 
 Shared logic plus explicit environment values preserves reuse and makes intentional differences reviewable. A documented configuration scheme makes the effective values understandable; copying whole definitions or hiding overrides makes divergence harder to control.
 
-### L3 Q5 Grouping by responsibility — 2 marks
+### L3 Q5 Answer C — 2 marks
 
-- **1 mark:** Apply a common baseline to the fleet or a shared parent grouping.
-- **1 mark:** Apply workload-specific units only to the corresponding web, database, or batch groups. Explain that separating selection from reusable definitions avoids copying the baseline or installing every workload everywhere.
+Grouping selects the appropriate targets; reusable units define the configuration to apply. Composing a common baseline with workload-specific units avoids both duplicated baseline logic and installation of every workload on every host. No particular inventory syntax or folder layout is required.
 
-Do not require a particular inventory syntax, directory structure, or naming convention.
+### L3 Q6 Answer A — 2 marks
 
-### L3 Q6 Desired state and operational actions — 2 marks
+A running-state declaration describes a condition that may already hold. A restart request describes an operation. Repeated execution can therefore leave a healthy service undisturbed with the first approach and disrupt it with the second. Relevant changes can still justify a restart.
 
-- **1 mark:** Declaring a running service describes a condition; requesting a restart describes an operation even when that condition is already satisfied.
-- **1 mark:** Reapplying the desired state can leave an already running service undisturbed, while unconditional restarts can cause unnecessary disruption. A restart may still be appropriate when a relevant change requires it.
+### L3 Q7 Answer B — 2 marks
 
-### L3 Q7 Responding to changes — 2 marks
+Apply and validate compatible changes before activation, then reload when relevant state changed. This avoids repeated reloads and allows the service to consume a coherent configuration. A running process does not necessarily reread changed files automatically.
 
-- **1 mark:** Change-aware reloads apply necessary configuration changes while avoiding unnecessary disruption when relevant configuration is unchanged.
-- **1 mark:** Combining compatible changes before one reload avoids redundant work and lets the service consume a coherent configuration. The changes should be validated and ordered appropriately before activation.
+### L3 Q8 Answer D — 2 marks
 
-Assess the principle, not a product's notification rules or handler timing.
+Configuration checks establish selected resource conditions, not necessarily end-to-end behavior. A representative request can expose failures in connectivity, dependencies, or application behavior that file, package, and process checks miss. Configuration success and functional failure can coexist.
 
-### L3 Q8 Functional verification — 2 marks
+### L3 Q9 Answer A — 4 marks
 
-- **1 mark:** Configuration success establishes that selected operations or resource checks succeeded, not that the complete application works for its users.
-- **1 mark:** A relevant functional check, such as making a representative application request, confirming database access from the application, or verifying communication between components.
+Coherent units support reuse and focused review, but extra interfaces and indirection can obscure dependencies and effective values. Documented inputs, visible composition, clear override rules, and integration checks address those costs. A small system may still be adequately served by a single file.
 
-Award credit for explaining the check's purpose; a successful configuration exit status alone is not a functional check.
+### L3 Q10 Answer C — 4 marks
 
-### L3 Q9 Comparing codebase organizations — 4 marks
-
-- **1 mark:** Propose coherent units, for example a common baseline plus separate web, database, and batch responsibilities, with a clear place for environment selection and values.
-- **1 mark:** Explain a benefit such as focused review, reuse, clearer ownership, or reducing duplicated logic as the system grows.
-- **1 mark:** Identify a real cost or risk: more interfaces and indirection, unclear dependencies, conflicting defaults, or excessive fragmentation that makes the effective configuration hard to follow.
-- **1 mark:** Address that risk with clear interfaces, documented inputs and override rules, visible composition, sensible unit size, or appropriate integration validation.
-
-A single file can be adequate for a small system. Do not award full credit for claiming that more files are always better, or require one prescribed repository layout.
-
-### L3 Q10 Checking the intended state — 4 marks
-
-- **1 mark:** Directory existence does not establish that the intended software version or configuration is present.
-- **1 mark:** Repeatedly doing nothing can leave an incorrect state unchanged. Idempotence and convergence to the desired state are related but distinct properties; a no-op alone is not evidence of successful configuration.
-- **1 mark:** Compare a meaningful observed state, such as the installed version or artifact identity, with the desired version/configuration and update when they differ. Include handling missing or incomplete installations in a sound explanation.
-- **1 mark:** Verify the intended version/configuration or exercise the relevant application behavior after the update. Rechecking directory existence alone is insufficient.
-
-Accept in-place reconciliation or replacement from a verified artifact if the student explains how the intended state is established and checked.
+Directory existence is not evidence of the desired software version or a complete installation. Repeated no-ops can preserve an incorrect state. Compare meaningful observed state with intended state, update when needed, and verify the result; changing a timestamp or log does not establish actual configuration.
 
 ## Interpreting the results
 

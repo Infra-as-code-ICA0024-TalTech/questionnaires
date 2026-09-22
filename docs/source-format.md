@@ -23,21 +23,15 @@ The corresponding answer-key entry uses the same ID and marks and identifies the
 Compute executes workloads, storage retains data, and networking connects components.
 ```
 
-For explanations and scenarios, use a descriptive answer-key heading instead of `Answer B` and put the grading rubric in the body:
+All 30 questions, including scenarios, must use four choices labeled `- A.`, `- B.`, `- C.`, and `- D.` and exactly one correct answer. Each answer-key heading must use `Answer A` through `Answer D`, followed by feedback explaining the correct choice. The converter rejects missing choices, mismatched IDs, and missing correct-answer headings. No free-response questions are supported.
 
-```markdown
-### L1 Q5 Version control — 2 marks
+Use normal Markdown paragraphs. Keep questions focused on principles and design decisions: do not require code excerpts, commands, product-specific syntax, or familiarity with a demo. Scenarios describe a situation and ask students to select the best design or explanation. Distractors should represent plausible misconceptions; avoid multiple defensible answers. The converter supports fenced code blocks, but they are not needed for this assessment.
 
-Award 1 mark each for two benefits connected to reliable delivery.
-```
-
-Use normal Markdown paragraphs. Keep questions focused on principles and design decisions: do not require code excerpts, commands, product-specific syntax, or familiarity with a demo. Practical scenarios should describe a situation and ask students to justify their reasoning. The converter supports fenced code blocks, but they are not needed for this assessment. Numbered scenario subparts become lettered subparts in the Forms PDFs to help the importer keep each scenario together.
-
-The current assessment has a fixed structure: lectures 1-3, questions 1-10, four multiple-choice questions first, four explanations next, and two scenarios last. Choices must use `- A.`, `- B.`, `- C.`, and `- D.`. Question and answer headings must use the em dash shown in the examples. Preserve IDs when changing wording; update the corresponding rubric and source-map entry.
+The assessment has a fixed structure: lectures 1-3, questions 1-10, four choices per question. Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4, preserving 20 marks per lecture. Question and answer headings must use the em dash shown in the examples. Preserve IDs when changing wording; update the corresponding feedback and source-map entry.
 
 Run `python scripts/build.py` from the repository's Python environment after editing. It generates:
 
-- `moodle/lecture-01.xml` through `lecture-03.xml`: prompts, choices, marks, correct answers, and grading rubrics.
+- `moodle/lecture-01.xml` through `lecture-03.xml`: prompts, choices, marks, correct answers, and answer explanations.
 - `ms-forms/lecture-01.pdf` through `lecture-03.pdf`: questions only, for Quick Import.
 - `ms-forms/grading-reference.json`: an instructor reference generated from the same sources.
 - `docs/validation.json`: structural validation results.

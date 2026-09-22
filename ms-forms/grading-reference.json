@@ -121,11 +121,28 @@
     "number": 5,
     "title": "Version-controlled infrastructure definitions",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Give two benefits of version-controlling infrastructure definitions beyond simply having a backup copy. Explain how each benefit helps a team deliver changes reliably.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "Award **1 mark each** for two distinct benefits explained in relation to reliable delivery, such as a reviewable change history, peer review before application, automated validation of proposed changes, or a shared record of intended configuration that reduces undocumented edits.\n\nDo not award a separate benefit for merely keeping another copy. A prior definition can support investigation or recovery planning, but reverting a source revision does not automatically restore deleted data or guarantee safe infrastructure rollback."
+    "kind": "multichoice",
+    "prompt_markdown": "Which pair of benefits best explains how version-controlling infrastructure definitions helps a team deliver changes reliably?",
+    "options": [
+      {
+        "label": "A",
+        "text": "It preserves change history and makes reverting a definition sufficient to restore deleted application data."
+      },
+      {
+        "label": "B",
+        "text": "It provides a shared definition and keeps running infrastructure synchronized whenever a change is committed."
+      },
+      {
+        "label": "C",
+        "text": "It makes proposed changes reviewable and records who changed the intended configuration and why."
+      },
+      {
+        "label": "D",
+        "text": "It makes environment differences visible and makes validation unnecessary after a change is approved."
+      }
+    ],
+    "correct_option": "C",
+    "grader_markdown": "Review before application can catch mistakes, and a traceable history helps explain and investigate changes. Version control alone neither applies changes nor restores deleted data; reviewed changes still need validation."
   },
   {
     "id": "L1 Q6",
@@ -133,11 +150,28 @@
     "number": 6,
     "title": "Configuration drift",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Two servers were created from the same definition. An administrator later changes a managed setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Actual managed configuration has diverged from the declared or intended state; the manual edit creates a difference from the baseline.\n- **1 mark:** A sound detection or reconciliation method: compare actual state with the declaration, investigate the difference, and either restore the approved state or review and record a legitimate change before applying it consistently."
+    "kind": "multichoice",
+    "prompt_markdown": "Two servers were created from the same definition. An administrator changes a managed setting manually on one server. Which description and response best address the situation?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The server has drifted from the declared state; compare the difference and either restore the approved setting or review and update the definition."
+      },
+      {
+        "label": "B",
+        "text": "The definition has become obsolete; copy the changed setting into it and apply it to the other server without further review."
+      },
+      {
+        "label": "C",
+        "text": "The servers are still consistent because they share an original definition; record the manual change only in an operational log."
+      },
+      {
+        "label": "D",
+        "text": "The difference is necessarily a fault; rebuild both servers immediately without checking why the setting was changed."
+      }
+    ],
+    "correct_option": "A",
+    "grader_markdown": "Drift is a difference between actual managed state and intended state. Investigate it before reconciliation: an unauthorized change may need reversal, while a legitimate change should be reviewed and recorded in the definition. A shared origin does not guarantee continued consistency."
   },
   {
     "id": "L1 Q7",
@@ -145,11 +179,28 @@
     "number": 7,
     "title": "Mutable and immutable infrastructure",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "A server needs a new operating-system configuration. Contrast an in-place mutable update with an immutable replacement. Explain what must happen to persistent application data when using the replacement approach.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** A mutable update modifies the existing server; an immutable update replaces it with one prepared from the updated definition or image.\n- **1 mark:** Preserve persistent data separately or use a tested migration/backup/restore process before retiring the old server. Replacement must not discard the only copy of application data."
+    "kind": "multichoice",
+    "prompt_markdown": "A server needs an operating-system configuration change and stores application data that must survive the update. Which plan correctly distinguishes mutable and immutable approaches?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A mutable update replaces the server; an immutable update modifies the existing server while preserving its identity."
+      },
+      {
+        "label": "B",
+        "text": "Both approaches modify the existing server; the immutable approach additionally records the change in version control."
+      },
+      {
+        "label": "C",
+        "text": "A mutable update changes the existing server; an immutable update replaces it and recreates persistent data from the infrastructure definition."
+      },
+      {
+        "label": "D",
+        "text": "A mutable update changes the existing server; an immutable update replaces it and preserves persistent data separately or through a verified migration."
+      }
+    ],
+    "correct_option": "D",
+    "grader_markdown": "Mutable updates change an existing instance. Immutable updates replace it with an instance prepared from the updated definition or image. Persistent application data needs separate storage or a verified transfer/recovery process; infrastructure definitions do not generally contain that data."
   },
   {
     "id": "L1 Q8",
@@ -157,11 +208,28 @@
     "number": 8,
     "title": "Separating infrastructure and server configuration",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "A deployment needs networks and virtual machines, as well as software and service configuration inside those machines. Explain the distinction between these two responsibilities and one benefit of keeping their definitions organized separately.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Infrastructure definitions establish resources and connectivity; server configuration establishes software, files, and service state within those resources.\n- **1 mark:** A justified benefit of separating these concerns, such as clearer ownership, reuse of configuration across different resource layouts, focused review, or separate validation of different change types.\n\nDo not require separate repositories or separate products. Separation can exist within a single codebase with a clear interface between responsibilities."
+    "kind": "multichoice",
+    "prompt_markdown": "A deployment needs networks and virtual machines, plus software and service configuration inside those machines. Which organization best separates responsibilities while keeping the deployment coordinated?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Maintain each environment as a complete independent copy so changes to shared configuration never affect another environment."
+      },
+      {
+        "label": "B",
+        "text": "Separate resource provisioning from server configuration, pass required resource information between them, and review each concern independently."
+      },
+      {
+        "label": "C",
+        "text": "Put provisioning and configuration in separate repositories and rely on operators to keep their connection details synchronized."
+      },
+      {
+        "label": "D",
+        "text": "Keep only resource provisioning in code and document the manual software setup as the interface between the two responsibilities."
+      }
+    ],
+    "correct_option": "B",
+    "grader_markdown": "Provisioning establishes resources and connectivity; server configuration establishes software, files, and service state. Clear boundaries with explicit information flow support focused review and reuse. Separate repositories are optional and do not by themselves keep dependencies synchronized."
   },
   {
     "id": "L1 Q9",
@@ -169,11 +237,28 @@
     "number": 9,
     "title": "Dependencies and changing resource information",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "An application server needs a network before it can be created. A later configuration step needs the server's assigned address. A team records that address manually in several places. Replacing the server may change the address.\n\n1. Explain the dependency order and which resource information should pass between stages. Why is arranging files in a particular order not enough to express these relationships reliably? **(2 marks)**\n2. Propose a way to keep dependent configuration consistent when a server is replaced. Explain why it is preferable to maintaining several handwritten copies of the address. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** The network must exist before the dependent server can be created, and the server's assigned address must be known before the dependent configuration step can use it.\n- **1 mark:** Dependencies and required outputs should be explicitly represented; file ordering alone does not describe or maintain the resource relationships reliably.\n- **1 mark:** Have the authoritative resource information supply the dependent configuration, and refresh that information when the server is replaced.\n- **1 mark:** This avoids independently maintained copies becoming stale or inconsistent and reduces the chance of configuring the wrong machine.\n\nAccept generated configuration, a maintained inventory fed by resource outputs, or another clearly explained way of resolving current information. Do not require a particular dependency syntax or product."
+    "kind": "multichoice",
+    "prompt_markdown": "An application server requires a network. A later configuration step needs the server's assigned address, which may change when the server is replaced. The team currently copies that address into several files. Which design best preserves both dependency order and current connection information?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Represent network-to-server and server-to-configuration dependencies explicitly, and derive the connection address from the current server output."
+      },
+      {
+        "label": "B",
+        "text": "Number the definition files in deployment order, and retain the original address as a default in each configuration file."
+      },
+      {
+        "label": "C",
+        "text": "Start all stages together, and retry configuration against the previously recorded address until the server becomes reachable."
+      },
+      {
+        "label": "D",
+        "text": "Create the network and server in order, and let each configuration stage maintain its own reviewed copy of the assigned address."
+      }
+    ],
+    "correct_option": "A",
+    "grader_markdown": "Explicit dependencies identify what must exist or be known before another step can proceed. Passing current resource outputs avoids stale, duplicated addresses after replacement. File names alone do not encode those resource relationships, and correct ordering alone does not keep copied values current."
   },
   {
     "id": "L1 Q10",
@@ -181,11 +266,28 @@
     "number": 10,
     "title": "Shared definitions and environment differences",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "Development and production started from copied infrastructure definitions. They are intended to share the same application structure, but production needs greater capacity. After several independent edits, nobody knows whether other differences are intentional.\n\n1. Propose how to organize the shared definitions and environment-specific values. Explain which differences should remain explicit. **(2 marks)**\n2. Explain how the team could discover accidental differences and keep future changes reviewable while still allowing the legitimate capacity difference. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Keep the common application structure in a shared, reusable definition rather than independently editing full copies.\n- **1 mark:** Keep legitimate environment values, including capacity, explicit and associated with the intended environment. Shared structure need not imply identical values everywhere.\n- **1 mark:** Compare existing definitions and actual state against the intended baseline and documented exceptions to identify accidental differences.\n- **1 mark:** Review and version shared changes and environment values, validating their effects in the relevant environments before applying them.\n\nAccept different folder or repository layouts if they preserve a clear shared definition and explicit differences. Do not require a particular layout or insist that all differences are drift."
+    "kind": "multichoice",
+    "prompt_markdown": "Development and production use copied infrastructure definitions. They should share an application structure, but production needs greater capacity. Independent edits have introduced differences whose purpose is unclear. Which approach best preserves legitimate differences and prevents accidental divergence?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Keep independent definitions and periodically copy production over development, treating production capacity as the shared baseline."
+      },
+      {
+        "label": "B",
+        "text": "Require identical definitions and values everywhere, recording production capacity changes only in an operational checklist."
+      },
+      {
+        "label": "C",
+        "text": "Share the common structure, keep environment values explicit, and review existing differences against intended state before validating future changes."
+      },
+      {
+        "label": "D",
+        "text": "Create a shared definition, permit manual environment-specific changes after deployment, and review only changes to the shared definition."
+      }
+    ],
+    "correct_option": "C",
+    "grader_markdown": "A shared definition captures the common structure, while explicit environment values retain intended capacity differences. Compare definitions and actual state with the agreed design, then review and validate changes. Identical values are not required, and undocumented manual exceptions undermine the shared source of truth."
   },
   {
     "id": "L2 Q1",
@@ -309,11 +411,28 @@
     "number": 5,
     "title": "Stock and custom images",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Explain the difference between a stock image and a custom image. Give one reason an organization would maintain a custom image instead of configuring every new machine entirely from a stock image at launch time.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** A stock image is a supplied starting image; a custom image adds selected organizational software or configuration to a starting image.\n- **1 mark:** A sound reason, such as a consistent security baseline, less repeated installation, faster initialization, or a tested common starting state."
+    "kind": "multichoice",
+    "prompt_markdown": "An organization starts every server from a supplied stock image and repeats the same security and software setup at launch. What is the strongest reason to maintain a custom image?",
+    "options": [
+      {
+        "label": "A",
+        "text": "A custom image captures live application data, so it replaces the need for separate data backups."
+      },
+      {
+        "label": "B",
+        "text": "A custom image contains a tested organizational baseline, reducing repeated setup while still requiring maintenance."
+      },
+      {
+        "label": "C",
+        "text": "A custom image incorporates future security fixes automatically, so its original build definition can remain unchanged."
+      },
+      {
+        "label": "D",
+        "text": "A custom image removes environment differences, so all settings and machine identities should be embedded in it."
+      }
+    ],
+    "correct_option": "B",
+    "grader_markdown": "A stock image is a supplied starting point. A custom image adds selected software and configuration, providing a tested baseline and reducing repeated initialization. It still requires maintenance, instance-specific settings, and separate protection of persistent data."
   },
   {
     "id": "L2 Q6",
@@ -321,11 +440,28 @@
     "number": 6,
     "title": "Build time and boot time",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Explain how configuration prepared during image building differs from configuration applied when an instance first starts. Give one suitable example for each stage.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Build-time configuration becomes part of a reusable image, for example common software or a shared security baseline.\n- **1 mark:** Boot-time initialization configures a particular instance when it starts, for example its environment-specific settings or instance identity.\n\nAccept different placements if the distinction and trade-off are sound. First-start initialization is not automatically ongoing state reconciliation."
+    "kind": "multichoice",
+    "prompt_markdown": "A fleet needs the same monitoring software on every machine, but each instance needs a distinct identity and environment-specific connection settings. Which division of work best fits image building and first-start initialization?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Embed the monitoring software and one shared machine identity in the image; change environment settings manually after launch."
+      },
+      {
+        "label": "B",
+        "text": "Install everything at first start because reusable images cannot contain configured software."
+      },
+      {
+        "label": "C",
+        "text": "Embed all production connection settings in every image; use first-start initialization only to check whether the machine boots."
+      },
+      {
+        "label": "D",
+        "text": "Prepare the shared monitoring software in the image; supply instance identity and environment settings during first-start initialization."
+      }
+    ],
+    "correct_option": "D",
+    "grader_markdown": "Build-time work becomes part of a reusable image; first-start initialization can supply values specific to an instance or environment. Other divisions may be valid, but this one directly separates the stable shared baseline from the varying inputs. First-start initialization alone is not ongoing reconciliation."
   },
   {
     "id": "L2 Q7",
@@ -333,11 +469,28 @@
     "number": 7,
     "title": "Containers and virtual machines",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Explain one important difference between a typical Linux container and a virtual machine in how they use the operating-system kernel. State one practical consequence for their isolation or compatibility.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Typical Linux containers share a host kernel; virtual machines run a guest operating system with its own kernel over virtualized hardware.\n- **1 mark:** A valid consequence for isolation or compatibility, such as sharing a kernel-level boundary, needing a compatible host kernel, or being able to run a different guest kernel in a VM.\n\nDo not accept claims that containers have no isolation or that any image runs unchanged on any operating system and processor architecture."
+    "kind": "multichoice",
+    "prompt_markdown": "Which statement correctly compares a typical Linux container with a virtual machine and identifies a consequence?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Containers normally share the host kernel, while VMs run guest kernels; a workload requiring a different kernel may need a VM."
+      },
+      {
+        "label": "B",
+        "text": "Containers and VMs each boot their own kernel, so they provide the same kernel isolation boundary."
+      },
+      {
+        "label": "C",
+        "text": "Containers share the host kernel, so they cannot isolate processes or files from other containers."
+      },
+      {
+        "label": "D",
+        "text": "VMs run guest kernels, so any VM image can run unchanged on every processor architecture and hypervisor."
+      }
+    ],
+    "correct_option": "A",
+    "grader_markdown": "Typical Linux containers share a host kernel while isolating aspects of their execution environment. A VM has a guest kernel over virtualized hardware. Kernel sharing affects compatibility and isolation; neither approach guarantees that arbitrary images work on every platform."
   },
   {
     "id": "L2 Q8",
@@ -345,11 +498,28 @@
     "number": 8,
     "title": "Snapshot and rebuildable definition",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "A team keeps a snapshot of a working server but has no maintained instructions for recreating its configuration. Explain one thing the snapshot provides and one reason it does not replace a rebuildable definition.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** A snapshot captures a point-in-time state that may help restore or clone a machine, subject to its scope and consistency.\n- **1 mark:** It does not explain or maintain the intended construction process; hidden configuration and manual changes remain difficult to review, modify, and recreate deliberately. A maintained build definition makes those inputs and steps explicit.\n\nDo not imply snapshots are useless or that definitions replace backups of persistent data."
+    "kind": "multichoice",
+    "prompt_markdown": "A team has a snapshot of a working server but no maintained definition of how it was configured. Which assessment is most accurate?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The snapshot records the intended configuration process, so future changes can be reviewed directly from its creation history."
+      },
+      {
+        "label": "B",
+        "text": "The snapshot is unsuitable for recovery because only a rebuildable definition can restore a machine's state."
+      },
+      {
+        "label": "C",
+        "text": "The snapshot may restore captured state, but a maintained definition is still needed to review and deliberately reproduce the configuration process."
+      },
+      {
+        "label": "D",
+        "text": "The snapshot proves future builds will match the server, provided the same stock image name is selected each time."
+      }
+    ],
+    "correct_option": "C",
+    "grader_markdown": "A snapshot captures state at a point in time, within its scope and consistency limits. It can support restoration but does not explain the intended build process or make hidden manual changes reviewable. Rebuildable definitions and data backups serve different purposes."
   },
   {
     "id": "L2 Q9",
@@ -357,11 +527,28 @@
     "number": 9,
     "title": "Organizing an image family",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "A company needs web-server and database-server images. Both must share a security baseline, but each needs different software. Today, two separate build definitions contain copied baseline steps. A policy update was applied to only one copy.\n\n1. Propose an organization for the image definitions that separates shared baseline work from workload-specific work. Explain how it reduces the risk illustrated here. **(2 marks)**\n2. Explain what must happen to the derived images and running machines after the shared baseline changes. Include a check before the new baseline is used in production. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Define a common baseline once and build separate workload-specific images from it, or reuse an equivalent common build unit in both image definitions.\n- **1 mark:** Central ownership of shared baseline logic reduces duplicated edits and inconsistent policy implementation while keeping workload differences separate.\n- **1 mark:** Rebuild the affected derived images and explicitly roll out or replace the running machines; changes to a shared definition do not propagate automatically into existing artifacts or instances.\n- **1 mark:** Validate the new baseline and derived workload behavior before production use, such as checking the policy setting and exercising the application on a candidate image.\n\nAccept a dependency diagram or prose. Reuse alone does not prove that a built artifact or running fleet is current."
+    "kind": "multichoice",
+    "prompt_markdown": "Web-server and database-server images share a security baseline but need different software. Their separate build definitions contain copied baseline steps, and a policy update reached only one copy. Which plan best addresses both organization and rollout?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Build one image with both workloads installed; apply a baseline change to whichever running servers currently need it."
+      },
+      {
+        "label": "B",
+        "text": "Reuse a common baseline with separate workload definitions; rebuild affected images, validate policy and workload behavior, then deliberately replace affected machines."
+      },
+      {
+        "label": "C",
+        "text": "Reuse a common baseline with separate workload definitions; committing its new version also updates existing images and running machines."
+      },
+      {
+        "label": "D",
+        "text": "Keep the copied baseline steps and review each copy; validate only the baseline definition before replacing machines with existing images."
+      }
+    ],
+    "correct_option": "B",
+    "grader_markdown": "A shared baseline reduces inconsistent copies while workload-specific definitions preserve useful differences. Updating source does not update existing artifacts or instances: affected images must be rebuilt, tested, and deliberately rolled out. Validation should cover both the policy and the workloads."
   },
   {
     "id": "L2 Q10",
@@ -369,11 +556,28 @@
     "number": 10,
     "title": "Reproducible builds and immutable updates",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "An image build always selects the latest available base image and software packages. A team claims: \"Our build instructions are version-controlled, so running them next month must produce the same software versions.\"\n\n1. Assess the claim. Identify two inputs that can change independently of the instructions and explain how to control them when reproducing an approved version. **(2 marks)**\n2. The team deliberately prepares a patched image. Describe an immutable update to the running application, including validation and preservation of persistent data. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** The selected base image can change independently of the build instructions; record and select the approved version when reproducing it.\n- **1 mark:** Software package versions or their source contents can change; control the approved versions and ensure the required artifacts remain available. Versioned instructions alone do not freeze external inputs.\n- **1 mark:** Build and validate the patched image, create replacement instances, check application health, and move the workload to the replacements with a considered recovery path.\n- **1 mark:** Preserve persistent data on suitably managed storage or use a tested migration/restore process before retiring old instances.\n\nDo not require a specific package manager, image identifier, or artifact-storage product."
+    "kind": "multichoice",
+    "prompt_markdown": "A version-controlled image build always selects the latest base image and packages. The team wants to reproduce an approved version and later roll out a deliberately patched version. Which plan meets both goals?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Re-run the same source revision with latest inputs; update existing servers in place and call the unchanged source an immutable release."
+      },
+      {
+        "label": "B",
+        "text": "Record the approved base image but continue selecting latest packages; replace all machines and recreate their application data from the build definition."
+      },
+      {
+        "label": "C",
+        "text": "Control both base and package versions; patch running machines manually and rely on their original image for future replacements."
+      },
+      {
+        "label": "D",
+        "text": "Record and retain approved base and package artifacts; build and validate a patched image, check replacement instances, and preserve persistent data during rollout."
+      }
+    ],
+    "correct_option": "D",
+    "grader_markdown": "Version-controlled instructions do not freeze external inputs such as base images and packages. Reproduction requires controlled versions and available artifacts. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through suitable storage or a verified migration/recovery process."
   },
   {
     "id": "L3 Q1",
@@ -497,11 +701,28 @@
     "number": 5,
     "title": "Grouping by responsibility",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "A fleet contains web, database, and batch-processing servers. All need a common baseline, but their workload-specific configuration differs. Explain how host grouping and reusable configuration units can express both requirements without applying every workload to every server.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Apply a common baseline to the fleet or a shared parent grouping.\n- **1 mark:** Apply workload-specific units only to the corresponding web, database, or batch groups. Explain that separating selection from reusable definitions avoids copying the baseline or installing every workload everywhere.\n\nDo not require a particular inventory syntax, directory structure, or naming convention."
+    "kind": "multichoice",
+    "prompt_markdown": "Web, database, and batch-processing servers all need a common baseline but different workload configuration. Which organization expresses both requirements with the least duplicated baseline logic?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Maintain a complete baseline copy for every workload group so each team can change it independently."
+      },
+      {
+        "label": "B",
+        "text": "Apply every configuration unit to every server and let operators disable the unwanted services afterward."
+      },
+      {
+        "label": "C",
+        "text": "Apply one reusable baseline to the fleet and select workload-specific units through the corresponding host groups."
+      },
+      {
+        "label": "D",
+        "text": "Use workload groups only for connection settings and put all server configuration into one sequence applied to every host."
+      }
+    ],
+    "correct_option": "C",
+    "grader_markdown": "Grouping selects the appropriate targets; reusable units define the configuration to apply. Composing a common baseline with workload-specific units avoids both duplicated baseline logic and installation of every workload on every host. No particular inventory syntax or folder layout is required."
   },
   {
     "id": "L3 Q6",
@@ -509,11 +730,28 @@
     "number": 6,
     "title": "Desired state and operational actions",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Explain the difference between declaring that a service should be running and requesting that it restart on every automation run. Why does the distinction matter for repeated execution?",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Declaring a running service describes a condition; requesting a restart describes an operation even when that condition is already satisfied.\n- **1 mark:** Reapplying the desired state can leave an already running service undisturbed, while unconditional restarts can cause unnecessary disruption. A restart may still be appropriate when a relevant change requires it."
+    "kind": "multichoice",
+    "prompt_markdown": "A service is already running and its relevant configuration has not changed. How does declaring that it should be running differ from requesting a restart on every automation run?",
+    "options": [
+      {
+        "label": "A",
+        "text": "The desired-state declaration can leave it running undisturbed; an unconditional restart requests another operation and can cause unnecessary disruption."
+      },
+      {
+        "label": "B",
+        "text": "Both requests must stop and start it again, because automation cannot confirm a running state without restarting."
+      },
+      {
+        "label": "C",
+        "text": "The desired-state declaration starts it only on the first deployment; the restart request is the only way to recover it after a later failure."
+      },
+      {
+        "label": "D",
+        "text": "The restart request becomes a no-op after its first success, even if the automation explicitly requests it on every run."
+      }
+    ],
+    "correct_option": "A",
+    "grader_markdown": "A running-state declaration describes a condition that may already hold. A restart request describes an operation. Repeated execution can therefore leave a healthy service undisturbed with the first approach and disrupt it with the second. Relevant changes can still justify a restart."
   },
   {
     "id": "L3 Q7",
@@ -521,11 +759,28 @@
     "number": 7,
     "title": "Responding to configuration changes",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "A service must reload to use changed configuration. Explain why it can be useful to reload only after relevant changes, and why several compatible configuration changes might be applied before a single reload.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Change-aware reloads apply necessary configuration changes while avoiding unnecessary disruption when relevant configuration is unchanged.\n- **1 mark:** Combining compatible changes before one reload avoids redundant work and lets the service consume a coherent configuration. The changes should be validated and ordered appropriately before activation.\n\nAssess the principle, not a product's notification rules or handler timing."
+    "kind": "multichoice",
+    "prompt_markdown": "Several compatible configuration changes must be applied before a service reloads them. Which approach best avoids unnecessary work while activating a coherent configuration?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Reload after every file is copied, even when its contents are unchanged, to make each step independently visible."
+      },
+      {
+        "label": "B",
+        "text": "Apply and validate the compatible changes, then reload once if relevant configuration actually changed."
+      },
+      {
+        "label": "C",
+        "text": "Reload before changing the files, then skip the final reload if the configuration steps report success."
+      },
+      {
+        "label": "D",
+        "text": "Apply all changes and avoid reloading while the service remains running, because a running process always reads updated settings."
+      }
+    ],
+    "correct_option": "B",
+    "grader_markdown": "Apply and validate compatible changes before activation, then reload when relevant state changed. This avoids repeated reloads and allows the service to consume a coherent configuration. A running process does not necessarily reread changed files automatically."
   },
   {
     "id": "L3 Q8",
@@ -533,11 +788,28 @@
     "number": 8,
     "title": "Configuration success and functional success",
     "points": 2,
-    "kind": "essay",
-    "prompt_markdown": "Every configuration step reports success, but users still cannot use the application. Explain why these outcomes are compatible and give one functional check that could reveal a problem missed by configuration-level checks.",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Configuration success establishes that selected operations or resource checks succeeded, not that the complete application works for its users.\n- **1 mark:** A relevant functional check, such as making a representative application request, confirming database access from the application, or verifying communication between components.\n\nAward credit for explaining the check's purpose; a successful configuration exit status alone is not a functional check."
+    "kind": "multichoice",
+    "prompt_markdown": "All configuration steps report success, but users cannot use the application. Which interpretation and follow-up check are most useful?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Successful configuration proves the application works; compare automation exit codes from two consecutive runs."
+      },
+      {
+        "label": "B",
+        "text": "The deployment must have drifted; check only whether all expected configuration files still exist."
+      },
+      {
+        "label": "C",
+        "text": "A running service proves the application is reachable; compare installed package names with the deployment log."
+      },
+      {
+        "label": "D",
+        "text": "Managed resources may be configured correctly while the user workflow still fails; exercise a representative request through the application and its dependencies."
+      }
+    ],
+    "correct_option": "D",
+    "grader_markdown": "Configuration checks establish selected resource conditions, not necessarily end-to-end behavior. A representative request can expose failures in connectivity, dependencies, or application behavior that file, package, and process checks miss. Configuration success and functional failure can coexist."
   },
   {
     "id": "L3 Q9",
@@ -545,11 +817,28 @@
     "number": 9,
     "title": "Comparing codebase organizations",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "A team is choosing between one large configuration file for all server types and environments, and smaller reusable units with a separate place to select which units and values each environment uses.\n\n1. Propose sensible boundaries for the smaller units and explain one advantage over the single large file as the system grows. **(2 marks)**\n2. Explain one cost or risk introduced by splitting the configuration, and how you would keep the resulting codebase understandable and safe to change. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Propose coherent units, for example a common baseline plus separate web, database, and batch responsibilities, with a clear place for environment selection and values.\n- **1 mark:** Explain a benefit such as focused review, reuse, clearer ownership, or reducing duplicated logic as the system grows.\n- **1 mark:** Identify a real cost or risk: more interfaces and indirection, unclear dependencies, conflicting defaults, or excessive fragmentation that makes the effective configuration hard to follow.\n- **1 mark:** Address that risk with clear interfaces, documented inputs and override rules, visible composition, sensible unit size, or appropriate integration validation.\n\nA single file can be adequate for a small system. Do not award full credit for claiming that more files are always better, or require one prescribed repository layout."
+    "kind": "multichoice",
+    "prompt_markdown": "A growing team is considering replacing one large configuration file with reusable units and explicit environment composition. Which proposal best balances reuse with the cost of added structure?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Use coherent baseline and workload units with documented inputs and override rules; test their composition because extra interfaces can hide dependencies or conflicts."
+      },
+      {
+        "label": "B",
+        "text": "Split every operation into its own unit and select them implicitly; the resulting file count makes ownership and effective configuration self-explanatory."
+      },
+      {
+        "label": "C",
+        "text": "Copy each environment into its own repository; independent changes remove the need to coordinate common behavior across environments."
+      },
+      {
+        "label": "D",
+        "text": "Keep one universal unit and add environment conditions throughout it; using one file removes the need to document how environment values interact."
+      }
+    ],
+    "correct_option": "A",
+    "grader_markdown": "Coherent units support reuse and focused review, but extra interfaces and indirection can obscure dependencies and effective values. Documented inputs, visible composition, clear override rules, and integration checks address those costs. A small system may still be adequately served by a single file."
   },
   {
     "id": "L3 Q10",
@@ -557,10 +846,27 @@
     "number": 10,
     "title": "Checking the intended state",
     "points": 4,
-    "kind": "essay",
-    "prompt_markdown": "A deployment process skips software setup whenever it finds a directory named \"application\". The directory remains after the desired application version changes. The process reports success without checking the installed version or whether the application works.\n\n1. Explain why this check is insufficient and why an unchanged result does not by itself prove that automation has reached the desired state. **(2 marks)**\n2. Propose a better way to decide whether an update is needed, and one check after the update that would provide evidence that the intended result was achieved. **(2 marks)**",
-    "options": [],
-    "correct_option": null,
-    "grader_markdown": "- **1 mark:** Directory existence does not establish that the intended software version or configuration is present.\n- **1 mark:** Repeatedly doing nothing can leave an incorrect state unchanged. Idempotence and convergence to the desired state are related but distinct properties; a no-op alone is not evidence of successful configuration.\n- **1 mark:** Compare a meaningful observed state, such as the installed version or artifact identity, with the desired version/configuration and update when they differ. Include handling missing or incomplete installations in a sound explanation.\n- **1 mark:** Verify the intended version/configuration or exercise the relevant application behavior after the update. Rechecking directory existence alone is insufficient.\n\nAccept in-place reconciliation or replacement from a verified artifact if the student explains how the intended state is established and checked."
+    "kind": "multichoice",
+    "prompt_markdown": "A deployment skips software setup whenever an 'application' directory exists. The directory remains after the desired version changes, so the process reports success without inspecting the version or behavior. Which correction best establishes the intended state?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Keep the directory check and run the process twice; two unchanged runs establish that the desired version is installed."
+      },
+      {
+        "label": "B",
+        "text": "Recreate the directory on every run and treat its new timestamp as proof that the application has been updated."
+      },
+      {
+        "label": "C",
+        "text": "Compare the installed version or artifact with the desired one, repair missing or mismatched state, then verify the version and representative application behavior."
+      },
+      {
+        "label": "D",
+        "text": "Update the deployment log with the desired version whenever the directory exists, then use that log as the check on future runs."
+      }
+    ],
+    "correct_option": "C",
+    "grader_markdown": "Directory existence is not evidence of the desired software version or a complete installation. Repeated no-ops can preserve an incorrect state. Compare meaningful observed state with intended state, update when needed, and verify the result; changing a timestamp or log does not establish actual configuration."
   }
 ]

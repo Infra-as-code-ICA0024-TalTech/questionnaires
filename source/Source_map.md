@@ -2,7 +2,7 @@
 
 Review windows use **HH:MM:SS from the start of the original recording**. They identify the underlying concepts, not necessarily the exact wording of a question. The practical scenarios apply those principles to new situations. Codebase organization questions assess defensible design choices rather than a single directory layout taught as a rule.
 
-The questions were revised to remove demo-code reading, command recall, and product-specific behavior. Tool demonstrations remain part of the lecture evidence, but students are assessed on the transferable principles illustrated by them. Automated transcripts can contain recognition errors; the supplied slides provide supporting context.
+The questions were revised to remove demo-code reading, command recall, and product-specific behavior. All 30 now use single-answer multiple choice; the former explanations and scenarios retain their concept coverage through choices and answer feedback. Tool demonstrations remain part of the lecture evidence, but students are assessed on the transferable principles illustrated by them. Automated transcripts can contain recognition errors; the supplied slides provide supporting context.
 
 ## Lecture 1
 
@@ -21,7 +21,7 @@ Source recording: `Lecture1.mp4`. Supporting slides cover infrastructure pillars
 | L1 Q9 | Resource dependencies and derived connection information, 02:42:00–02:48:30; applied dependency scenario |
 | L1 Q10 | Source of truth and traceable changes, 02:17:00–02:21:00; drift, 01:38:00–01:47:00; applied organization scenario |
 
-L1 Q10 asks students to apply the principles of shared definitions and explicit intended differences. No particular repository structure is required.
+L1 Q10 asks students to recognize an application of shared definitions and explicit intended differences. No particular repository structure is required.
 
 ## Lecture 2
 
@@ -59,7 +59,7 @@ Source recording: `Lecture3.mp4`. Supporting slides cover inventory, partial sta
 | L3 Q9 | Reusable units and composition, 00:58:00–01:03:00; 01:15:00–01:17:30; 01:59:00–02:14:00; applied codebase-design comparison |
 | L3 Q10 | Limits of existence-only state checks, 00:47:00–00:49:30; 01:25:30–01:29:30; applied desired-state scenario |
 
-L3 Q9 deliberately asks students to weigh modularity against indirection and complexity. The rubric accepts multiple reasonable organizations. L3 Q10 distinguishes a shallow guard condition from evidence that the intended state has been achieved; no knowledge of a specific automation module is needed.
+L3 Q9 asks students to recognize a design that balances modularity against indirection and complexity, without requiring one specific repository layout. L3 Q10 distinguishes a shallow guard condition from evidence that the intended state has been achieved; no knowledge of a specific automation module is needed.
 
 ## Source provenance
 

@@ -12,7 +12,7 @@ from pypdf import PdfReader
 from formatting import ascii_text, inline, to_html
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Spacer, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Spacer, PageBreak, KeepTogether
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLES = {1: 'Infrastructure as Code concepts', 2: 'Images and machine initialization',
@@ -34,15 +34,14 @@ def load_questions():
     for (lecture, number), (title, points, body) in sorted(prompts.items()):
         key_title, key_points, guidance = answers[(lecture, number)]
         assert points == key_points
-        options = re.findall(r'^- ([A-D])\. (.+)$', body, re.M) if number <= 4 else []
-        correct = re.fullmatch(r'Answer ([A-D])', key_title) if options else None
-        if number <= 4:
-            assert [label for label, _ in options] == list('ABCD') and correct
-            body = re.sub(r'^- [A-D]\. .+\n?', '', body, flags=re.M).strip()
+        options = re.findall(r'^- ([A-D])\. (.+)$', body, re.M)
+        correct = re.fullmatch(r'Answer ([A-D])', key_title)
+        assert [label for label, _ in options] == list('ABCD') and correct, f'L{lecture} Q{number}: require four choices and one correct answer'
+        body = re.sub(r'^- [A-D]\. .+\n?', '', body, flags=re.M).strip()
         questions.append(dict(id=f'L{lecture} Q{number}', lecture=lecture, number=number,
-            title=title, points=points, kind='multichoice' if options else 'essay',
+            title=title, points=points, kind='multichoice',
             prompt_markdown=body, options=[dict(label=k, text=v) for k, v in options],
-            correct_option=correct.group(1) if correct else None, grader_markdown=guidance))
+            correct_option=correct.group(1), grader_markdown=guidance))
     return questions
 
 
@@ -73,28 +72,22 @@ def moodle_export(lecture, questions):
         add(doc, add(doc, node, 'name'), 'text', f"{q['id']} {q['title']}")
         add(doc, node, 'idnumber', q['id'].replace(' ', '-'))
         rich(doc, node, 'questiontext', to_html(q['prompt_markdown']))
-        # Essays keep solutions in instructor-only graderinfo, never in the prompt.
-        rich(doc, node, 'generalfeedback', to_html(q['grader_markdown']) if q['kind']=='multichoice' else '')
+        rich(doc, node, 'generalfeedback', to_html(q['grader_markdown']))
         for key, value in [('defaultgrade', q['points']), ('penalty', 0), ('hidden', 0)]:
             add(doc, node, key, value)
-        if q['kind'] == 'multichoice':
-            for key, value in [('single','true'), ('shuffleanswers','false'), ('answernumbering','ABCD')]:
-                add(doc, node, key, value)
-            for option in q['options']:
-                answer = add(doc, node, 'answer', fraction=100 if option['label']==q['correct_option'] else 0, format='html')
-                add(doc, answer, 'text').appendChild(doc.createCDATASection(to_html(option['text'])))
-                rich(doc, answer, 'feedback', '')
-            for tag in ['correctfeedback', 'partiallycorrectfeedback', 'incorrectfeedback']:
-                rich(doc, node, tag, '')
-        else:
-            for key, value in [('responseformat','editor'),
-                               ('responserequired',1), ('responsefieldlines',18 if q['number']>=9 else 8),
-                               ('attachments',0), ('attachmentsrequired',0)]:
-                add(doc, node, key, value)
-            rich(doc, node, 'graderinfo', to_html(q['grader_markdown']))
-            rich(doc, node, 'responsetemplate', '')
+        for key, value in [('single','true'), ('shuffleanswers','false'), ('answernumbering','ABCD')]:
+            add(doc, node, key, value)
+        for option in q['options']:
+            answer = add(doc, node, 'answer', fraction=100 if option['label']==q['correct_option'] else 0, format='html')
+            add(doc, answer, 'text').appendChild(doc.createCDATASection(to_html(option['text'])))
+            rich(doc, answer, 'feedback', '')
+        for tag in ['correctfeedback', 'partiallycorrectfeedback', 'incorrectfeedback']:
+            rich(doc, node, tag, '')
         tags = add(doc, node, 'tags')
-        for tag in ['ICA0024', f'lecture-{lecture:02}', 'multiple-choice' if q['number']<=4 else ('short-explanation' if q['number']<=8 else 'practical-scenario')]:
+        question_tags = ['ICA0024', f'lecture-{lecture:02}', 'multiple-choice']
+        if q['number'] >= 9:
+            question_tags.append('practical-scenario')
+        for tag in question_tags:
             add(doc, add(doc, tags, 'tag'), 'text', tag)
     path = ROOT/f'moodle/lecture-{lecture:02}.xml'
     path.write_bytes(doc.toprettyxml(indent='  ', encoding='UTF-8'))
@@ -112,26 +105,27 @@ def forms_export(lecture, questions):
     }
     story = [Paragraph(f'ICA0024 Lecture {lecture}', styles['title']),
              Paragraph(TITLES[lecture], styles['body'])]
+    page_breaks = (5, 7, 9)
     for q in questions:
-        if q['number'] in (5, 9, 10):
+        if q['number'] in page_breaks:
             story.append(PageBreak())
-        story.append(Paragraph(inline(f"{q['number']}. {q['title']} ({q['points']} {'point' if q['points']==1 else 'points'})"), styles['question']))
+        block = []
+        block.append(Paragraph(inline(f"{q['number']}. {q['title']} ({q['points']} {'point' if q['points']==1 else 'points'})"), styles['question']))
         parts = re.split(r'(```[^\n]*\n.*?\n```)', q['prompt_markdown'], flags=re.S)
         for part in parts:
             if part.startswith('```'):
                 code = part.split('\n',1)[1].rsplit('\n```',1)[0]
-                story.append(Preformatted(ascii_text(code), styles['code']))
+                block.append(Preformatted(ascii_text(code), styles['code']))
             else:
                 for paragraph in re.split(r'\n\s*\n', part.strip()):
                     if not paragraph:
                         continue
-                    # Lettered subparts help Forms keep each scenario as one question.
-                    paragraph = re.sub(r'(?m)^(\d+)\. ', lambda m: chr(96+int(m[1]))+') ', paragraph)
                     paragraph = inline(paragraph).replace('\n', '<br/>')
-                    story.append(Paragraph(paragraph, styles['body']))
+                    block.append(Paragraph(paragraph, styles['body']))
         for option in q['options']:
-            story.append(Paragraph(inline(f"{option['label']}. {option['text']}"), styles['option']))
-        story.append(Spacer(1,6))
+            block.append(Paragraph(inline(f"{option['label']}. {option['text']}"), styles['option']))
+        block.append(Spacer(1,6))
+        story.append(KeepTogether(block))
     SimpleDocTemplate(str(path), pagesize=A4, rightMargin=40, leftMargin=40,
                       topMargin=35, bottomMargin=35, title=f'ICA0024 Lecture {lecture}',
                       author='ICA0024', invariant=1).build(story)
@@ -142,6 +136,9 @@ def validate(questions, output_format='all'):
     report = {'questions':len(questions), 'total_marks':sum(q['points'] for q in questions),
               'moodle_live_import_tested':False, 'ms_forms_live_import_tested':False, 'lectures':[]}
     assert report['questions']==30 and report['total_marks']==60
+    assert all(q['kind']=='multichoice' for q in questions)
+    if output_format in ('all', 'forms'):
+        assert json.loads((ROOT/'ms-forms/grading-reference.json').read_text())==questions
     for lecture in TITLES:
         expected = [q for q in questions if q['lecture']==lecture]
         assert sum(q['points'] for q in expected)==20
@@ -150,20 +147,18 @@ def validate(questions, output_format='all'):
             nodes = [q for q in root.findall('question') if q.get('type')!='category']
             assert len(nodes)==10
             for source, node in zip(expected,nodes):
+                assert node.get('type')==source['kind']
                 assert node.findtext('idnumber')==source['id'].replace(' ','-')
                 assert float(node.findtext('defaultgrade'))==source['points']
                 assert node.findtext('questiontext/text')==to_html(source['prompt_markdown'])
                 # Round-trip comparison catches escaped YAML/HCL characters and whitespace damage.
-                if source['kind']=='multichoice':
-                    answers=node.findall('answer')
-                    assert len(answers)==4
-                    correct=[i for i,a in enumerate(answers) if a.get('fraction')=='100']
-                    assert correct==['ABCD'.index(source['correct_option'])]
-                    assert all(a.findtext('text')==to_html(o['text']) for a,o in zip(answers,source['options']))
-                else:
-                    assert node.findtext('graderinfo/text')==to_html(source['grader_markdown'])
-                    assert not node.findtext('generalfeedback/text')
-                    assert not node.findtext('responsetemplate/text')
+                answers=node.findall('answer')
+                assert len(answers)==4
+                assert node.findtext('single')=='true'
+                assert node.findtext('generalfeedback/text')==to_html(source['grader_markdown'])
+                correct=[i for i,a in enumerate(answers) if a.get('fraction')=='100']
+                assert correct==['ABCD'.index(source['correct_option'])]
+                assert all(a.findtext('text')==to_html(o['text']) for a,o in zip(answers,source['options']))
         pdf_pages = None
         if output_format in ('all', 'forms'):
             pdf = ROOT/f'ms-forms/lecture-{lecture:02}.pdf'
@@ -171,12 +166,19 @@ def validate(questions, output_format='all'):
             reader=PdfReader(pdf)
             assert len(reader.pages)==4, f'Unexpected page count for lecture {lecture}'
             text='\n'.join(p.extract_text() for p in reader.pages)
+            normalized = re.sub(r'\s+', ' ', text)
             for q in expected:
                 assert f"{q['number']}. {ascii_text(q['title'])}" in text
+                for option in q['options']:
+                    assert re.sub(r'\s+', ' ', ascii_text(f"{option['label']}. {option['text']}")) in normalized
+                if q['kind']=='multichoice':
+                    assert sum(all(ascii_text(option['text'])[:25] in page.extract_text() for option in q['options']) for page in reader.pages)==1, f"Split choices for {q['id']}"
             assert 'Instructor copy' not in text and 'Technical reference' not in text
             pdf_pages = len(reader.pages)
-        report['lectures'].append(dict(lecture=lecture, questions=10, multichoice=4,
-                                      essay=6, marks=20, pdf_pages=pdf_pages))
+        report['lectures'].append(dict(lecture=lecture, questions=len(expected),
+                                      multichoice=sum(q['kind']=='multichoice' for q in expected),
+                                      essay=sum(q['kind']=='essay' for q in expected),
+                                      marks=sum(q['points'] for q in expected), pdf_pages=pdf_pages))
     if output_format != 'all':
         report['validated_format'] = output_format
     return report

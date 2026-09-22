@@ -4,9 +4,9 @@
 
 **Name:** ____________________  **Date:** ____________________
 
-Answer all 30 questions. Each lecture is worth **20 marks**, for **60 marks** in total. Suggested time: **75–90 minutes**, or 25–30 minutes per lecture.
+Answer all 30 questions. Each lecture is worth **20 marks**, for **60 marks** in total. Suggested time: **45–60 minutes**, or 15–20 minutes per lecture.
 
-For multiple-choice questions, select one answer. For short answers, use two to four sentences unless asked otherwise. For practical scenarios, explain your design and reasoning in plain language; a simple diagram is welcome. No code, commands, product-specific knowledge, or access to the demo repositories is required. Write your answers on a separate sheet or in the quiz response fields.
+Every question is multiple choice with **one correct answer**. Select the best answer from A-D, including for practical scenarios. No written explanation, code, commands, product-specific knowledge, or access to the demo repositories is required.
 
 ## Lecture 1 Infrastructure as Code concepts
 
@@ -48,33 +48,57 @@ A team moves from managing virtual machines under IaaS to a managed application 
 
 ### L1 Q5 Version-controlled infrastructure definitions — 2 marks
 
-Give two benefits of version-controlling infrastructure definitions beyond simply having a backup copy. Explain how each benefit helps a team deliver changes reliably.
+Which pair of benefits best explains how version-controlling infrastructure definitions helps a team deliver changes reliably?
+
+- A. It preserves change history and makes reverting a definition sufficient to restore deleted application data.
+- B. It provides a shared definition and keeps running infrastructure synchronized whenever a change is committed.
+- C. It makes proposed changes reviewable and records who changed the intended configuration and why.
+- D. It makes environment differences visible and makes validation unnecessary after a change is approved.
 
 ### L1 Q6 Configuration drift — 2 marks
 
-Two servers were created from the same definition. An administrator later changes a managed setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.
+Two servers were created from the same definition. An administrator changes a managed setting manually on one server. Which description and response best address the situation?
+
+- A. The server has drifted from the declared state; compare the difference and either restore the approved setting or review and update the definition.
+- B. The definition has become obsolete; copy the changed setting into it and apply it to the other server without further review.
+- C. The servers are still consistent because they share an original definition; record the manual change only in an operational log.
+- D. The difference is necessarily a fault; rebuild both servers immediately without checking why the setting was changed.
 
 ### L1 Q7 Mutable and immutable infrastructure — 2 marks
 
-A server needs a new operating-system configuration. Contrast an in-place mutable update with an immutable replacement. Explain what must happen to persistent application data when using the replacement approach.
+A server needs an operating-system configuration change and stores application data that must survive the update. Which plan correctly distinguishes mutable and immutable approaches?
+
+- A. A mutable update replaces the server; an immutable update modifies the existing server while preserving its identity.
+- B. Both approaches modify the existing server; the immutable approach additionally records the change in version control.
+- C. A mutable update changes the existing server; an immutable update replaces it and recreates persistent data from the infrastructure definition.
+- D. A mutable update changes the existing server; an immutable update replaces it and preserves persistent data separately or through a verified migration.
 
 ### L1 Q8 Separating infrastructure and server configuration — 2 marks
 
-A deployment needs networks and virtual machines, as well as software and service configuration inside those machines. Explain the distinction between these two responsibilities and one benefit of keeping their definitions organized separately.
+A deployment needs networks and virtual machines, plus software and service configuration inside those machines. Which organization best separates responsibilities while keeping the deployment coordinated?
+
+- A. Maintain each environment as a complete independent copy so changes to shared configuration never affect another environment.
+- B. Separate resource provisioning from server configuration, pass required resource information between them, and review each concern independently.
+- C. Put provisioning and configuration in separate repositories and rely on operators to keep their connection details synchronized.
+- D. Keep only resource provisioning in code and document the manual software setup as the interface between the two responsibilities.
 
 ### L1 Q9 Dependencies and changing resource information — 4 marks
 
-An application server needs a network before it can be created. A later configuration step needs the server's assigned address. A team records that address manually in several places. Replacing the server may change the address.
+An application server requires a network. A later configuration step needs the server's assigned address, which may change when the server is replaced. The team currently copies that address into several files. Which design best preserves both dependency order and current connection information?
 
-1. Explain the dependency order and which resource information should pass between stages. Why is arranging files in a particular order not enough to express these relationships reliably? **(2 marks)**
-2. Propose a way to keep dependent configuration consistent when a server is replaced. Explain why it is preferable to maintaining several handwritten copies of the address. **(2 marks)**
+- A. Represent network-to-server and server-to-configuration dependencies explicitly, and derive the connection address from the current server output.
+- B. Number the definition files in deployment order, and retain the original address as a default in each configuration file.
+- C. Start all stages together, and retry configuration against the previously recorded address until the server becomes reachable.
+- D. Create the network and server in order, and let each configuration stage maintain its own reviewed copy of the assigned address.
 
 ### L1 Q10 Shared definitions and environment differences — 4 marks
 
-Development and production started from copied infrastructure definitions. They are intended to share the same application structure, but production needs greater capacity. After several independent edits, nobody knows whether other differences are intentional.
+Development and production use copied infrastructure definitions. They should share an application structure, but production needs greater capacity. Independent edits have introduced differences whose purpose is unclear. Which approach best preserves legitimate differences and prevents accidental divergence?
 
-1. Propose how to organize the shared definitions and environment-specific values. Explain which differences should remain explicit. **(2 marks)**
-2. Explain how the team could discover accidental differences and keep future changes reviewable while still allowing the legitimate capacity difference. **(2 marks)**
+- A. Keep independent definitions and periodically copy production over development, treating production capacity as the shared baseline.
+- B. Require identical definitions and values everywhere, recording production capacity changes only in an operational checklist.
+- C. Share the common structure, keep environment values explicit, and review existing differences against intended state before validating future changes.
+- D. Create a shared definition, permit manual environment-specific changes after deployment, and review only changes to the shared definition.
 
 ## Lecture 2 Images and machine initialization
 
@@ -116,33 +140,57 @@ A team wants to use the same machine baseline on two virtualization platforms an
 
 ### L2 Q5 Stock and custom images — 2 marks
 
-Explain the difference between a stock image and a custom image. Give one reason an organization would maintain a custom image instead of configuring every new machine entirely from a stock image at launch time.
+An organization starts every server from a supplied stock image and repeats the same security and software setup at launch. What is the strongest reason to maintain a custom image?
+
+- A. A custom image captures live application data, so it replaces the need for separate data backups.
+- B. A custom image contains a tested organizational baseline, reducing repeated setup while still requiring maintenance.
+- C. A custom image incorporates future security fixes automatically, so its original build definition can remain unchanged.
+- D. A custom image removes environment differences, so all settings and machine identities should be embedded in it.
 
 ### L2 Q6 Build time and boot time — 2 marks
 
-Explain how configuration prepared during image building differs from configuration applied when an instance first starts. Give one suitable example for each stage.
+A fleet needs the same monitoring software on every machine, but each instance needs a distinct identity and environment-specific connection settings. Which division of work best fits image building and first-start initialization?
+
+- A. Embed the monitoring software and one shared machine identity in the image; change environment settings manually after launch.
+- B. Install everything at first start because reusable images cannot contain configured software.
+- C. Embed all production connection settings in every image; use first-start initialization only to check whether the machine boots.
+- D. Prepare the shared monitoring software in the image; supply instance identity and environment settings during first-start initialization.
 
 ### L2 Q7 Containers and virtual machines — 2 marks
 
-Explain one important difference between a typical Linux container and a virtual machine in how they use the operating-system kernel. State one practical consequence for their isolation or compatibility.
+Which statement correctly compares a typical Linux container with a virtual machine and identifies a consequence?
+
+- A. Containers normally share the host kernel, while VMs run guest kernels; a workload requiring a different kernel may need a VM.
+- B. Containers and VMs each boot their own kernel, so they provide the same kernel isolation boundary.
+- C. Containers share the host kernel, so they cannot isolate processes or files from other containers.
+- D. VMs run guest kernels, so any VM image can run unchanged on every processor architecture and hypervisor.
 
 ### L2 Q8 Snapshot and rebuildable definition — 2 marks
 
-A team keeps a snapshot of a working server but has no maintained instructions for recreating its configuration. Explain one thing the snapshot provides and one reason it does not replace a rebuildable definition.
+A team has a snapshot of a working server but no maintained definition of how it was configured. Which assessment is most accurate?
+
+- A. The snapshot records the intended configuration process, so future changes can be reviewed directly from its creation history.
+- B. The snapshot is unsuitable for recovery because only a rebuildable definition can restore a machine's state.
+- C. The snapshot may restore captured state, but a maintained definition is still needed to review and deliberately reproduce the configuration process.
+- D. The snapshot proves future builds will match the server, provided the same stock image name is selected each time.
 
 ### L2 Q9 Organizing an image family — 4 marks
 
-A company needs web-server and database-server images. Both must share a security baseline, but each needs different software. Today, two separate build definitions contain copied baseline steps. A policy update was applied to only one copy.
+Web-server and database-server images share a security baseline but need different software. Their separate build definitions contain copied baseline steps, and a policy update reached only one copy. Which plan best addresses both organization and rollout?
 
-1. Propose an organization for the image definitions that separates shared baseline work from workload-specific work. Explain how it reduces the risk illustrated here. **(2 marks)**
-2. Explain what must happen to the derived images and running machines after the shared baseline changes. Include a check before the new baseline is used in production. **(2 marks)**
+- A. Build one image with both workloads installed; apply a baseline change to whichever running servers currently need it.
+- B. Reuse a common baseline with separate workload definitions; rebuild affected images, validate policy and workload behavior, then deliberately replace affected machines.
+- C. Reuse a common baseline with separate workload definitions; committing its new version also updates existing images and running machines.
+- D. Keep the copied baseline steps and review each copy; validate only the baseline definition before replacing machines with existing images.
 
 ### L2 Q10 Reproducible builds and immutable updates — 4 marks
 
-An image build always selects the latest available base image and software packages. A team claims: "Our build instructions are version-controlled, so running them next month must produce the same software versions."
+A version-controlled image build always selects the latest base image and packages. The team wants to reproduce an approved version and later roll out a deliberately patched version. Which plan meets both goals?
 
-1. Assess the claim. Identify two inputs that can change independently of the instructions and explain how to control them when reproducing an approved version. **(2 marks)**
-2. The team deliberately prepares a patched image. Describe an immutable update to the running application, including validation and preservation of persistent data. **(2 marks)**
+- A. Re-run the same source revision with latest inputs; update existing servers in place and call the unchanged source an immutable release.
+- B. Record the approved base image but continue selecting latest packages; replace all machines and recreate their application data from the build definition.
+- C. Control both base and package versions; patch running machines manually and rely on their original image for future replacements.
+- D. Record and retain approved base and package artifacts; build and validate a patched image, check replacement instances, and preserve persistent data during rollout.
 
 ## Lecture 3 Server state and configuration organization
 
@@ -184,30 +232,54 @@ Development and production use the same service configuration logic but need dif
 
 ### L3 Q5 Grouping by responsibility — 2 marks
 
-A fleet contains web, database, and batch-processing servers. All need a common baseline, but their workload-specific configuration differs. Explain how host grouping and reusable configuration units can express both requirements without applying every workload to every server.
+Web, database, and batch-processing servers all need a common baseline but different workload configuration. Which organization expresses both requirements with the least duplicated baseline logic?
+
+- A. Maintain a complete baseline copy for every workload group so each team can change it independently.
+- B. Apply every configuration unit to every server and let operators disable the unwanted services afterward.
+- C. Apply one reusable baseline to the fleet and select workload-specific units through the corresponding host groups.
+- D. Use workload groups only for connection settings and put all server configuration into one sequence applied to every host.
 
 ### L3 Q6 Desired state and operational actions — 2 marks
 
-Explain the difference between declaring that a service should be running and requesting that it restart on every automation run. Why does the distinction matter for repeated execution?
+A service is already running and its relevant configuration has not changed. How does declaring that it should be running differ from requesting a restart on every automation run?
+
+- A. The desired-state declaration can leave it running undisturbed; an unconditional restart requests another operation and can cause unnecessary disruption.
+- B. Both requests must stop and start it again, because automation cannot confirm a running state without restarting.
+- C. The desired-state declaration starts it only on the first deployment; the restart request is the only way to recover it after a later failure.
+- D. The restart request becomes a no-op after its first success, even if the automation explicitly requests it on every run.
 
 ### L3 Q7 Responding to configuration changes — 2 marks
 
-A service must reload to use changed configuration. Explain why it can be useful to reload only after relevant changes, and why several compatible configuration changes might be applied before a single reload.
+Several compatible configuration changes must be applied before a service reloads them. Which approach best avoids unnecessary work while activating a coherent configuration?
+
+- A. Reload after every file is copied, even when its contents are unchanged, to make each step independently visible.
+- B. Apply and validate the compatible changes, then reload once if relevant configuration actually changed.
+- C. Reload before changing the files, then skip the final reload if the configuration steps report success.
+- D. Apply all changes and avoid reloading while the service remains running, because a running process always reads updated settings.
 
 ### L3 Q8 Configuration success and functional success — 2 marks
 
-Every configuration step reports success, but users still cannot use the application. Explain why these outcomes are compatible and give one functional check that could reveal a problem missed by configuration-level checks.
+All configuration steps report success, but users cannot use the application. Which interpretation and follow-up check are most useful?
+
+- A. Successful configuration proves the application works; compare automation exit codes from two consecutive runs.
+- B. The deployment must have drifted; check only whether all expected configuration files still exist.
+- C. A running service proves the application is reachable; compare installed package names with the deployment log.
+- D. Managed resources may be configured correctly while the user workflow still fails; exercise a representative request through the application and its dependencies.
 
 ### L3 Q9 Comparing codebase organizations — 4 marks
 
-A team is choosing between one large configuration file for all server types and environments, and smaller reusable units with a separate place to select which units and values each environment uses.
+A growing team is considering replacing one large configuration file with reusable units and explicit environment composition. Which proposal best balances reuse with the cost of added structure?
 
-1. Propose sensible boundaries for the smaller units and explain one advantage over the single large file as the system grows. **(2 marks)**
-2. Explain one cost or risk introduced by splitting the configuration, and how you would keep the resulting codebase understandable and safe to change. **(2 marks)**
+- A. Use coherent baseline and workload units with documented inputs and override rules; test their composition because extra interfaces can hide dependencies or conflicts.
+- B. Split every operation into its own unit and select them implicitly; the resulting file count makes ownership and effective configuration self-explanatory.
+- C. Copy each environment into its own repository; independent changes remove the need to coordinate common behavior across environments.
+- D. Keep one universal unit and add environment conditions throughout it; using one file removes the need to document how environment values interact.
 
 ### L3 Q10 Checking the intended state — 4 marks
 
-A deployment process skips software setup whenever it finds a directory named "application". The directory remains after the desired application version changes. The process reports success without checking the installed version or whether the application works.
+A deployment skips software setup whenever an 'application' directory exists. The directory remains after the desired version changes, so the process reports success without inspecting the version or behavior. Which correction best establishes the intended state?
 
-1. Explain why this check is insufficient and why an unchanged result does not by itself prove that automation has reached the desired state. **(2 marks)**
-2. Propose a better way to decide whether an update is needed, and one check after the update that would provide evidence that the intended result was achieved. **(2 marks)**
+- A. Keep the directory check and run the process twice; two unchanged runs establish that the desired version is installed.
+- B. Recreate the directory on every run and treat its new timestamp as proof that the application has been updated.
+- C. Compare the installed version or artifact with the desired one, repair missing or mismatched state, then verify the version and representative application behavior.
+- D. Update the deployment log with the desired version whenever the directory exists, then use that log as the check on future runs.

@@ -253,32 +253,56 @@
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q5 Version-controlled infrastructure definitions</text>
     </name>
     <idnumber>L1-Q5</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Give two benefits of version-controlling infrastructure definitions beyond simply having a backup copy. Explain how each benefit helps a team deliver changes reliably.</p>]]></text>
+      <text><![CDATA[<p>Which pair of benefits best explains how version-controlling infrastructure definitions helps a team deliver changes reliably?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>Review before application can catch mistakes, and a traceable history helps explain and investigate changes. Version control alone neither applies changes nor restores deleted data; reviewed changes still need validation.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>8</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<p>Award <strong>1 mark each</strong> for two distinct benefits explained in relation to reliable delivery, such as a reviewable change history, peer review before application, automated validation of proposed changes, or a shared record of intended configuration that reduces undocumented edits.</p>
-<p>Do not award a separate benefit for merely keeping another copy. A prior definition can support investigation or recovery planning, but reverting a source revision does not automatically restore deleted data or guarantee safe infrastructure rollback.</p>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It preserves change history and makes reverting a definition sufficient to restore deleted application data.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It provides a shared definition and keeps running infrastructure synchronized whenever a change is committed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>It makes proposed changes reviewable and records who changed the intended configuration and why.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It makes environment differences visible and makes validation unnecessary after a change is approved.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
@@ -287,38 +311,60 @@
         <text>lecture-01</text>
       </tag>
       <tag>
-        <text>short-explanation</text>
+        <text>multiple-choice</text>
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q6 Configuration drift</text>
     </name>
     <idnumber>L1-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Two servers were created from the same definition. An administrator later changes a managed setting manually on only one server. Explain what configuration drift means in this situation and describe one way to detect or reconcile it.</p>]]></text>
+      <text><![CDATA[<p>Two servers were created from the same definition. An administrator changes a managed setting manually on one server. Which description and response best address the situation?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>Drift is a difference between actual managed state and intended state. Investigate it before reconciliation: an unauthorized change may need reversal, while a legitimate change should be reviewed and recorded in the definition. A shared origin does not guarantee continued consistency.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>8</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Actual managed configuration has diverged from the declared or intended state; the manual edit creates a difference from the baseline.</li>
-<li><strong>1 mark:</strong> A sound detection or reconciliation method: compare actual state with the declaration, investigate the difference, and either restore the approved state or review and record a legitimate change before applying it consistently.</li>
-</ul>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The server has drifted from the declared state; compare the difference and either restore the approved setting or review and update the definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The definition has become obsolete; copy the changed setting into it and apply it to the other server without further review.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The servers are still consistent because they share an original definition; record the manual change only in an operational log.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The difference is necessarily a fault; rebuild both servers immediately without checking why the setting was changed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
@@ -327,38 +373,60 @@
         <text>lecture-01</text>
       </tag>
       <tag>
-        <text>short-explanation</text>
+        <text>multiple-choice</text>
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q7 Mutable and immutable infrastructure</text>
     </name>
     <idnumber>L1-Q7</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A server needs a new operating-system configuration. Contrast an in-place mutable update with an immutable replacement. Explain what must happen to persistent application data when using the replacement approach.</p>]]></text>
+      <text><![CDATA[<p>A server needs an operating-system configuration change and stores application data that must survive the update. Which plan correctly distinguishes mutable and immutable approaches?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>Mutable updates change an existing instance. Immutable updates replace it with an instance prepared from the updated definition or image. Persistent application data needs separate storage or a verified transfer/recovery process; infrastructure definitions do not generally contain that data.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>8</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> A mutable update modifies the existing server; an immutable update replaces it with one prepared from the updated definition or image.</li>
-<li><strong>1 mark:</strong> Preserve persistent data separately or use a tested migration/backup/restore process before retiring the old server. Replacement must not discard the only copy of application data.</li>
-</ul>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A mutable update replaces the server; an immutable update modifies the existing server while preserving its identity.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Both approaches modify the existing server; the immutable approach additionally records the change in version control.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and recreates persistent data from the infrastructure definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and preserves persistent data separately or through a verified migration.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
@@ -367,39 +435,60 @@
         <text>lecture-01</text>
       </tag>
       <tag>
-        <text>short-explanation</text>
+        <text>multiple-choice</text>
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q8 Separating infrastructure and server configuration</text>
     </name>
     <idnumber>L1-Q8</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A deployment needs networks and virtual machines, as well as software and service configuration inside those machines. Explain the distinction between these two responsibilities and one benefit of keeping their definitions organized separately.</p>]]></text>
+      <text><![CDATA[<p>A deployment needs networks and virtual machines, plus software and service configuration inside those machines. Which organization best separates responsibilities while keeping the deployment coordinated?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>Provisioning establishes resources and connectivity; server configuration establishes software, files, and service state. Clear boundaries with explicit information flow support focused review and reuse. Separate repositories are optional and do not by themselves keep dependencies synchronized.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>8</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Infrastructure definitions establish resources and connectivity; server configuration establishes software, files, and service state within those resources.</li>
-<li><strong>1 mark:</strong> A justified benefit of separating these concerns, such as clearer ownership, reuse of configuration across different resource layouts, focused review, or separate validation of different change types.</li>
-</ul>
-<p>Do not require separate repositories or separate products. Separation can exist within a single codebase with a clear interface between responsibilities.</p>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Maintain each environment as a complete independent copy so changes to shared configuration never affect another environment.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Separate resource provisioning from server configuration, pass required resource information between them, and review each concern independently.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Put provisioning and configuration in separate repositories and rely on operators to keep their connection details synchronized.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep only resource provisioning in code and document the manual software setup as the interface between the two responsibilities.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
@@ -408,98 +497,134 @@
         <text>lecture-01</text>
       </tag>
       <tag>
-        <text>short-explanation</text>
+        <text>multiple-choice</text>
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q9 Dependencies and changing resource information</text>
     </name>
     <idnumber>L1-Q9</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>An application server needs a network before it can be created. A later configuration step needs the server's assigned address. A team records that address manually in several places. Replacing the server may change the address.</p>
-<ol>
-<li>Explain the dependency order and which resource information should pass between stages. Why is arranging files in a particular order not enough to express these relationships reliably? <strong>(2 marks)</strong></li>
-<li>Propose a way to keep dependent configuration consistent when a server is replaced. Explain why it is preferable to maintaining several handwritten copies of the address. <strong>(2 marks)</strong></li>
-</ol>]]></text>
+      <text><![CDATA[<p>An application server requires a network. A later configuration step needs the server's assigned address, which may change when the server is replaced. The team currently copies that address into several files. Which design best preserves both dependency order and current connection information?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>Explicit dependencies identify what must exist or be known before another step can proceed. Passing current resource outputs avoids stale, duplicated addresses after replacement. File names alone do not encode those resource relationships, and correct ordering alone does not keep copied values current.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>18</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> The network must exist before the dependent server can be created, and the server's assigned address must be known before the dependent configuration step can use it.</li>
-<li><strong>1 mark:</strong> Dependencies and required outputs should be explicitly represented; file ordering alone does not describe or maintain the resource relationships reliably.</li>
-<li><strong>1 mark:</strong> Have the authoritative resource information supply the dependent configuration, and refresh that information when the server is replaced.</li>
-<li><strong>1 mark:</strong> This avoids independently maintained copies becoming stale or inconsistent and reduces the chance of configuring the wrong machine.</li>
-</ul>
-<p>Accept generated configuration, a maintained inventory fed by resource outputs, or another clearly explained way of resolving current information. Do not require a particular dependency syntax or product.</p>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Represent network-to-server and server-to-configuration dependencies explicitly, and derive the connection address from the current server output.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Number the definition files in deployment order, and retain the original address as a default in each configuration file.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Start all stages together, and retry configuration against the previously recorded address until the server becomes reachable.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Create the network and server in order, and let each configuration stage maintain its own reviewed copy of the assigned address.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
       </tag>
       <tag>
         <text>lecture-01</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
       </tag>
       <tag>
         <text>practical-scenario</text>
       </tag>
     </tags>
   </question>
-  <question type="essay">
+  <question type="multichoice">
     <name>
       <text>L1 Q10 Shared definitions and environment differences</text>
     </name>
     <idnumber>L1-Q10</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Development and production started from copied infrastructure definitions. They are intended to share the same application structure, but production needs greater capacity. After several independent edits, nobody knows whether other differences are intentional.</p>
-<ol>
-<li>Propose how to organize the shared definitions and environment-specific values. Explain which differences should remain explicit. <strong>(2 marks)</strong></li>
-<li>Explain how the team could discover accidental differences and keep future changes reviewable while still allowing the legitimate capacity difference. <strong>(2 marks)</strong></li>
-</ol>]]></text>
+      <text><![CDATA[<p>Development and production use copied infrastructure definitions. They should share an application structure, but production needs greater capacity. Independent edits have introduced differences whose purpose is unclear. Which approach best preserves legitimate differences and prevents accidental divergence?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[]]></text>
+      <text><![CDATA[<p>A shared definition captures the common structure, while explicit environment values retain intended capacity differences. Compare definitions and actual state with the agreed design, then review and validate changes. Identical values are not required, and undocumented manual exceptions undermine the shared source of truth.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
-    <responseformat>editor</responseformat>
-    <responserequired>1</responserequired>
-    <responsefieldlines>18</responsefieldlines>
-    <attachments>0</attachments>
-    <attachmentsrequired>0</attachmentsrequired>
-    <graderinfo format="html">
-      <text><![CDATA[<ul>
-<li><strong>1 mark:</strong> Keep the common application structure in a shared, reusable definition rather than independently editing full copies.</li>
-<li><strong>1 mark:</strong> Keep legitimate environment values, including capacity, explicit and associated with the intended environment. Shared structure need not imply identical values everywhere.</li>
-<li><strong>1 mark:</strong> Compare existing definitions and actual state against the intended baseline and documented exceptions to identify accidental differences.</li>
-<li><strong>1 mark:</strong> Review and version shared changes and environment values, validating their effects in the relevant environments before applying them.</li>
-</ul>
-<p>Accept different folder or repository layouts if they preserve a clear shared definition and explicit differences. Do not require a particular layout or insist that all differences are drift.</p>]]></text>
-    </graderinfo>
-    <responsetemplate format="html">
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep independent definitions and periodically copy production over development, treating production capacity as the shared baseline.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Require identical definitions and values everywhere, recording production capacity changes only in an operational checklist.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Share the common structure, keep environment values explicit, and review existing differences against intended state before validating future changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Create a shared definition, permit manual environment-specific changes after deployment, and review only changes to the shared definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
       <text><![CDATA[]]></text>
-    </responsetemplate>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
     <tags>
       <tag>
         <text>ICA0024</text>
       </tag>
       <tag>
         <text>lecture-01</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
       </tag>
       <tag>
         <text>practical-scenario</text>

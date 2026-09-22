@@ -4,7 +4,7 @@
 
 English assessments for the first three Infrastructure as Code lectures, grounded in the lecture recordings and slides. Questions assess principles, design choices, and codebase organization; they require no code reading, commands, tool syntax, or access to demo repositories.
 
-Each lecture contains **10 questions worth 20 marks**: four multiple-choice questions (1 mark each), four short explanations (2 marks each), and two practical scenarios (4 marks each). There are 30 questions and 60 marks overall. The term **infrastructure pillars** is used throughout.
+Each lecture contains **10 single-answer multiple-choice questions worth 20 marks**, including two practical scenarios. Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4. Every question has four choices and exactly one correct answer. There are 30 questions and 60 marks overall, with no free-response questions. The term **infrastructure pillars** is used throughout.
 
 ## Files
 
@@ -26,20 +26,20 @@ The glossary has moved to the separate [ICA0024 glossary repository](https://git
 
 1. Open the course's **Question bank**, then use its **Questions** dropdown to select **Import**.
 2. Select **Moodle XML format** and upload one XML file. Enable **Get category from file** if offered. Repeat for the other lectures.
-3. Confirm 10 questions in each `ICA0024 / Lecture 01`, `Lecture 02`, and `Lecture 03` category. Preview the questions, especially scenario subparts.
+3. Confirm 10 questions in each `ICA0024 / Lecture 01`, `Lecture 02`, and `Lecture 03` category. Preview all questions and choices, including the scenarios.
 4. Add a **Quiz** activity for each lecture and add its 10 questions from the question bank. Importing questions alone does not create a student-facing quiz. Set the quiz maximum grade to 20 if you want it to match the question marks.
 5. Configure availability, attempts, and review settings. Preview an attempt before making it available to students.
 
-Multiple-choice questions are automatically graded. Explanations and scenarios use Moodle **Essay**, allowing manual grading and equivalent answers; Moodle's exact-match **Short answer** type is unsuitable for these explanations. Instructor rubrics are stored in `graderinfo`, not in the essay response template or student feedback. Multiple-choice explanations are stored as general feedback, whose release depends on the quiz review settings.
+All questions use Moodle **Multiple choice** with one correct answer and automatic grading. Answer explanations are stored as general feedback, whose release depends on the quiz review settings. No Essay or Short answer questions are generated.
 
 The exports use native Moodle question types and require no question-type plugin. Reference: [Moodle XML format](https://docs.moodle.org/en/Moodle_XML_format).
 
 ## Import into Microsoft Forms
 
 1. In Forms, select **Quick Import**, upload a lecture PDF from your device, and choose **Quiz**. Repeat for the other lectures.
-2. Review all conversion warnings. Confirm there are exactly **10 questions**: four choice questions and six text questions. Keep each practical scenario and its subparts together as one question.
-3. Compare prompts and choices against the PDF, paying particular attention to question boundaries and lettered subparts. Correct any conversion errors.
-4. Set the correct choices and points using the answer key or `grading-reference.json`: Q1-Q4 = 1 point each, Q5-Q8 = 2, Q9-Q10 = 4. Enable **Long answer** for the explanation and scenario text fields as appropriate. Grade these responses manually using the rubric.
+2. Review all conversion warnings. Confirm exactly **10 choice questions** per lecture, including the scenarios. Disable multiple answers and require one choice per question.
+3. Compare prompts and all four choices against the PDF, paying particular attention to question boundaries. Correct any conversion errors.
+4. Set the correct choices and points using the answer key or `grading-reference.json`: Q1-Q4 = 1 point each, Q5-Q8 = 2, Q9-Q10 = 4. The PDF omits answers, so the import does not establish the answer key.
 5. Check result-sharing settings, preview the quiz, and submit a trial response before sharing it with students.
 
 Microsoft supports local PDF/Word Quick Import for multiple-choice and open-text questions, with a 10 MB file limit. These PDFs contain selectable text, use a single column, and are below that limit. Conversion does not replace review or setup of correct answers and scoring. The PDFs are import sources, not interactive PDF forms.
@@ -76,6 +76,6 @@ Edit the Markdown sources, rebuild, and commit the sources and generated exports
 
 To generate just one format, use `scripts/build.py --format moodle` or `scripts/build.py --format forms` with the same Python environment. A format-specific build validates only that format and leaves the other exports and complete validation report unchanged. Combine `--format` with `--check` to validate just one format. Regenerate all formats before committing a source change so the exports stay consistent.
 
-The build verifies question IDs, marks, XML round trips, correct choices, instructor rubric placement, PDF question headings, page counts, and file sizes. See [validation.json](docs/validation.json). All 12 PDF pages were also rendered and visually reviewed. **Live imports into Moodle and Forms have not yet been tested.**
+The build verifies question IDs, marks, XML round trips, correct choices, feedback, grading-reference consistency, PDF question headings and choices, page counts, and file sizes. See [validation.json](docs/validation.json). All 12 PDF pages were also rendered and visually reviewed. **Live imports into Moodle and Forms have not yet been tested.**
 
 The repository excludes recordings, audio, transcripts, transcription models, and runtime environments.

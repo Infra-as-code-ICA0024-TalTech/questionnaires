@@ -1,6 +1,6 @@
 # Editing the plain-text sources
 
-Edit `source/Student_questionnaire.md` and `source/Answer_key.md` in any text editor. These Markdown files are the source of truth. Do not edit generated XML, PDF, or JSON files directly; rebuilding replaces them.
+Edit `source/Student_questionnaire.md` and `source/Answer_key.md` in any text editor. These Markdown files are the source of truth. Do not edit generated XML, JSON, or HTML files directly; rebuilding replaces them.
 
 Question headings identify the lecture, question number, title, and marks:
 
@@ -32,11 +32,10 @@ The assessment has a fixed structure: one set per lecture listed in `TITLES` in 
 Run `uv run scripts/build.py` after editing. It generates:
 
 - `moodle/lecture-01.xml` through `lecture-09.xml`: prompts, choices, marks, correct answers, and answer explanations.
-- `ms-forms/lecture-01.pdf` through `lecture-09.pdf`: questions only, for Quick Import, styled with the XA design system.
 - `self-check/index.html`: the student self-check page, with answers and explanations hidden until checked.
-- `ms-forms/grading-reference.json`: an instructor reference generated from the same sources.
+- `data/questions.json`: all questions, choices, correct answers, marks, and marking guidance in structured form.
 - `docs/validation.json`: structural validation results.
 
-You can also use **Terminal > Run Task** in VS Code. Run **Questions: Set up dependencies** first, then select a conversion task. The individual conversion commands are `uv run scripts/build.py --format moodle`, `--format forms`, and `--format selfcheck`; each validates only its selected exports. Run the all-formats task before committing changes to the sources.
+You can also use **Terminal > Run Task** in VS Code. Run **Questions: Set up dependencies** first, then select a conversion task. The individual conversion commands are `uv run scripts/build.py --format moodle` and `--format selfcheck`; each validates only its selected exports. Run the all-formats task before committing changes to the sources.
 
-Changing lecture counts, question counts, ordering, or mark totals requires updating the corresponding structure and validation in `scripts/build.py`. Changes that increase question length may require adapting `PAGE_BREAKS` in `scripts/build.py`; the build fails if a question no longer fits on its page. Render and review changed PDFs, and preview the imported quizzes before student use.
+Changing lecture counts, question counts, ordering, or mark totals requires updating the corresponding structure and validation in `scripts/build.py`. Preview the imported quizzes and the self-check page before student use.

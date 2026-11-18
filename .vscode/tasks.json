@@ -16,7 +16,7 @@
     },
     {
       "label": "Questions: Convert all formats",
-      "detail": "Build and validate Moodle XML, Forms PDFs, the grading reference, and the self-check page from Markdown.",
+      "detail": "Build and validate Moodle XML, the question data file, and the self-check page from Markdown.",
       "type": "process",
       "command": "uv",
       "args": [
@@ -52,25 +52,8 @@
       "problemMatcher": []
     },
     {
-      "label": "Questions: Convert to Microsoft Forms PDF",
-      "detail": "Build and validate only the Forms import PDFs and regenerate the grading reference.",
-      "type": "process",
-      "command": "uv",
-      "args": [
-        "run",
-        "scripts/build.py",
-        "--format",
-        "forms"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
       "label": "Questions: Build self-check page",
-      "detail": "Build and validate only the student self-check page (self-check/index.html).",
+      "detail": "Build and validate only the student self-check page (self-check/index.html) and data/questions.json.",
       "type": "process",
       "command": "uv",
       "args": [

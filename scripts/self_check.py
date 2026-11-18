@@ -3,6 +3,7 @@
 The page is a single static HTML file. Students pick one answer per question; answers and
 explanations stay hidden until they press "Check answers". Nothing is recorded or sent anywhere.
 """
+import datetime
 import html
 import re
 from html.parser import HTMLParser
@@ -114,6 +115,7 @@ code{font-family:var(--xa-font-mono);font-size:.82em;background:var(--xa-color-l
 .score{display:flex;align-items:baseline;gap:10px;margin-left:auto;color:var(--xa-color-slate);font-size:.92rem}
 .score strong{font-size:1.6rem;color:var(--xa-color-navy);letter-spacing:-.02em}
 .score .pending{color:#9a6a00;font-weight:700}
+footer a{color:inherit;text-decoration:underline}
 footer{padding:28px 0 60px;color:var(--xa-color-muted);font-size:.85rem;text-align:center}
 @media (max-width:640px){.wrap{padding:0 16px}.c-hero{padding:30px 0 16px}.c-hero h1{font-size:2rem}.xa-header-title{display:none}
  .q{padding:16px}.opt{padding:10px 12px;gap:8px}.score{margin-left:0;width:100%%}}
@@ -276,7 +278,7 @@ def render(questions, titles, logo_svg):
 </head>
 <body>
 <header class="xa-header"><div class="wrap xa-header-row">
-<span class="xa-header-brand">{_logo(logo_svg)}</span>
+<a class="xa-header-brand" href="https://extremeautomation.io" rel="noopener" target="_blank" aria-label="eXtreme Automation">{_logo(logo_svg)}</a>
 <span class="xa-header-title">ICA0024 Infrastructure as Code</span>
 <span class="xa-header-spacer"></span>
 <span class="ver-badge">self-check · {count} lectures</span>
@@ -290,7 +292,7 @@ def render(questions, titles, logo_svg):
 <div class="tabs-bar"><nav class="xa-tabs-list" role="tablist" aria-label="Lectures">{''.join(tabs)}</nav></div>
 {''.join(panels)}
 </main>
-<footer class="wrap">Generated from the ICA0024 questionnaire sources. Answer order is shuffled on each visit and after Start again.</footer>
+<footer class="wrap">Generated from the ICA0024 questionnaire sources. Answer order is shuffled on each visit and after Start again.<br>© 2011-{datetime.date.today().year} Andrey Adamovich · <a href="https://extremeautomation.io" rel="noopener">extremeautomation.io</a></footer>
 <script>{SCRIPT}</script>
 </body>
 </html>

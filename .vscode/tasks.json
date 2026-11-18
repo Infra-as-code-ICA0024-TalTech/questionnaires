@@ -2,58 +2,25 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Questions: Create Python environment",
-      "type": "process",
-      "command": "python3",
-      "args": [
-        "-m",
-        "venv",
-        ".venv"
-      ],
-      "windows": {
-        "command": "py",
-        "args": [
-          "-3",
-          "-m",
-          "venv",
-          ".venv"
-        ]
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": []
-    },
-    {
       "label": "Questions: Set up dependencies",
-      "detail": "Run once after cloning, or after requirements.txt changes. Requires Python 3.12+ and internet access.",
+      "detail": "Run once after cloning, or after pyproject.toml changes. Requires uv (https://docs.astral.sh/uv/) and internet access; uv installs Python 3.12+ if needed.",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
-        "-m",
-        "pip",
-        "install",
-        "-r",
-        "requirements.txt"
+        "sync"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "dependsOn": "Questions: Create Python environment",
       "problemMatcher": []
     },
     {
       "label": "Questions: Convert all formats",
       "detail": "Build and validate Moodle XML, Forms PDFs, the grading reference, and the self-check page from Markdown.",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
+        "run",
         "scripts/build.py",
         "--format",
         "all"
@@ -71,11 +38,9 @@
       "label": "Questions: Convert to Moodle XML",
       "detail": "Build and validate only the Moodle XML files.",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
+        "run",
         "scripts/build.py",
         "--format",
         "moodle"
@@ -90,11 +55,9 @@
       "label": "Questions: Convert to Microsoft Forms PDF",
       "detail": "Build and validate only the Forms import PDFs and regenerate the grading reference.",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
+        "run",
         "scripts/build.py",
         "--format",
         "forms"
@@ -109,11 +72,9 @@
       "label": "Questions: Build self-check page",
       "detail": "Build and validate only the student self-check page (self-check/index.html).",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
+        "run",
         "scripts/build.py",
         "--format",
         "selfcheck"
@@ -128,11 +89,9 @@
       "label": "Questions: Validate exports",
       "detail": "Check all existing question exports without rebuilding them.",
       "type": "process",
-      "command": "${workspaceFolder}/.venv/bin/python",
-      "windows": {
-        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
-      },
+      "command": "uv",
       "args": [
+        "run",
         "scripts/build.py",
         "--check"
       ],

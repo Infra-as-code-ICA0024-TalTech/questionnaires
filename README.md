@@ -66,29 +66,30 @@ Reference: [Microsoft Forms Quick Import](https://support.microsoft.com/en-us/fo
 
 Open this repository folder in VS Code, then choose **Terminal > Run Task**:
 
-1. Run **Questions: Set up dependencies** once after cloning (and after dependency changes). This creates `.venv` and installs `requirements.txt`; Python 3.12+ and internet access are required.
+1. Run **Questions: Set up dependencies** once after cloning (and after dependency changes). This runs `uv sync`, which creates `.venv` and installs the pinned dependencies from `uv.lock`; [uv](https://docs.astral.sh/uv/) and internet access are required, and uv installs Python 3.12+ if it is missing.
 2. Edit the Markdown sources, then run **Questions: Convert all formats**, **Questions: Convert to Moodle XML**, **Questions: Convert to Microsoft Forms PDF**, or **Questions: Build self-check page**.
 3. Run **Questions: Validate exports** to check all existing exports against the current sources without rebuilding them.
 
-**Terminal > Run Build Task** runs the default **Convert all formats** task. Conversion tasks use `.venv` directly and do not reinstall dependencies each time. Tasks include macOS/Linux paths and Windows overrides (using the `py` launcher for setup); no VS Code extension is required. See [.vscode/tasks.json](.vscode/tasks.json) and the [VS Code task documentation](https://code.visualstudio.com/docs/debugtest/tasks).
+**Terminal > Run Build Task** runs the default **Convert all formats** task. Conversion tasks run through `uv run` using the repository's `.venv`. The same tasks work on macOS, Linux, and Windows; no VS Code extension is required. See [.vscode/tasks.json](.vscode/tasks.json) and the [VS Code task documentation](https://code.visualstudio.com/docs/debugtest/tasks).
 
 ### Command line
 
-Use Python 3.12 or later:
+Use [uv](https://docs.astral.sh/uv/) (it installs Python 3.12 or later if needed):
 
 ```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python scripts/build.py
+uv sync
+uv run scripts/build.py
 ```
+
+The same commands work on Windows.
 
 Edit the Markdown sources, rebuild, and commit the sources and generated exports together. The [source format guide](docs/source-format.md) explains question IDs, choices, code blocks, and answer-key entries. To check existing exports without rebuilding:
 
 ```sh
-.venv/bin/python scripts/build.py --check
+uv run scripts/build.py --check
 ```
 
-To generate just one format, use `scripts/build.py --format moodle`, `--format forms`, or `--format selfcheck` with the same Python environment. A format-specific build validates only that format and leaves the other exports and complete validation report unchanged. Combine `--format` with `--check` to validate just one format. Regenerate all formats before committing a source change so the exports stay consistent.
+To generate just one format, use `uv run scripts/build.py --format moodle`, `--format forms`, or `--format selfcheck` with the same command. A format-specific build validates only that format and leaves the other exports and complete validation report unchanged. Combine `--format` with `--check` to validate just one format. Regenerate all formats before committing a source change so the exports stay consistent.
 
 The build verifies question IDs, marks, XML round trips, correct choices, feedback, grading-reference consistency, PDF question headings and choices, page counts (four pages per lecture), file sizes, and the self-check page's questions and answer keys. See [validation.json](docs/validation.json). Sample PDF pages and the self-check page at desktop and phone widths were rendered and visually reviewed. **Live imports into Moodle and Forms have not yet been tested.**
 

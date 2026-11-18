@@ -1,0 +1,12 @@
+[project]
+name = "ica0024-questionnaires"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = [
+    "Markdown==3.10.3",
+    "pypdf==6.19.0",
+    "reportlab==5.0.1",
+]
+
+[tool.uv]
+package = false

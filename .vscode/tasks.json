@@ -47,7 +47,7 @@
     },
     {
       "label": "Questions: Convert all formats",
-      "detail": "Build and validate Moodle XML, Forms PDFs, and the grading reference from Markdown.",
+      "detail": "Build and validate Moodle XML, Forms PDFs, the grading reference, and the self-check page from Markdown.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": {
@@ -69,7 +69,7 @@
     },
     {
       "label": "Questions: Convert to Moodle XML",
-      "detail": "Build and validate only the three Moodle XML files.",
+      "detail": "Build and validate only the Moodle XML files.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": {
@@ -88,7 +88,7 @@
     },
     {
       "label": "Questions: Convert to Microsoft Forms PDF",
-      "detail": "Build and validate only the three Forms import PDFs and regenerate the grading reference.",
+      "detail": "Build and validate only the Forms import PDFs and regenerate the grading reference.",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": {
@@ -98,6 +98,25 @@
         "scripts/build.py",
         "--format",
         "forms"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Questions: Build self-check page",
+      "detail": "Build and validate only the student self-check page (self-check/index.html).",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": {
+        "command": "${workspaceFolder}/.venv/Scripts/python.exe"
+      },
+      "args": [
+        "scripts/build.py",
+        "--format",
+        "selfcheck"
       ],
       "options": {
         "cwd": "${workspaceFolder}"

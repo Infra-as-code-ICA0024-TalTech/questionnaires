@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 04</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q1 Chaos engineering</text>
+    </name>
+    <idnumber>L4-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>What is the main purpose of chaos engineering practices, such as randomly terminating servers in a running system?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Chaos engineering deliberately introduces failures, such as terminating servers or whole zones, to prove continuously that automated recovery works and that users do not notice. Stopping a server to find its owner is the scream test, not chaos engineering. Deliberate failures depend on monitoring and alerting rather than replacing them.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To cut cloud costs by finding servers that have no remaining users and can be deleted</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To identify who owns each server, by waiting to see which team complains after it stops</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>To show, again and again, that the system recovers from failures without users noticing</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To reduce the need for monitoring, since failures introduced on purpose need no alerts</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q2 Regions and availability zones</text>
+    </name>
+    <idnumber>L4-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A service must stay available if one data center in a cloud region fails. Which placement fits the lecture's description of regions and availability zones?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A region is a geographic location; its availability zones are physically separate data centers located close to each other. Placing instances in different zones lets the service survive the loss of one data center. Extra instances in a single zone share that zone's failure, and moving every instance to a different region is not needed for this goal.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Spread instances across availability zones, which are separate data centers in one region</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Put the instances in one availability zone, since each zone already spans several regions</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Use a different region for each instance, because zones in a region usually share a building</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add instances inside one zone, since extra capacity there gives the same failure protection</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q3 Scream test</text>
+    </name>
+    <idnumber>L4-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An engineer finds a server that seems unused, has no known owner, and receives almost no traffic. What does a "scream test" involve?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A scream test stops, rather than deletes, seemingly unused infrastructure and waits to see whether anyone complains. Silence suggests the resource is unused; a complaint identifies a dependency or owner. Because the resource is only stopped, it can be brought back. The same approach can also check whether monitoring and alerting notice the outage.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Deleting the server and its backups at once, since unused infrastructure only adds cost</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Sending a burst of traffic to it to check whether it survives a sudden spike in load</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Rebuilding it from code under a new name, so that its owner can be identified later</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Stopping the server for a while and waiting to see whether anyone reports a problem</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q4 Organizing a growing playbook</text>
+    </name>
+    <idnumber>L4-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization fits the lecture's advice?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The instructor's rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep one file so every dependency stays visible, and add comments that link tasks to handlers</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Split it into roles or included files that each fit in your head, grouping what changes together</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Split it into one file per task so each file stays short, even if handlers end up far from tasks</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Copy it into one repository per server type, so each copy can shrink as the copies diverge</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q5 Testing from a clean state</text>
+    </name>
+    <idnumber>L4-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A developer tests a provisioning definition by applying each new change to the same long-lived test machine. Every run passes, but the first run on a new machine fails. Which explanation and practice are most useful?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Repeatedly applying changes to one machine accumulates state, so a step that only worked because of earlier leftovers can go unnoticed. Testing regularly from an empty state, as well as on an already provisioned machine, shows the code works on any compatible new machine. Running twice on the same machine or adding retries does not reveal the missing step.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The new machine has drifted; recreate it from a snapshot of the test machine and run again</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Earlier runs left state that the code needs but never creates; also test it from a clean state</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The code is not idempotent; run it twice on the test machine to show it will work anywhere</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>New machines may be slower to start; add retries and waits, as the code works on the test machine</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q6 Restart tests</text>
+    </name>
+    <idnumber>L4-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Provisioning completes and the application responds. Why is it also worth testing that the machine and its services still work after a restart?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A service can be configured and running yet fail to come back after a reboot or service restart. Testing restarts shows the provisioned setup is valid beyond the first run. Once restarts are known to work, monitoring can restart unresponsive servers automatically. A restart does not replace functional checks, and it does not reset a machine to its image.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A restart is the most reliable way to apply configuration, so each run should end with one</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A restart resets the machine to its image, which shows whether provisioning is still needed</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A clean boot can stand in for functional checks, as a machine that starts usually serves users</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Services can work after provisioning yet fail after a reboot; a tested restart can be automated</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q7 Changes reported on every run</text>
+    </name>
+    <idnumber>L4-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>On every run against an already provisioned server, two tasks report a change to the same directory: one sets its owner to one user, the other to a different user. What is the best diagnosis and fix?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>When two tasks set the same resource to different states, each run undoes the other and reports a change, so the definition never converges. Giving the directory one intended state, managed in one place, restores a clean re-run with no changes. Ignoring constant changes hides real problems, and rebuilding or restarting does not remove the conflict in the code.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Two tasks manage one resource in conflicting ways; give the directory one intended state</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The changes may be harmless if the run succeeds, so they can be ignored once the server works</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The server drifts after each run; rebuild it from a fresh image before the next run starts</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add a service restart at the end of the run so the service picks up the owner set last</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q8 Guardrails for generated code</text>
+    </name>
+    <idnumber>L4-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team uses an AI coding assistant to generate infrastructure code. Which approach gives the most dependable evidence that the generated code meets the team's goals?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, which the lecture calls loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ask the same assistant to confirm its output, since it can explain the reasoning behind it</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Run the code once in one environment; if it works there, it can usually be trusted elsewhere</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Define acceptance tests and policies, and iterate on the code until all of them pass</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Use the most capable model available, since its output rarely needs tests or review</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q9 Changing production without disruption</text>
+    </name>
+    <idnumber>L4-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan best fits the principles from the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>When servers can be rebuilt from code, are spread across availability zones, and are monitored, losing one is not a disaster. Rehearsing failures, as in chaos engineering, proves that recovery works, and zero-downtime methods such as blue-green deployment keep changes invisible to users. Maintenance windows and Friday rules work around missing automation, manual snapshot restores keep the outage, and chaos without monitoring is reckless.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Make servers rebuildable from code, spread them across zones, rehearse failures, and deploy without downtime</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep the maintenance windows but shorten them, and require two engineers to approve any change that is made on a Friday</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Take more frequent snapshots of the production servers, and restore them by hand whenever a release causes an outage</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Start terminating random production servers straight away, and add monitoring later if users begin to report failures</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L4 Q10 Acting on an AI code review</text>
+    </name>
+    <idnumber>L4-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An AI assistant reviewed a playbook it helped write. It reported a private key committed to the repository, a bug that leaves the application stopped after a restart, and a shell command used where a state-aware module now exists. Unasked, it also split the small playbook into many files. Which response is best?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Secrets such as private keys do not belong in version control, even in a private repository. A bug found in review should be fixed together with a test that would have caught it, so it cannot silently return. A module with built-in state management is more reliable than a shell command with a guard. AI suggestions still need review: an unrequested split of a small playbook adds structure without benefit.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Accept all of the changes as generated, including the new file layout, because the review found the problems by itself</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Make the repository private so the key can stay, fix the bug by hand, and keep the shell command because it already works</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Set the findings aside, because the playbook completed without errors and a successful run usually means the code is correct</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Remove the key from version control, fix the bug with a test that reproduces it, use the module, and undo the needless split</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-04</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 08</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q1 Semantic versioning</text>
+    </name>
+    <idnumber>L8-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A module follows semantic versioning (major.minor.patch). Its authors release version 1.5.0 after 1.4.2. What should consumers expect?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>In semantic versioning, a minor increment signals new functionality that is backward compatible, so existing usage should keep working. Breaking changes call for a major increment, and a patch increment signals a fix that does not change the interface. The scheme sets shared expectations between module authors and consumers.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The release may remove or rename inputs, so existing callers must be updated first.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>It adds backward-compatible functionality, so current usage should keep working.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It contains a bug fix alone, and no new functionality is available in this release.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It is a test build that usually should not be used outside the authors' own team.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q2 Explicit module versions</text>
+    </name>
+    <idnumber>L8-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Why should an environment definition refer to an explicit module version rather than to "latest"?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Depending on an explicit version means the environment changes only when its owners deliberately upgrade and test the new version. Referring to "latest" puts the environment at the mercy of the module authors: any new release can change or break it. Published versions are not patched in place, and pinning does not pick newer releases.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>So a new module release cannot change the environment until its team chooses to upgrade.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Because explicit versions download faster, which mainly shortens each deployment run.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>So the module authors can patch that same version in place whenever they find a bug.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Because pinning makes the tool pick the newest compatible release on each run automatically.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q3 Published module versions</text>
+    </name>
+    <idnumber>L8-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team published version 1.1 of a module through its release pipeline. A day later they find a bug in it. What is the appropriate response?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A published version is a frozen, tested point in time that consumers rely on. Fixes go into the source, pass the release pipeline again, and appear as a new version, here a patch release. Overwriting a published version silently changes what pinned consumers deploy, and removing it or asking consumers to patch copies breaks the shared release process.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Fix the code and overwrite the published 1.1, so consumers get the fix without a version change.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Delete version 1.1 from the repository, so consumers can no longer deploy anything from it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ask each consuming team to apply the fix to its own local copy of the module code.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Fix it in the source, test it, and publish a new version such as 1.1.1, leaving 1.1 as it is.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q4 Value of a module</text>
+    </name>
+    <idnumber>L8-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Which module design is least likely to justify the extra layer it adds?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. The lecture called such a single-resource module over-designed.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A module that creates a network with its subnets, routes, and gateways from a few inputs</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A module that applies the company's disk, tagging, and network conventions to each new VM</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>A module that wraps one resource and exposes nearly every setting of it as a parameter</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A module that combines web servers, a database, and placement rules into one application setup</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q5 Choosing module parameters</text>
+    </name>
+    <idnumber>L8-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team is writing an internal module that creates database servers for several application teams. Which approach to the module's parameters is most sound?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Parameters should cover what consumers legitimately need to vary, such as size, security-relevant versions, and naming, while the rest stays fixed inside the module. Each parameter is a promise the authors must keep supporting, so unneeded parameters add logic and maintenance burden. Hardcoding everything forces a module change for every ordinary difference. Internal modules can usually expose fewer parameters than public ones because their consumers are known.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Expose every setting of the underlying resources, because more parameters make a module easier to use.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Hardcode the settings, so consumers request a module change for each difference they need.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add a parameter for anything a consumer might want one day, since unused parameters usually cost nothing.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Expose what consumers truly vary, such as size and versions, and fix the rest; each parameter is a promise.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q6 Open for extension</text>
+    </name>
+    <idnumber>L8-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A web-server module must support a growing number of sites, each with its own host name and port. Which design applies the open-closed principle?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The open-closed principle keeps a module open for extension and closed for modification. A list of site definitions is an extension point: consumers add sites by changing their inputs, and the module code stays the same. Adding conditionals or copying the module changes or duplicates its code for each request, and manual edits bypass the module.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add a new conditional block to the module code each time a team requests another site.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Accept a list of site definitions, so consumers add sites without changing the module.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Copy the module for each new site and adjust the copy, so the sites can stay independent.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Support one site in the module, and let teams edit server files by hand for extra sites.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q7 Module contracts</text>
+    </name>
+    <idnumber>L8-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A module installs and configures a MySQL database. A team asks for it to install PostgreSQL as well, selected by a parameter. What is the strongest design response?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>MySQL and PostgreSQL need different configuration, so supporting both behind one parameter roughly doubles the module's logic and fills its interface with inputs that apply to only one engine. That is a different contract and is better served by a separate module. An instance size is a simple pass-through value; an engine choice is not. Modules can gain options in new versions, so refusing all change is not the principle.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Build a separate module; the engines differ, and one interface would fill with engine-specific inputs.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add the parameter, because a module with more options can usually serve more consumers at little extra cost.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add the parameter, since an engine choice is a simple pass-through value, much like an instance size.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Refuse the request, because a module must never gain new options once its first version is published.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q8 Patching through parameters</text>
+    </name>
+    <idnumber>L8-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A vulnerability is announced in the database package version used in every environment. The module that installs the package takes its version as a parameter. What is the most suitable response?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>When a patchable package version is a module parameter, patching becomes a configuration change in each environment, rolled out through the usual process; the module code and its release stay unchanged. The environments share the module's structure while their parameter values differ. A new module release is needed only when the fix changes the module's structure or logic, such as a major package upgrade.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Wait for a new module release, because a package version change requires new module code.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Edit the module code in each environment's copy, so production can be patched before the others.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Change the version value in the environment configurations and roll it out; no module release is needed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Hardcode the fixed version inside the module, so environments can no longer choose different versions.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q9 Shared module across teams</text>
+    </name>
+    <idnumber>L8-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A platform team owns a network module used by teams B, C, and D. Team B urgently needs a new optional feature, team C is still on an older version, and the platform team worries about breaking anyone. Which arrangement best balances speed and safety?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>With shared ownership and agreed guardrails (tests, static and policy checks, and test infrastructure), any team can contribute a change safely. Releasing it as a new backward-compatible version and announcing it lets team B adopt it at once while teams C and D upgrade on their own schedule. Republishing an existing version breaks the isolation that pinned versions provide, forks let the copies diverge, and forced upgrades remove the consumers' control.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Let team B contribute it under agreed tests and policy checks, release a new minor version, announce it, and let teams upgrade when ready.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Let team B edit the module and republish the current version number, so consumers get the feature at once without editing their own definitions.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Have team B fork the module into its own repository and maintain it there, since separate copies usually avoid coordination between the teams.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Freeze the module until the teams agree on one roadmap, then require every consumer to upgrade to each new release on the day it is published.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L8 Q10 Reusing and writing modules</text>
+    </name>
+    <idnumber>L8-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An organization runs VMs on an on-premises virtualization platform and networks and databases in a public cloud. It is starting to codify this infrastructure and has several company conventions for VMs. Which plan uses modules best?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Start by checking the available providers and existing modules: a well-maintained public module for a generic component, such as a cloud network, saves effort and testing and can be used at a pinned version. Internal modules are worth writing for concepts specific to the organization that recur, such as a standard VM with its disk, tagging, and network conventions. Rewriting generic components in-house duplicates work, manual conventions drift, and waiting for identical tools is not required to modularize.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Write internal modules for every component, including the cloud networks, so the company controls the code and depends on no external releases.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Use public registry modules throughout, and apply company conventions such as tagging and disk sizing by hand, since they usually change too often.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Use well-maintained public modules at pinned versions for generic parts, and write internal modules for company concepts such as a standard VM.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep everything in one project without modules until the cloud and on-premises parts use identical tools, and then start splitting it up.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-08</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

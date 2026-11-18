@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 07</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q1 Integration tests for infrastructure code</text>
+    </name>
+    <idnumber>L7-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Why does the lecture value integration tests on real targets more than unit tests for infrastructure code?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Infrastructure code mostly orchestrates real systems, so its typical failures appear only when it runs against a target: different distributions ship different packages, paths, and service behavior. Unit tests can be written, but they exercise little of that. Integration tests do not replace linters, which catch a different class of problems before anything runs.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Unit tests usually run too slowly to fit into a delivery pipeline for infrastructure code.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Integration tests also check style and conventions, so a separate linter is no longer needed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Unit tests cannot be written for infrastructure code in any of the common tools.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Most failures appear only when code meets a real system and its packages and services.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q2 Module interface</text>
+    </name>
+    <idnumber>L7-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>In the lecture's view, what forms the interface of a reusable infrastructure module?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A module's published parameters and their defaults are how users interact with it: defaults give a working result, and overridable inputs act as extension points. The internal resources and file layout are implementation details that callers should not need to edit or copy. Commit history explains changes but is not the interface.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The full set of resources it creates, which callers edit directly when they need changes</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The input parameters it publishes, with defaults, that callers set to adjust its behavior</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The folder layout of its source files, which callers copy into their own projects</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The commit history of its repository, which callers usually read to learn how to use it</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q3 Linters</text>
+    </name>
+    <idnumber>L7-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An automation tool already refuses to run a definition with invalid syntax. What does adding a linter contribute?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The tool's own parser already rejects invalid syntax. A linter applies further rules to code that is syntactically valid, catching risky constructs, convention violations, deprecated usage, or ambiguous values such as a number that some parsers read as a string. It is a static check and does not replace running the code on real targets.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It replaces integration tests, since a definition that passes linting will behave correctly on real targets.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It runs the definition against a temporary machine and reports which resources failed to start.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>It flags valid code that is risky or breaks agreed rules, such as a value parsed as an unexpected type.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It can repeat the tool's syntax check earlier, but it usually reports nothing the tool would accept.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q4 Modules as maintained products</text>
+    </name>
+    <idnumber>L7-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team plans to extract repeated infrastructure code into a module that other teams will use. Which view matches the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The lecture treats a shared module as a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>A shared module is a product needing tests, docs and releases; it pays off as complexity and teams grow.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A module is mainly a way to shorten files, so it needs no separate testing once the original code worked.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Every project should start with modules, because modules have no maintenance cost compared with plain code.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Modules mostly pay off for code published to public registries, much less for structure inside one company.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q5 Order of pipeline checks</text>
+    </name>
+    <idnumber>L7-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A delivery pipeline for infrastructure code runs linting, policy checks, smoke tests, a staging deployment with integration tests, and then production. Why are the static checks placed first?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Linting and policy checks are fast and need no infrastructure, so placing them first gives quick feedback and stops obvious problems before costly stages create resources. They cannot replace deployment and integration tests, which find problems that only appear on real targets. Each stage still runs its own checks.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>They catch many problems in seconds, before slower stages spend time or create real resources.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>They can find every problem a staging deployment would find, so later stages rarely fail.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Production approval usually depends on how many lint warnings were fixed, more than on test results.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Passing them first lets the later stages skip their own checks and finish the release faster.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q6 Assessing a third-party module</text>
+    </name>
+    <idnumber>L7-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team finds a public module that does what it needs. Which assessment best fits the lecture's advice before depending on it?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Signs of a healthy module include recent releases, active issue and security fixing, an evolving interface, and good documentation and examples. If a module looks inactive, its code can still be insourced, adapted, and maintained by the team. Download counts mostly reflect how widely the underlying software is used, not that the module was tested on your platforms; the number of parameters is not a quality measure either.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Prefer the module with the most parameters, since a larger interface usually signals higher quality.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Use it if its download count is high, because popularity shows it was tested on your platforms.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Check recent releases, issue fixes, and docs; if it looks inactive, consider insourcing a copy.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Avoid public modules entirely, because code written by outsiders cannot be reviewed or adapted.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q7 Providers and modules</text>
+    </name>
+    <idnumber>L7-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities matches the lecture's layering?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A provider, or a library of tasks, is the integration layer that turns definitions into API calls for a platform. A module sits one level higher: it combines those resources with the organization's choices into a reusable unit with an interface. Conventions belong in the module, not in the provider.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Write a module that calls the service's API directly, and use a provider only to store shared default values.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Use a provider for the service's API, and build a module that combines its resources into a reusable unit.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Ask the cloud vendor for a module, since providers are usually written by each team for its own project.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Treat provider and module as two names for the same layer, so either one can hold the team's conventions.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q8 Policy as code</text>
+    </name>
+    <idnumber>L7-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A security team wants every infrastructure project to tag resources with their environment and to stay below an agreed instance size. The code is syntactically valid and passes linting. Which approach fits best?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Rules such as required tags, size limits, or approved providers are valid code from the tool's and linter's point of view, so they need a policy engine. Defining them once as policy as code lets the same organization-wide rules run automatically in every project's pipeline and block a release that violates them. Comments and reviewer memory are not enforced, and monitoring catches the problem only after it has reached production.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Rely on reviewers to remember the rules, since automated checks can only find syntax errors.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add the rules as comments in each module, so users can read them before applying changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Wait for monitoring to report oversized or untagged resources after they reach production.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Define the rules once as policies and check them in every project's pipeline before release.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q9 Adopting a breaking module release</text>
+    </name>
+    <idnumber>L7-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Staging and production both use version 1.8.2 of a shared network module. Version 2.0.0 adds a feature the team needs and renames some inputs. How should the consuming team adopt it?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through the pipeline the lecture describes: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Point both environments at the latest release, apply to production first since it needs the feature most, then fix staging.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Edit the 1.8.2 code in place to add the feature, keeping the version number so no one has to update references.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Switch to 2.0.0 everywhere at once; semantic versioning guarantees a major release will apply cleanly.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Pin 2.0.0, update the renamed inputs, run lint and policy checks, apply to staging, test and monitor, then production.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L7 Q10 Testing a module across platforms</text>
+    </name>
+    <idnumber>L7-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan best fits the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Unit tests add little for infrastructure code because the behavior that breaks depends on the real target: package names, defaults, and libraries differ between distributions. Integration tests should run automatically in the pipeline on disposable containers or VMs built from images that match the organization's real baselines, one per supported platform. Testing every possible platform is costly and unnecessary for an internal module, and production servers should not serve as test targets.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Add more unit tests until coverage is complete, since they are fast and need no real machines.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>In the pipeline, run it on disposable containers or VMs from images like the company's, for each OS.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Test on as many operating systems and clouds as possible first, since the module may be used elsewhere.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Run it once by hand on a production server for each OS, and keep that server as the reference test target.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-07</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

@@ -20,28 +20,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The image is the live machine's current CPU and memory usage.</p>]]></text>
+      <text><![CDATA[<p>The image is a live record of the machine's current CPU and memory usage.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Each image can start a single VM, so a second VM needs its own copy of the image.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>When a running VM changes, those changes are usually written back to its source image.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>One image can initialize multiple VM instances, which can later develop different state.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Every image can initialize only one VM.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Launching a VM automatically updates the source image whenever the VM changes.</p>]]></text>
+      <text><![CDATA[<p>One image can start many VMs, and each VM can then change independently.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -82,28 +82,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Building an image automatically replaces every running machine.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Deployment modifies the shared source image whenever an instance changes.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Building an image removes the need for any instance-specific configuration.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Building creates a reusable starting artifact; deployment creates running instances from it.</p>]]></text>
+      <text><![CDATA[<p>Building creates a reusable artifact; deploying starts running machines from it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Building a new image also updates the machines that were started from the old one.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Deploying a machine updates the shared source image whenever that machine changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Building an image removes the need for any instance-specific configuration at launch.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -144,28 +144,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The organization shares one base image across many teams and services.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The image is tested before use, which slows down releases.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The image was modified manually and cannot be reliably recreated from a maintained build definition.</p>]]></text>
+      <text><![CDATA[<p>It was changed by hand and cannot be rebuilt from a maintained definition.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The organization uses a shared base image.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The image has been tested before use.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The image is generated by an automated build pipeline.</p>]]></text>
+      <text><![CDATA[<p>The image is produced by an automated pipeline instead of by an administrator.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -206,28 +206,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Any machine image can boot unchanged on every platform and processor architecture.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Matching the application's name guarantees that its machine image is compatible.</p>]]></text>
+      <text><![CDATA[<p>A machine image can usually boot unchanged on any platform and processor architecture.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The team must check platform and architecture compatibility and may need separate image variants.</p>]]></text>
+      <text><![CDATA[<p>Check each platform and architecture; you may need separate image variants.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Only disk size determines whether the image can boot.</p>]]></text>
+      <text><![CDATA[<p>If the application name and version match, the machine images will be compatible.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The disk size is what decides whether an image can boot on a platform.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -268,28 +268,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>A custom image captures live application data, so it replaces the need for separate data backups.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>A custom image contains a tested organizational baseline, reducing repeated setup while still requiring maintenance.</p>]]></text>
+      <text><![CDATA[<p>It provides a tested company baseline, which reduces repeated setup but still needs maintenance.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>A custom image incorporates future security fixes automatically, so its original build definition can remain unchanged.</p>]]></text>
+      <text><![CDATA[<p>It captures live application data, so separate data backups are no longer needed.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>A custom image removes environment differences, so all settings and machine identities should be embedded in it.</p>]]></text>
+      <text><![CDATA[<p>It picks up future security fixes as they are released, so its build definition can stay unchanged.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It removes environment differences, so settings and machine identities should be built into it as well.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -321,37 +321,37 @@
     </name>
     <idnumber>L2-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A fleet needs the same monitoring software on every machine, but each instance needs a distinct identity and environment-specific connection settings. Which division of work best fits image building and first-start initialization?</p>]]></text>
+      <text><![CDATA[<p>A fleet needs the same monitoring software on every machine, but each instance needs a distinct identity and environment-specific connection settings. Which division of work best fits image building and boot-time initialization?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Build-time work becomes part of a reusable image; first-start initialization can supply values specific to an instance or environment. Other divisions may be valid, but this one directly separates the stable shared baseline from the varying inputs. First-start initialization alone is not ongoing reconciliation.</p>]]></text>
+      <text><![CDATA[<p>Build-time work becomes part of a reusable image; boot-time initialization can supply values specific to an instance or environment. Other divisions may be valid, but this one directly separates the stable shared baseline from the varying inputs. Boot-time initialization alone is not ongoing reconciliation.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Embed the monitoring software and one shared machine identity in the image; change environment settings manually after launch.</p>]]></text>
+      <text><![CDATA[<p>Put the monitoring software and one shared machine identity in the image; change environment settings by hand after launch.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Install everything at first start because reusable images cannot contain configured software.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Embed all production connection settings in every image; use first-start initialization only to check whether the machine boots.</p>]]></text>
+      <text><![CDATA[<p>Install everything at boot time, because a reusable image cannot contain configured software.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Prepare the shared monitoring software in the image; supply instance identity and environment settings during first-start initialization.</p>]]></text>
+      <text><![CDATA[<p>Put the monitoring software in the image; supply identity and environment settings during boot-time initialization.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Put the production connection settings in each image, and keep boot-time initialization for a check that the machine boots.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -392,28 +392,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Containers and VMs both boot their own kernel, so they provide the same kernel isolation boundary.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Containers share the host kernel, so a process in one container can see and change files in another.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>VMs run their own guest kernel, which means any VM image can run unchanged on every processor architecture and hypervisor.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Containers normally share the host kernel, while VMs run guest kernels; a workload requiring a different kernel may need a VM.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Containers and VMs each boot their own kernel, so they provide the same kernel isolation boundary.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Containers share the host kernel, so they cannot isolate processes or files from other containers.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>VMs run guest kernels, so any VM image can run unchanged on every processor architecture and hypervisor.</p>]]></text>
+      <text><![CDATA[<p>Containers share the host kernel and VMs run their own, so a workload needing another kernel may need a VM.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -454,28 +454,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The snapshot records the intended configuration process, so future changes can be reviewed directly from its creation history.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The snapshot is unsuitable for recovery because only a rebuildable definition can restore a machine's state.</p>]]></text>
+      <text><![CDATA[<p>It records how the server was configured, so future changes can be reviewed from its creation history.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The snapshot may restore captured state, but a maintained definition is still needed to review and deliberately reproduce the configuration process.</p>]]></text>
+      <text><![CDATA[<p>It can restore the captured state, yet a maintained definition is needed to review and rebuild the setup.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The snapshot proves future builds will match the server, provided the same stock image name is selected each time.</p>]]></text>
+      <text><![CDATA[<p>It is of no use for recovery, because restoring a machine requires a rebuildable definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It shows that future builds will match the server, as long as the same stock image name is selected.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -516,28 +516,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Build one image with both workloads installed; apply a baseline change to whichever running servers currently need it.</p>]]></text>
+      <text><![CDATA[<p>Build one image with both workloads installed, and apply baseline changes to whichever running servers currently need them.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Share a common baseline with separate workload definitions; committing a new baseline version also updates existing images and running machines.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Reuse a common baseline with separate workload definitions; rebuild affected images, validate policy and workload behavior, then deliberately replace affected machines.</p>]]></text>
+      <text><![CDATA[<p>Share a common baseline with separate workload definitions; rebuild affected images, test policy and workloads, then replace machines deliberately.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Reuse a common baseline with separate workload definitions; committing its new version also updates existing images and running machines.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Keep the copied baseline steps and review each copy; validate only the baseline definition before replacing machines with existing images.</p>]]></text>
+      <text><![CDATA[<p>Keep the copied baseline steps and review each copy, then validate the baseline definition before replacing machines from existing images.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -575,34 +575,34 @@
       <text><![CDATA[<p>A version-controlled image build always selects the latest base image and packages. The team wants to reproduce an approved version and later roll out a deliberately patched version. Which plan meets both goals?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Version-controlled instructions do not freeze external inputs such as base images and packages. Reproduction requires controlled versions and available artifacts. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through suitable storage or a verified migration/recovery process.</p>]]></text>
+      <text><![CDATA[<p>Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. The lecture treats a built image as a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy, as in the lecture's case study where machines were replaced in minutes while their data was preserved.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Re-run the same source revision with latest inputs; update existing servers in place and call the unchanged source an immutable release.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Record the approved base image but continue selecting latest packages; replace all machines and recreate their application data from the build definition.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Control both base and package versions; patch running machines manually and rely on their original image for future replacements.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Record and retain approved base and package artifacts; build and validate a patched image, check replacement instances, and preserve persistent data during rollout.</p>]]></text>
+      <text><![CDATA[<p>Pin and keep the approved base image and packages; build and test a patched image, then replace instances while protecting persistent data.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Re-run the same source revision with the latest inputs, update existing servers in place, and call the unchanged source an immutable release.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Record the approved base image but keep selecting the latest packages, then replace the machines and rebuild their data from the build definition.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Control both base and package versions, patch running machines by hand, and rely on their original image for any future replacement.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>

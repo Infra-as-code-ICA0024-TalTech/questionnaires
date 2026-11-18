@@ -20,28 +20,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Deployment, testing, and monitoring</p>]]></text>
+      <text><![CDATA[<p>Deployment, tests, and monitoring</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Compute, storage, and network</p>]]></text>
+      <text><![CDATA[<p>Compute, storage, and networking</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Development, testing, and production</p>]]></text>
+      <text><![CDATA[<p>Development, test, and production</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Applications, users, and source code</p>]]></text>
+      <text><![CDATA[<p>Applications, users, and code</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -76,34 +76,34 @@
       <text><![CDATA[<p>Which statement best describes a declarative infrastructure definition?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>A declarative definition expresses the intended state. Automation determines the operations needed from the declaration and actual state. Declarative syntax alone does not remove dependencies or guarantee parallel execution.</p>]]></text>
+      <text><![CDATA[<p>A declarative definition expresses the intended state. Automation determines the operations needed from the declaration and actual state. Parallel execution may be possible, but it is not what makes a definition declarative, and declarations still have dependencies.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It records every command an administrator previously executed.</p>]]></text>
+      <text><![CDATA[<p>It is a script listing commands to run, in the order an administrator would type them.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It specifies the exact sequence of operations for every starting state.</p>]]></text>
+      <text><![CDATA[<p>It specifies the exact sequence of operations needed for each possible starting state.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>It describes the desired state, while automation determines how to reach it.</p>]]></text>
+      <text><![CDATA[<p>It describes the desired state, and the tool works out the steps needed to reach it.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It guarantees that every operation can run in parallel.</p>]]></text>
+      <text><![CDATA[<p>It lets the tool run independent changes in parallel, which is what makes it declarative.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -144,22 +144,22 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Leave the managed state unchanged because it already satisfies the declaration.</p>]]></text>
+      <text><![CDATA[<p>Check the current state, find nothing to change, and make no changes.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Recreate all resources to prove they can be recreated.</p>]]></text>
+      <text><![CDATA[<p>Recreate the resources so the team can show they are still reproducible from the code.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Skip checking the current state and report success.</p>]]></text>
+      <text><![CDATA[<p>Skip checking the current state, since the previous run already succeeded, and report success.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -206,28 +206,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Deciding the application's business requirements</p>]]></text>
+      <text><![CDATA[<p>Deciding which business requirements the application should meet</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Maintaining the team's application source code</p>]]></text>
+      <text><![CDATA[<p>Maintaining and reviewing the team's own application source code</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Choosing which application features to release</p>]]></text>
+      <text><![CDATA[<p>Choosing which application features to release and when</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Maintaining more of the underlying operating system and runtime platform</p>]]></text>
+      <text><![CDATA[<p>Patching and upgrading the operating system and the runtime</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -262,34 +262,34 @@
       <text><![CDATA[<p>Which pair of benefits best explains how version-controlling infrastructure definitions helps a team deliver changes reliably?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Review before application can catch mistakes, and a traceable history helps explain and investigate changes. Version control alone neither applies changes nor restores deleted data; reviewed changes still need validation.</p>]]></text>
+      <text><![CDATA[<p>Review and automated checks before application can catch mistakes, as in the lecture's example of firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: in the lecture's rule, code lives in Git and only automation delivers the change. Reviewed changes still need validation.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It preserves change history and makes reverting a definition sufficient to restore deleted application data.</p>]]></text>
+      <text><![CDATA[<p>It preserves change history, so reverting a definition also restores any deleted application data.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It provides a shared definition and keeps running infrastructure synchronized whenever a change is committed.</p>]]></text>
+      <text><![CDATA[<p>It gives one shared definition, and storing it in Git keeps the running infrastructure in sync with it.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>It makes proposed changes reviewable and records who changed the intended configuration and why.</p>]]></text>
+      <text><![CDATA[<p>Changes can be reviewed and checked before they apply, and the history shows who changed what and why.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>It makes environment differences visible and makes validation unnecessary after a change is approved.</p>]]></text>
+      <text><![CDATA[<p>It makes environment differences visible, so validation is no longer needed once a change is approved.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -330,28 +330,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The server has drifted from the declared state; compare the difference and either restore the approved setting or review and update the definition.</p>]]></text>
+      <text><![CDATA[<p>The server has drifted; compare it with the definition, then restore the setting or review and update the definition.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The definition has become obsolete; copy the changed setting into it and apply it to the other server without further review.</p>]]></text>
+      <text><![CDATA[<p>The definition is now obsolete; copy the new setting into it and apply it to the other server straight away, without a review.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The servers are still consistent because they share an original definition; record the manual change only in an operational log.</p>]]></text>
+      <text><![CDATA[<p>The servers are still consistent because they came from the same definition, so a note about the manual change in the operations log is enough.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The difference is necessarily a fault; rebuild both servers immediately without checking why the setting was changed.</p>]]></text>
+      <text><![CDATA[<p>The difference is a fault in the server; rebuild both servers immediately.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -392,28 +392,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>A mutable update replaces the server; an immutable update modifies the existing server while preserving its identity.</p>]]></text>
+      <text><![CDATA[<p>A mutable update replaces the server; an immutable update modifies the existing server and keeps its identity and data in place.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Both approaches modify the existing server; the immutable approach additionally records the change in version control.</p>]]></text>
+      <text><![CDATA[<p>Both approaches modify the existing server; the immutable one also records the change in version control.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and recreates persistent data from the infrastructure definition.</p>]]></text>
+      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and rebuilds the application data from the infrastructure definition.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and preserves persistent data separately or through a verified migration.</p>]]></text>
+      <text><![CDATA[<p>A mutable update changes the existing server; an immutable update replaces it and keeps the data in separate storage or migrates it.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -454,28 +454,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Maintain each environment as a complete independent copy so changes to shared configuration never affect another environment.</p>]]></text>
+      <text><![CDATA[<p>Keep a complete, independent copy of the whole setup for each environment, so that a change made for one environment stays out of the others.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Separate resource provisioning from server configuration, pass required resource information between them, and review each concern independently.</p>]]></text>
+      <text><![CDATA[<p>Separate provisioning from server configuration, pass the needed resource details between them, and review each part on its own.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Put provisioning and configuration in separate repositories and rely on operators to keep their connection details synchronized.</p>]]></text>
+      <text><![CDATA[<p>Put provisioning and configuration in separate repositories and rely on operators to keep the connection details in sync.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Keep only resource provisioning in code and document the manual software setup as the interface between the two responsibilities.</p>]]></text>
+      <text><![CDATA[<p>Keep resource provisioning in code, and document the manual software setup as the interface between the two.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -516,28 +516,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Represent network-to-server and server-to-configuration dependencies explicitly, and derive the connection address from the current server output.</p>]]></text>
+      <text><![CDATA[<p>Declare the network-to-server and server-to-configuration dependencies, and derive the address from the current server output.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Number the definition files in deployment order, and retain the original address as a default in each configuration file.</p>]]></text>
+      <text><![CDATA[<p>Number the definition files in deployment order, and keep the original address as a default value in each configuration file so it stays available.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Start all stages together, and retry configuration against the previously recorded address until the server becomes reachable.</p>]]></text>
+      <text><![CDATA[<p>Start the stages together, and keep retrying the configuration against the previously recorded address until the server becomes reachable.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Create the network and server in order, and let each configuration stage maintain its own reviewed copy of the assigned address.</p>]]></text>
+      <text><![CDATA[<p>Create the network and the server in order, and let each configuration stage keep its own reviewed copy of the address.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -581,28 +581,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Keep independent definitions and periodically copy production over development, treating production capacity as the shared baseline.</p>]]></text>
+      <text><![CDATA[<p>Keep the definitions separate and periodically copy production over development, using production capacity as the shared baseline.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Require identical definitions and values everywhere, recording production capacity changes only in an operational checklist.</p>]]></text>
+      <text><![CDATA[<p>Require identical definitions and values in both environments, and record production capacity changes in an operations checklist.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Share the common structure, keep environment values explicit, and review existing differences against intended state before validating future changes.</p>]]></text>
+      <text><![CDATA[<p>Share the common structure, keep environment-specific values explicit, and review today's differences against the intended design.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Create a shared definition, permit manual environment-specific changes after deployment, and review only changes to the shared definition.</p>]]></text>
+      <text><![CDATA[<p>Create one shared definition, allow manual environment-specific changes after deployment, and review changes to the shared definition.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>

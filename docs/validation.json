@@ -1,6 +1,6 @@
 {
-  "questions": 30,
-  "total_marks": 60,
+  "questions": 90,
+  "total_marks": 180,
   "moodle_live_import_tested": false,
   "ms_forms_live_import_tested": false,
   "lectures": [
@@ -27,6 +27,59 @@
       "essay": 0,
       "marks": 20,
       "pdf_pages": 4
+    },
+    {
+      "lecture": 4,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 5,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 6,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 7,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 8,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
+    },
+    {
+      "lecture": 9,
+      "questions": 10,
+      "multichoice": 10,
+      "essay": 0,
+      "marks": 20,
+      "pdf_pages": 4
     }
-  ]
+  ],
+  "self_check": {
+    "questions": 90,
+    "lectures": 9,
+    "bytes": 219796
+  }
 }

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 05</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q1 Looking up existing resources</text>
+    </name>
+    <idnumber>L5-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A provisioning definition needs the ID of a shared network and the most recent approved base image. Another team maintains both. What does a read-only data lookup of these objects do?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A data lookup queries information about an object that already exists and is managed somewhere else, such as a shared network or the latest matching image. The definition can then use that information, but the tool does not take ownership of the object or create, change or delete it. The lookup runs again on later runs, so a "latest" query can return a newer image.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It imports both objects, so later runs of this definition will manage and update them.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>It reads current details of objects managed elsewhere, without creating, changing or deleting them.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It creates private copies of the network and image, so the two teams no longer depend on each other.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It records the values on the first run, so later runs usually keep using that original image.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q2 Removing a resource from the definition</text>
+    </name>
+    <idnumber>L5-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team uses a provisioning tool that records the resources it created in a state file. They delete one server's definition from the code and apply again, changing nothing else. What should they expect?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A tool that keeps state compares the code, the recorded state and the real infrastructure. A resource that is recorded in state but missing from the code is treated as no longer wanted, so the plan proposes destroying it. Resources the tool never created are not in its state and are left alone. Leaving the server running is the behavior of a tool that manages only what is currently declared.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The server stays running, because removing its definition just means the tool stops managing it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The tool deletes every server in the account that does not appear in the current definitions.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The apply fails until someone deletes the server by hand and then removes its state entry.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The tool finds the server in its state but not in the code, and plans to destroy it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q3 Provider plugins</text>
+    </name>
+    <idnumber>L5-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>One project manages virtual machines in a public cloud, records at a separate DNS provider, and alert rules in a monitoring service. What makes this possible with a single declarative tool?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Provider plugins translate declared resources into calls to a particular service's API. Because providers are independent, one project and one run can combine resources from a cloud, a DNS provider, a CDN or a monitoring service. The large community library of providers is a main reason such tools are widely used. They work through APIs, not by automating web consoles.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Provider plugins expose each service's API as resource types, so one project can combine them.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The tool manages other services once the cloud vendor has added them to its own API.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Each service needs a separate project, because a single run cannot combine several providers.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The tool signs in to each web console and repeats the clicks an administrator would make.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q4 Diagram boxes and planned resources</text>
+    </name>
+    <idnumber>L5-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An architecture diagram shows a load balancer, a group of database nodes, and a front end. The provisioning plan lists sixteen resources to add. What best explains the difference?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A declarative provisioning tool reflects the resource model of the provider it talks to. One diagram box, such as a load balancer, can need several API objects: the balancer, a listener, a target group and one attachment per node, plus firewall rules and keys. The complexity comes from the provider's model, so you need to understand that model to write the definition.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The tool usually adds a hidden backup copy of each resource, so that rollback is possible.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The plan lists each attribute of a resource, such as its size or tags, as a separate resource.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The tool mirrors the provider's model, where one box can need several API objects.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The plan counts each resource twice, so just eight of them will actually be created.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q5 Sharing state in a team</text>
+    </name>
+    <idnumber>L5-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach best fits the lecture's guidance?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>When several people share a project, state should live in shared storage rather than on one laptop, and only one run should change a given state at a time. Splitting state by layer and frequency of change reduces waiting and limits how much each run can affect. State can contain sensitive values, such as a generated private key, so it needs protection. Personal copies or a deleted state lose track of what the tool created.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Give each engineer a personal copy of the state, and merge the copies at the end of each week.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep one state for everything in the code repository, so that reviews also show its changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Delete the state before each run, so the tool rebuilds its knowledge from the account every time.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Use shared protected state, one run per state at a time, and split states by layer and change rate.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q6 Competing rule definitions</text>
+    </name>
+    <idnumber>L5-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A firewall group is defined with its rules written inline. A colleague adds more rules for the same group as separate rule resources. Each apply now reports changes, although nobody edited the code. What is the most likely cause and fix?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the lecture noted that the separate-resource style is now preferred for this case.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Two definitions compete for the same rules; choose one modeling style for that group.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The provider is reporting a temporary fault, and retrying the apply a few times usually settles it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The account has drifted on its own, and refreshing the state once will stop the repeated changes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Separate rule resources take priority over inline rules, so the colleague's rules win.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q7 Create-time provisioning scripts</text>
+    </name>
+    <idnumber>L5-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A server definition includes a script that installs and configures software when the server is first created. Later, the team edits the script to change a setting. What should they expect, and what fits larger setups?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A create-time provisioning script runs when the resource is created and is not rerun on later applies while the resource exists, so editing it does not change existing servers. Such scripts mix imperative steps into a declarative definition. They can work for small setups, but larger ones can keep the provisioning tool for machines and use a configuration tool, or a prebuilt image, for the software inside them.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Existing servers are updated in place on the next apply, and inline scripts scale well to large setups.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The tool reruns every script on each apply, so the scripts need to be safe to repeat on every server.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Existing servers keep the old setup, as the script ran only at creation; big setups can use a configuration tool.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The next apply fails, because a script attached to a resource is locked once that resource has been created.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q8 Reviewing destructive plan entries</text>
+    </name>
+    <idnumber>L5-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>After a small change, the preview reports six resources to add and three to destroy. Which response is most appropriate before approving the apply?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. In the lecture, the destroyed items were helper resources that only ran commands and could only be replaced, so recreating them lost nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Approve it, because a plan that also adds new resources will recreate anything that it destroys.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Check what would be destroyed and why; replacing a helper that holds no data can be harmless.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Cancel it, since any plan that destroys resources means that the code was changed incorrectly.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Skip the preview next time and apply directly, because a preview may list changes that will not happen.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q9 Clients and a changing group of nodes</text>
+    </name>
+    <idnumber>L5-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A search cluster runs on several nodes. Its web front end is configured with the address of each node. Adding a node means reconfiguring the front end, and when a node fails, some requests still reach it. Which design best addresses both problems?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A load balancer gives clients one stable endpoint, so nodes can be added or replaced without reconfiguring the front end. Its health checks take failing nodes out of rotation, so requests stop reaching them. It can also absorb traffic spikes. Generating the node list automatically still needs a redeploy on each change and does nothing about failures. Larger nodes do not remove failures, and publishing node addresses pushes the problem onto users.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep the node list in the front end, generate it from provisioning outputs, and redeploy the front end after each change.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Give each node a public address and publish the list, so that users can pick a responsive node themselves.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Put a load balancer with health checks in front of the nodes, and point the front end at its stable address.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Run larger nodes, which can make failures less likely, and keep the front end configured with the node addresses.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L5 Q10 Rerunning derived configuration</text>
+    </name>
+    <idnumber>L5-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>Each node in a cluster needs a file listing all cluster members. A separate step generates and copies that file, and it reruns only when the node it targets changes. After the cluster grows from three to four nodes, the plan copies the file only to the new node. What is the best correction?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. The lecture's plan revealed this mistake before it was applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Make the step rerun whenever the set of members changes, so every node receives the updated list.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep the step as it is, because existing nodes can usually discover a new member without help.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Recreate the four nodes on every apply, so that each one starts with a fresh file.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Copy the updated file to the existing nodes by hand after each scale-up, and note it in the runbook.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-05</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

@@ -20,28 +20,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>To store a complete binary snapshot of every server</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>To replace all reusable configuration definitions</p>]]></text>
+      <text><![CDATA[<p>To store a complete binary snapshot of each managed server</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>To identify managed hosts and groups and associate relevant targeting information</p>]]></text>
+      <text><![CDATA[<p>To list managed hosts and groups and attach targeting information to them</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>To record only the operations that previously failed</p>]]></text>
+      <text><![CDATA[<p>To replace reusable configuration definitions with a separate list of settings for each host</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>To record which operations failed during the previous run</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -82,28 +82,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Every package not named in the declaration is removed automatically during the run.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The machine is recreated from a stock image so that it matches the declaration.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The successful run shows the whole machine now matches a complete baseline.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The unrelated package can remain because it is outside the declared scope.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Every package not named in the declaration is automatically removed.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The machine is necessarily recreated from a stock image.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Success proves that every aspect of the machine matches a complete baseline.</p>]]></text>
+      <text><![CDATA[<p>The package can stay, as the automation never touches what it was not told to manage.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -144,28 +144,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>It guarantees that all configuration actions can run simultaneously.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>It makes each unit independent of every other resource and input.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>It removes the need to test how the units work together.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>It groups related responsibilities so they can be understood, reused, and maintained separately.</p>]]></text>
+      <text><![CDATA[<p>It groups related work so each part can be understood, reused and maintained.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It guarantees that the configuration actions can run at the same time.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It makes each unit independent of the other resources and inputs it might use.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>It removes the need to test how the units behave when combined on one server.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -193,41 +193,41 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L3 Q4 Configuration values and shared logic</text>
+      <text>L3 Q4 Agent-based and agentless tools</text>
     </name>
     <idnumber>L3-Q4</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Development and production use the same service configuration logic but need different capacity values. Which organization best supports reuse and makes the intended differences clear?</p>]]></text>
+      <text><![CDATA[<p>A team manages a fleet of servers with a configuration tool. What is the main practical difference between an agentless tool and an agent-based one?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Shared logic plus explicit environment values preserves reuse and makes intentional differences reviewable. A documented configuration scheme makes the effective values understandable; copying whole definitions or hiding overrides makes divergence harder to control.</p>]]></text>
+      <text><![CDATA[<p>Agentless tools reach nodes through protocols that are already available, typically SSH or WinRM, so nothing extra has to be installed. Agent-based tools need an agent on each node, which can then apply configuration on its own schedule. Both kinds can be idempotent, both rely on network connectivity, and neither is limited to one operating system.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Copy the full logic for each environment and edit the copies independently.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Keep shared logic reusable and supply explicit environment-specific values through a documented configuration scheme.</p>]]></text>
+      <text><![CDATA[<p>Agentless tools connect over an existing protocol such as SSH; agent-based tools need software on every node.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Hide the production values inside unrelated shared configuration files.</p>]]></text>
+      <text><![CDATA[<p>Agentless tools cannot be idempotent, because checking a node's state before changing it needs an agent running there.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Require both environments to have identical capacity so no values differ.</p>]]></text>
+      <text><![CDATA[<p>Agentless tools need no network access to the managed nodes, while agent-based tools do.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Agent-based tools are limited to Windows machines, while agentless tools are limited to Linux.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -268,28 +268,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Maintain a complete baseline copy for every workload group so each team can change it independently.</p>]]></text>
+      <text><![CDATA[<p>Keep a complete copy of the baseline in each workload group, so each team can change its own copy freely.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Apply every configuration unit to every server and let operators disable the unwanted services afterward.</p>]]></text>
+      <text><![CDATA[<p>Apply every configuration unit to every server, and let operators disable the unwanted services afterwards.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Use workload groups for connection settings, and put the whole server configuration into one sequence that runs on every host.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Apply one reusable baseline to the fleet and select workload-specific units through the corresponding host groups.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Use workload groups only for connection settings and put all server configuration into one sequence applied to every host.</p>]]></text>
+      <text><![CDATA[<p>Apply one reusable baseline to the whole fleet, and select workload-specific units through the matching host groups.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -330,28 +330,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Both requests stop and start the service again, because automation cannot confirm a running state without restarting it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The declaration takes effect on the first deployment, after which a restart request is needed to recover from a later failure.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The desired-state declaration can leave it running undisturbed; an unconditional restart requests another operation and can cause unnecessary disruption.</p>]]></text>
+      <text><![CDATA[<p>The declaration can leave the healthy service alone, while an unconditional restart disrupts it on every run.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Both requests must stop and start it again, because automation cannot confirm a running state without restarting.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The desired-state declaration starts it only on the first deployment; the restart request is the only way to recover it after a later failure.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The restart request becomes a no-op after its first success, even if the automation explicitly requests it on every run.</p>]]></text>
+      <text><![CDATA[<p>The restart request becomes a no-op after its first success, even though the automation repeats it on later runs.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -392,16 +392,16 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Reload after every file is copied, even when its contents are unchanged, to make each step independently visible.</p>]]></text>
+      <text><![CDATA[<p>Reload after each file is copied, even when its contents did not change, so each step is visible on its own.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Apply and validate the compatible changes, then reload once if relevant configuration actually changed.</p>]]></text>
+      <text><![CDATA[<p>Apply and validate all the changes, then reload once if relevant configuration actually changed.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -413,7 +413,7 @@
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Apply all changes and avoid reloading while the service remains running, because a running process always reads updated settings.</p>]]></text>
+      <text><![CDATA[<p>Apply the changes and skip the reload while the service keeps running, since a running process reads new settings by itself.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -454,28 +454,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Successful configuration proves the application works; compare automation exit codes from two consecutive runs.</p>]]></text>
+      <text><![CDATA[<p>Successful configuration means the application works; compare the automation exit codes from two consecutive runs.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>The deployment must have drifted; check only whether all expected configuration files still exist.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>A running service proves the application is reachable; compare installed package names with the deployment log.</p>]]></text>
+      <text><![CDATA[<p>The deployment must have drifted; check whether the expected configuration files still exist.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Managed resources may be configured correctly while the user workflow still fails; exercise a representative request through the application and its dependencies.</p>]]></text>
+      <text><![CDATA[<p>Configuration can succeed while the application fails; send a representative request through it and its dependencies.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A running service shows the application is reachable; compare installed package names with the deployment log.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -516,16 +516,10 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
-    <answer fraction="100" format="html">
-      <text><![CDATA[<p>Use coherent baseline and workload units with documented inputs and override rules; test their composition because extra interfaces can hide dependencies or conflicts.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Split every operation into its own unit and select them implicitly; the resulting file count makes ownership and effective configuration self-explanatory.</p>]]></text>
+      <text><![CDATA[<p>Split each operation into its own unit and select units implicitly; the large number of files makes ownership and the effective configuration self-explanatory.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -537,7 +531,13 @@
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Keep one universal unit and add environment conditions throughout it; using one file removes the need to document how environment values interact.</p>]]></text>
+      <text><![CDATA[<p>Keep one universal unit and add environment conditions throughout it; using a single file removes the need to document how environment values interact.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Use coherent baseline and workload units with documented inputs and override rules, and test how they combine, since added interfaces can hide conflicts.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -581,28 +581,28 @@
     <penalty>0</penalty>
     <hidden>0</hidden>
     <single>true</single>
-    <shuffleanswers>false</shuffleanswers>
+    <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Keep the directory check and run the process twice; two unchanged runs establish that the desired version is installed.</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Recreate the directory on every run and treat its new timestamp as proof that the application has been updated.</p>]]></text>
+      <text><![CDATA[<p>Keep the directory check but run the process twice; two unchanged runs show that the desired version is installed.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>Compare the installed version or artifact with the desired one, repair missing or mismatched state, then verify the version and representative application behavior.</p>]]></text>
+      <text><![CDATA[<p>Compare the installed version with the desired one, fix any mismatch, then check the version and the application's behavior.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Update the deployment log with the desired version whenever the directory exists, then use that log as the check on future runs.</p>]]></text>
+      <text><![CDATA[<p>Recreate the directory on each run, and treat its new timestamp as proof that the application has been updated.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Write the desired version to the deployment log whenever the directory exists, and use that log as the check on future runs.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>

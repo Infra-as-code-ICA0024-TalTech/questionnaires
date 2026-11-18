@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/ICA0024/Lecture 06</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q1 Paying for functions</text>
+    </name>
+    <idnumber>L6-Q1</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged under the model described in the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Function-as-a-service platforms charge for the compute actually used while code runs, measured by execution time and allocated memory. A deployed function that is not invoked adds no compute charge. This makes functions very cheap for low or sporadic load, although high sustained traffic can make them expensive.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>By the execution time and memory used, so idle periods add no compute charge.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>By the hour from deployment, as with a virtual machine, whether or not it runs.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>By a flat monthly fee for each function that is deployed on the platform.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>By the size of the deployed code package, regardless of how often it is called.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q2 Packaging as container images</text>
+    </name>
+    <idnumber>L6-Q2</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>The instructor prefers packaging applications as container images, even where a function platform can also run a plain code archive. What is the main reason given?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A container image is a portable package: the same image can run as a function, on a container service, or on a VM, so changing the platform does not mean repackaging the application. The image may need small adjustments for a particular platform. It does not remove permission needs or provider differences, and storage cost is not the reason given.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Container images remove the need to grant runtime permissions to the application.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A container image is usually cheaper to store in a registry than a code archive.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>One image can run as a function, on a container service, or on a VM with little change.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Container images make the application immune to differences between cloud providers.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q3 DNS under infrastructure as code</text>
+    </name>
+    <idnumber>L6-Q3</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility matches the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Purchasing a domain is usually a one-time business action outside infrastructure code. The DNS records, whether hosted by the cloud provider or an external DNS service, are managed through an API and can be defined and reviewed as code. Hosting DNS with another provider does not prevent this.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep DNS records manual, because DNS providers rarely offer an API for automation.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Buy the domain outside the code; manage its records as code through the provider's API.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Manage records as code only when DNS is hosted by the same cloud as the application.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Include the domain purchase in the code, so that a destroy run also gives up the domain.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q4 Small code change, large cost change</text>
+    </name>
+    <idnumber>L6-Q4</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A teammate approves enabling a load balancer because the change adds only a few lines of infrastructure code. What else should the review consider?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A design change that looks small in code can change the running cost a lot. A load balancer is billed for as long as it exists, even with no traffic, while a function URL or direct public address may cost little or nothing. Reviewers should weigh the cost and the traffic actually expected, not just the size of the diff.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Nothing more, since a short change to a definition has a similarly small effect.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Mainly the formatting, since cost questions can usually be left to the billing team.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Whether traffic is high today, since a load balancer with no traffic is free of charge.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The running cost, since a load balancer can be billed monthly even with no traffic.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q5 Where scheduling lives</text>
+    </name>
+    <idnumber>L6-Q5</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A batch job runs for a few minutes each hour. Design 1 keeps a container running all the time and lets the application decide when to start the job. Design 2 uses an external scheduler that starts the job on demand. Which comparison is most accurate?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A container that runs all the time and handles its own schedule uses compute for its whole lifetime, even between jobs. Moving the scheduling to an external service or timer means the job runs, and is paid for, only when needed. The scheduler still needs explicit permission to start the job.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Design 1 is cheaper, since starting work on demand costs more than keeping one container running.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Both use the same compute, since the platform bills for the schedule rather than running time.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Design 2 uses compute only while the job runs; design 1 uses it for the whole time it stays up.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Design 2 needs no permissions setup, since the platform scheduler can start any job by itself.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q6 Console defaults and explicit definitions</text>
+    </name>
+    <idnumber>L6-Q6</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A function created by hand in the web console wrote logs without any extra setup. The same function, recreated from infrastructure code, runs but writes no logs. What is the most likely explanation?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Web consoles often create supporting resources and permissions, such as permission to write logs, automatically. Infrastructure code creates only what it declares, so the role, its permissions, and the log group must be defined explicitly. This makes the setup visible and reviewable but means console defaults cannot be assumed.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Functions created from code cannot write logs, so a logging agent has to be installed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>The console added default permissions and resources that the code must declare explicitly.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Logs from code-created functions may be delayed by a day, so waiting is usually enough.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>The code-created function runs on a VM, so its logs stay on that machine's local disk.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q7 Secrets in automated deployments</text>
+    </name>
+    <idnumber>L6-Q7</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach best follows the lecture's guidance?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Secret values should not be written into the tool's state or into plain configuration, where anyone with access to them could read the secret. Store the value in a secrets service, give the application only a reference such as the secret's name, and grant its identity read access to that specific secret. Baking secrets into images or relying on a private state bucket still spreads the value.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Set the password as an environment value in the definition, as the state sits in a private bucket.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Build the password into the container image, so the definition and state can leave it out.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Keep the password in state on purpose, so the tool can notice when someone changes it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Keep the value out of state, pass the app the secret's name, and let it read only that secret.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q8 What a lower-level service asks of you</text>
+    </name>
+    <idnumber>L6-Q8</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team moves the same web application from a function service with a built-in URL to a container service. Which extra infrastructure will they most likely have to define?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A function service with a built-in URL handles networking for you. A container service is a lower-level service: containers get addresses inside a network, so the team must choose the network and subnets and define firewall rules, or the containers cannot be reached. The provider still manages the hosts, and no Kubernetes cluster is needed.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Network placement and firewall rules, because the containers get addresses in a network.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Nothing extra, because both services hide networking and expose a public URL by default.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A Kubernetes cluster, because a container service can only run containers inside one.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Host operating-system patching, because the container service may expose its VMs to the team.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q9 Choosing a compute platform</text>
+    </name>
+    <idnumber>L6-Q9</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment best fits the trade-offs discussed in the lecture?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A cluster, always-on containers, or a VM sized for peak load all pay for idle capacity, which is hard to justify on a tight budget without an existing platform.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A managed Kubernetes cluster behind a load balancer, since a cluster is the usual way to run two containers.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Functions for both parts, a scheduled event for the job, and the function URL instead of a load balancer.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>An always-on container service for both parts behind a load balancer, keeping spare capacity for spikes.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>One large VM sized for the biggest spike, since a VM is usually cheaper than functions for low traffic.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>L6 Q10 Organizing alternative deployments</text>
+    </name>
+    <idnumber>L6-Q10</idnumber>
+    <questiontext format="html">
+      <text><![CDATA[<p>A team keeps three versions of one deployment (functions, a container service, and a VM) as separate infrastructure projects that all use the same image registry. Only some setups need a load balancer, and each apply currently builds and pushes the images. Which organization is most suitable?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>A resource used by several projects, such as a shared registry, is best managed once in its own project, with each deployment referring to it. A toggle that is off by default makes the costly load balancer an explicit, reviewable choice instead of manual commenting or a vague rule. Building and pushing images is an imperative build step, so a separate script or pipeline keeps the infrastructure definition focused on the desired state.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Give each project its own registry copy, enable the load balancer in every setup, and keep the image builds in the apply.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Merge all three versions into one project to share the registry, and comment out the load balancer where it is not needed.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Keep the registry in a shared project, add an off-by-default load balancer toggle, and build images in a separate script.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Let each project create the registry when it is missing, and switch the load balancer on whenever traffic might need it.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[]]></text>
+      </feedback>
+    </answer>
+    <correctfeedback format="html">
+      <text><![CDATA[]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[]]></text>
+    </incorrectfeedback>
+    <tags>
+      <tag>
+        <text>ICA0024</text>
+      </tag>
+      <tag>
+        <text>lecture-06</text>
+      </tag>
+      <tag>
+        <text>multiple-choice</text>
+      </tag>
+      <tag>
+        <text>practical-scenario</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

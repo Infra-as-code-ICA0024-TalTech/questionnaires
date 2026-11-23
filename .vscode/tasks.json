@@ -1,29 +1,15 @@
+// Generated from the justfile by TALTECH/_tools/just2vscode.py: one task per recipe.
+// Ctrl+Shift+B (Cmd+Shift+B) lists them all. Change the justfile, then regenerate.
 {
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Questions: Set up dependencies",
-      "detail": "Run once after cloning, or after pyproject.toml changes. Requires uv (https://docs.astral.sh/uv/) and internet access; uv installs Python 3.12+ if needed.",
-      "type": "process",
-      "command": "uv",
+      "label": "just help",
+      "detail": "List the recipes (default).",
+      "type": "shell",
+      "command": "just",
       "args": [
-        "sync"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "Questions: Convert all formats",
-      "detail": "Build and validate Moodle XML, the question data file, and the self-check page from Markdown.",
-      "type": "process",
-      "command": "uv",
-      "args": [
-        "run",
-        "scripts/build.py",
-        "--format",
-        "all"
+        "help"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -32,56 +18,121 @@
         "kind": "build",
         "isDefault": true
       },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
       "problemMatcher": []
     },
     {
-      "label": "Questions: Convert to Moodle XML",
-      "detail": "Build and validate only the Moodle XML files.",
-      "type": "process",
-      "command": "uv",
+      "label": "just setup",
+      "detail": "Install the Python dependencies (uv sync).",
+      "type": "shell",
+      "command": "just",
       "args": [
-        "run",
-        "scripts/build.py",
-        "--format",
+        "setup"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "just build",
+      "detail": "Convert the questions to all formats.",
+      "type": "shell",
+      "command": "just",
+      "args": [
+        "build"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "just moodle",
+      "detail": "Convert to Moodle XML only.",
+      "type": "shell",
+      "command": "just",
+      "args": [
         "moodle"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
       "problemMatcher": []
     },
     {
-      "label": "Questions: Build self-check page",
-      "detail": "Build and validate only the student self-check page (self-check/index.html) and data/questions.json.",
-      "type": "process",
-      "command": "uv",
+      "label": "just selfcheck",
+      "detail": "Build the self-check page only.",
+      "type": "shell",
+      "command": "just",
       "args": [
-        "run",
-        "scripts/build.py",
-        "--format",
         "selfcheck"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
       "problemMatcher": []
     },
     {
-      "label": "Questions: Validate exports",
-      "detail": "Check all existing question exports without rebuilding them.",
-      "type": "process",
-      "command": "uv",
+      "label": "just check",
+      "detail": "Check that the committed exports match the sources (what CI runs).",
+      "type": "shell",
+      "command": "just",
       "args": [
-        "run",
-        "scripts/build.py",
-        "--check"
+        "check"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
       },
-      "group": "test",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
       "problemMatcher": []
     }
   ]

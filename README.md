@@ -50,15 +50,17 @@ The exports use native Moodle question types and require no question-type plugin
 
 ## Rebuild and validate
 
-### VS Code tasks
+### Commands and VS Code tasks
 
-Open this repository folder in VS Code, then choose **Terminal > Run Task**:
+The `justfile` holds the commands, and every recipe is also a VS Code task: **Terminal >
+Run Build Task** (Ctrl+Shift+B / Cmd+Shift+B) lists them. Needs [just](https://just.systems) (`brew install just`, `winget install Casey.Just`) and
+[uv](https://docs.astral.sh/uv/).
 
-1. Run **Questions: Set up dependencies** once after cloning (and after dependency changes). This runs `uv sync`, which creates `.venv` and installs the pinned dependencies from `uv.lock`; [uv](https://docs.astral.sh/uv/) and internet access are required, and uv installs Python 3.12+ if it is missing.
-2. Edit the Markdown sources, then run **Questions: Convert all formats**, **Questions: Convert to Moodle XML**, or **Questions: Build self-check page**.
-3. Run **Questions: Validate exports** to check all existing exports against the current sources without rebuilding them.
+1. `just setup` once after cloning, and after dependency changes (`uv sync`: creates `.venv` from `uv.lock`; uv installs Python 3.12+ if missing).
+2. Edit the Markdown sources, then `just build` (all formats), `just moodle` or `just selfcheck`.
+3. `just check` checks all existing exports against the sources without rebuilding them (what CI runs).
 
-**Terminal > Run Build Task** runs the default **Convert all formats** task. Conversion tasks run through `uv run` using the repository's `.venv`. The same tasks work on macOS, Linux, and Windows; no VS Code extension is required. See [.vscode/tasks.json](.vscode/tasks.json) and the [VS Code task documentation](https://code.visualstudio.com/docs/debugtest/tasks).
+The same commands work on macOS, Linux and Windows.
 
 ### Command line
 

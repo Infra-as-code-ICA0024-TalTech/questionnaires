@@ -287,7 +287,7 @@ def render(questions, titles, logo_svg):
 <section class="c-hero">
 <p class="eyebrow">ICA0024 · Infrastructure as Code</p>
 <h1>Lecture <span class="hl">self-check</span></h1>
-<p class="lead">Ten questions per lecture to test your understanding. Pick one answer for each question, then check your answers to see your score and an explanation for every question. This is practice, not an exam: nothing is recorded or sent anywhere.</p>
+<p class="lead">Several questions per lecture to test your understanding. Pick one answer for each question, then check your answers to see your score and an explanation for every question. This is practice, not an exam: nothing is recorded or sent anywhere.</p>
 </section>
 <div class="tabs-bar"><nav class="xa-tabs-list" role="tablist" aria-label="Lectures">{''.join(tabs)}</nav></div>
 {''.join(panels)}

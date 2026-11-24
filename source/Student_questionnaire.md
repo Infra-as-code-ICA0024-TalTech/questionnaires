@@ -4,7 +4,7 @@
 
 **Name:** ____________________  **Date:** ____________________
 
-Each lecture has its own set of 10 questions worth **20 marks**. Answer the questions for the lecture you are assigned. Suggested time: **15–20 minutes** per lecture.
+Each lecture has its own set of 10 questions worth **20 marks** (Lecture 9: 9 questions, **18 marks**). Answer the questions for the lecture you are assigned. Suggested time: **15–20 minutes** per lecture.
 
 Every question is multiple choice with **one correct answer**. Select the best answer from A-D, including for practical scenarios. No written explanation, code, commands, product-specific knowledge, or access to the demo repositories is required.
 
@@ -12,7 +12,7 @@ Every question is multiple choice with **one correct answer**. Select the best a
 
 ### L1 Q1 Infrastructure pillars — 1 mark
 
-Which set contains the three infrastructure pillars introduced in the lecture?
+Which set contains the three basic pillars of infrastructure?
 
 - A. Deployment, tests, and monitoring
 - B. Compute, storage, and networking
@@ -122,7 +122,7 @@ What distinguishes building a machine image from deploying machines based on tha
 
 ### L2 Q3 Rebuildability — 1 mark
 
-The lecture describes a problematic form of a "golden image." What makes that example an anti-pattern?
+A team calls its base server image the "golden image." Which property of that image would make it an anti-pattern?
 
 - A. The organization shares one base image across many teams and services.
 - B. The image is tested before use, which slows down releases.
@@ -297,7 +297,7 @@ What is the main purpose of chaos engineering practices, such as randomly termin
 
 ### L4 Q2 Regions and availability zones — 1 mark
 
-A service must stay available if one data center in a cloud region fails. Which placement fits the lecture's description of regions and availability zones?
+A service must stay available if one data center in a cloud region fails. Which placement meets that requirement?
 
 - A. Spread instances across availability zones, which are separate data centers in one region
 - B. Put the instances in one availability zone, since each zone already spans several regions
@@ -315,7 +315,7 @@ An engineer finds a server that seems unused, has no known owner, and receives a
 
 ### L4 Q4 Organizing a growing playbook — 1 mark
 
-A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization fits the lecture's advice?
+A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization helps most?
 
 - A. Keep one file so every dependency stays visible, and add comments that link tasks to handlers
 - B. Split it into roles or included files that each fit in your head, grouping what changes together
@@ -360,7 +360,7 @@ A team uses an AI coding assistant to generate infrastructure code. Which approa
 
 ### L4 Q9 Changing production without disruption — 4 marks
 
-A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan best fits the principles from the lecture?
+A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan fits that goal best?
 
 - A. Make servers rebuildable from code, spread them across zones, rehearse failures, and deploy without downtime
 - B. Keep the maintenance windows but shorten them, and require two engineers to approve any change that is made on a Friday
@@ -416,7 +416,7 @@ An architecture diagram shows a load balancer, a group of database nodes, and a 
 
 ### L5 Q5 Sharing state in a team — 2 marks
 
-A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach best fits the lecture's guidance?
+A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach fits this team best?
 
 - A. Give each engineer a personal copy of the state, and merge the copies at the end of each week.
 - B. Keep one state for everything in the code repository, so that reviews also show its changes.
@@ -472,7 +472,7 @@ Each node in a cluster needs a file listing all cluster members. A separate step
 
 ### L6 Q1 Paying for functions — 1 mark
 
-A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged under the model described in the lecture?
+A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged?
 
 - A. By the execution time and memory used, so idle periods add no compute charge.
 - B. By the hour from deployment, as with a virtual machine, whether or not it runs.
@@ -481,7 +481,7 @@ A team deploys a scheduled job on a function-as-a-service platform. For most of 
 
 ### L6 Q2 Packaging as container images — 1 mark
 
-The instructor prefers packaging applications as container images, even where a function platform can also run a plain code archive. What is the main reason given?
+Many teams package applications as container images, even where a function platform can also run a plain code archive. What is the main advantage of doing so?
 
 - A. Container images remove the need to grant runtime permissions to the application.
 - B. A container image is usually cheaper to store in a registry than a code archive.
@@ -490,7 +490,7 @@ The instructor prefers packaging applications as container images, even where a 
 
 ### L6 Q3 DNS under infrastructure as code — 1 mark
 
-An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility matches the lecture?
+An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility works best?
 
 - A. Keep DNS records manual, because DNS providers rarely offer an API for automation.
 - B. Buy the domain outside the code; manage its records as code through the provider's API.
@@ -526,7 +526,7 @@ A function created by hand in the web console wrote logs without any extra setup
 
 ### L6 Q7 Secrets in automated deployments — 2 marks
 
-An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach best follows the lecture's guidance?
+An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach handles the password best?
 
 - A. Set the password as an environment value in the definition, as the state sits in a private bucket.
 - B. Build the password into the container image, so the definition and state can leave it out.
@@ -544,9 +544,9 @@ A team moves the same web application from a function service with a built-in UR
 
 ### L6 Q9 Choosing a compute platform — 4 marks
 
-A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment best fits the trade-offs discussed in the lecture?
+A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment fits these trade-offs best?
 
-- A. A managed Kubernetes cluster behind a load balancer, since a cluster is the usual way to run two containers.
+- A. A managed Kubernetes cluster, so both parts share one platform that can grow with the company.
 - B. Functions for both parts, a scheduled event for the job, and the function URL instead of a load balancer.
 - C. An always-on container service for both parts behind a load balancer, keeping spare capacity for spikes.
 - D. One large VM sized for the biggest spike, since a VM is usually cheaper than functions for low traffic.
@@ -564,7 +564,7 @@ A team keeps three versions of one deployment (functions, a container service, a
 
 ### L7 Q1 Integration tests for infrastructure code — 1 mark
 
-Why does the lecture value integration tests on real targets more than unit tests for infrastructure code?
+Why are integration tests on real targets usually worth more than unit tests for infrastructure code?
 
 - A. Unit tests usually run too slowly to fit into a delivery pipeline for infrastructure code.
 - B. Integration tests also check style and conventions, so a separate linter is no longer needed.
@@ -573,7 +573,7 @@ Why does the lecture value integration tests on real targets more than unit test
 
 ### L7 Q2 Module interface — 1 mark
 
-In the lecture's view, what forms the interface of a reusable infrastructure module?
+What forms the interface of a reusable infrastructure module?
 
 - A. The full set of resources it creates, which callers edit directly when they need changes
 - B. The input parameters it publishes, with defaults, that callers set to adjust its behavior
@@ -591,7 +591,7 @@ An automation tool already refuses to run a definition with invalid syntax. What
 
 ### L7 Q4 Modules as maintained products — 1 mark
 
-A team plans to extract repeated infrastructure code into a module that other teams will use. Which view matches the lecture?
+A team plans to extract repeated infrastructure code into a module that other teams will use. Which view is the most sound?
 
 - A. A shared module is a product needing tests, docs and releases; it pays off as complexity and teams grow.
 - B. A module is mainly a way to shorten files, so it needs no separate testing once the original code worked.
@@ -609,7 +609,7 @@ A delivery pipeline for infrastructure code runs linting, policy checks, smoke t
 
 ### L7 Q6 Assessing a third-party module — 2 marks
 
-A team finds a public module that does what it needs. Which assessment best fits the lecture's advice before depending on it?
+A team finds a public module that does what it needs. Which assessment should come before depending on it?
 
 - A. Prefer the module with the most parameters, since a larger interface usually signals higher quality.
 - B. Use it if its download count is high, because popularity shows it was tested on your platforms.
@@ -618,7 +618,7 @@ A team finds a public module that does what it needs. Which assessment best fits
 
 ### L7 Q7 Providers and modules — 2 marks
 
-A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities matches the lecture's layering?
+A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities between provider and module fits best?
 
 - A. Write a module that calls the service's API directly, and use a provider only to store shared default values.
 - B. Use a provider for the service's API, and build a module that combines its resources into a reusable unit.
@@ -645,7 +645,7 @@ Staging and production both use version 1.8.2 of a shared network module. Versio
 
 ### L7 Q10 Testing a module across platforms — 4 marks
 
-An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan best fits the lecture?
+An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan fits best?
 
 - A. Add more unit tests until coverage is complete, since they are fast and need no real machines.
 - B. In the pipeline, run it on disposable containers or VMs from images like the company's, for each OS.
@@ -748,7 +748,7 @@ An organization runs VMs on an on-premises virtualization platform and networks 
 
 ### L9 Q1 GitOps and continuous delivery — 1 mark
 
-How does the lecture characterize GitOps?
+Which description of GitOps fits best?
 
 - A. As a Kubernetes-only practice in which an agent in the cluster applies manifests from Git
 - B. As continuous delivery applied to infrastructure and operations code kept in Git
@@ -766,50 +766,41 @@ In a pull-based GitOps setup, how do changes reach the infrastructure?
 
 ### L9 Q3 Repository ownership — 1 mark
 
-In the cross-team workflow from the lecture, who merges another team's change into the main branch of the network team's repository?
+The platform team owns its infrastructure repository. An application team opens a pull request there with a change it needs. Who merges that change into the main branch?
 
 - A. The team that wrote the change, as soon as its pull request passes the pipeline checks
 - B. The pipeline itself, which merges each pull request automatically once its checks are green
 - C. A central change board, which approves merges for every repository in the organization
-- D. The network team that owns the repository, after it reviews the checked pull request
+- D. The platform team that owns the repository, after it reviews the checked pull request
 
 ### L9 Q4 Continuous reconciliation — 1 mark
 
-Besides declarative, versioned code and automated delivery, some definitions of GitOps add a controller that keeps reconciling the infrastructure with Git. How did the lecture treat this fourth principle?
+A team keeps declarative infrastructure code in Git and delivers every merged change through a pipeline. It has no controller that continuously reconciles the infrastructure with Git; instead, it runs the pipeline on a schedule to detect and fix drift. Many GitOps definitions list continuous reconciliation as a fourth principle. How does this setup relate to GitOps?
 
-- A. As essential, because GitOps without a controller inside a Kubernetes cluster is not GitOps
-- B. As optional, because scheduled pipeline runs can do much of the same checking against Git
-- C. As harmful, because a controller that keeps changing the infrastructure itself causes drift
-- D. As a replacement for version control, because the controller stores the desired state itself
+- A. It is not GitOps, because GitOps needs a controller running inside a Kubernetes cluster
+- B. It covers the core of GitOps, and the scheduled runs give part of what continuous reconciliation would
+- C. It is not GitOps, because a pipeline that applies changes on a schedule causes drift
+- D. It is GitOps only if the infrastructure stores the desired state itself instead of Git
 
 ### L9 Q5 Push-based delivery — 2 marks
 
-A team's pipelines run in a public hosted CI/CD service. They run the provisioning and configuration tools that push changes into the company's private infrastructure. What does this push model require the team to consider?
+A team runs its pipelines on a public hosted CI/CD service. The pipelines run provisioning and configuration tools that connect to the company's private infrastructure and push each change there. What must the team take care of in this push model?
 
-- A. The CI/CD service needs network access and credentials for the targets, which must be secured.
-- B. Nothing beyond a pull model, because both models need the same access to the infrastructure.
-- C. Pull requests stop working, because a push model delivers direct commits to the main branch instead.
-- D. Changes can no longer be traced, because a pushed change leaves no record in the repository.
+- A. Giving the CI/CD service network access and credentials for the targets, and keeping that access secure
+- B. Nothing extra, because a pull model needs exactly the same access to the infrastructure
+- C. Replacing pull requests with direct commits to the main branch, because pushed changes bypass review
+- D. Keeping a separate change log, because a pushed change leaves no record in the repository
 
 ### L9 Q6 Pipelines as guardrails — 2 marks
 
-Why does the lecture call a repository's CI/CD pipeline guardrails for the team that owns the repository?
+Why can a repository's CI/CD pipeline be called guardrails for the team that owns the repository?
 
 - A. It deploys each pull request to production at once, so users find mistakes quickly.
 - B. It replaces human review, so owners no longer look at changes that other teams propose.
 - C. Its checks block changes that break the owners' rules, codifying what the owners know.
 - D. It is maintained by a central platform team, so the owners cannot weaken its checks.
 
-### L9 Q7 Releasing and deploying applications — 2 marks
-
-An application pipeline tests each build and publishes it to an artifact repository. In the GitOps setup described in the lecture, what decides which application version runs in each environment?
-
-- A. The application pipeline, which deploys each published build to every environment at once
-- B. Engineers, who copy artifacts to servers by hand and note the versions in a shared document
-- C. Each environment, which picks up the newest published artifact on its own schedule
-- D. The infrastructure repository, where version bumps can be committed by people or automation
-
-### L9 Q8 A complete record of change — 2 marks
+### L9 Q7 A complete record of change — 2 marks
 
 After an outage, a team must find out which change reached production, who approved it, and whether its checks passed. Some recent changes were applied from engineers' laptops. Which practice gives the team a complete record in future?
 
@@ -818,16 +809,16 @@ After an outage, a team must find out which change reached production, who appro
 - C. Take a snapshot of production every night, and compare snapshots when an incident happens.
 - D. Keep the pipeline for routine work, but let senior engineers apply urgent changes directly.
 
-### L9 Q9 Replacing tickets with pull requests — 4 marks
+### L9 Q8 Replacing tickets with pull requests — 4 marks
 
-A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Each request goes through tickets and takes days of back-and-forth for a change of a few lines. Both teams are technical. Which workflow best fits the lecture?
+A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Today each request goes through tickets and takes days of back-and-forth for a change of a few lines. The company moves to GitOps so that the database team can make such changes itself, as self-service, while the network team keeps control of its network. Which workflow fits best?
 
 - A. Give the database team administrator access to the network devices, so it can make small changes itself and inform the network team afterwards.
 - B. Let the database team push to the main branch of the network repository, so its changes deploy at once and the network team reviews them later.
 - C. Let the database team open pull requests whose pipeline checks run without deploying; the network team reviews green ones and merging deploys them.
 - D. Keep the tickets, but have the network team collect them for a weekly maintenance window, so that the requested changes are reviewed together.
 
-### L9 Q10 Layer repositories and simple interfaces — 4 marks
+### L9 Q9 Layer repositories and simple interfaces — 4 marks
 
 An organization keeps its infrastructure in one repository per layer (network, machine images, server configuration, and application deployment), each owned by one team. Other teams often need to add simple entries, such as DNS records or batch jobs, to layers they do not own, while the owners keep refactoring the internals. Which organization best supports both kinds of change?
 

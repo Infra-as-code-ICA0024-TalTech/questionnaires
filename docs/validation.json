@@ -1,6 +1,6 @@
 {
-  "questions": 90,
-  "total_marks": 180,
+  "questions": 89,
+  "total_marks": 178,
   "moodle_live_import_tested": false,
   "lectures": [
     {
@@ -61,15 +61,15 @@
     },
     {
       "lecture": 9,
-      "questions": 10,
-      "multichoice": 10,
+      "questions": 9,
+      "multichoice": 9,
       "essay": 0,
-      "marks": 20
+      "marks": 18
     }
   ],
   "self_check": {
-    "questions": 90,
+    "questions": 89,
     "lectures": 9,
-    "bytes": 220054
+    "bytes": 217833
   }
 }

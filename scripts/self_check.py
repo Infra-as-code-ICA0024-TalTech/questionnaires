@@ -321,7 +321,7 @@ def validate(page, questions, titles):
     collector = _Collector()
     collector.feed(page)
     found = collector.questions
-    assert len(found) == len(questions) == 10 * len(titles), 'Self-check question count mismatch'
+    assert len(found) == len(questions), 'Self-check question count mismatch'
     for q in questions:
         item = found[q['id'].replace(' ', '-')]
         assert item['points'] == q['points']

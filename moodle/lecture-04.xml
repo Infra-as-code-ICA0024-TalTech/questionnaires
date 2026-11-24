@@ -73,7 +73,7 @@
     </name>
     <idnumber>L4-Q2</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A service must stay available if one data center in a cloud region fails. Which placement fits the lecture's description of regions and availability zones?</p>]]></text>
+      <text><![CDATA[<p>A service must stay available if one data center in a cloud region fails. Which placement meets that requirement?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>A region is a geographic location; its availability zones are physically separate data centers located close to each other. Placing instances in different zones lets the service survive the loss of one data center. Extra instances in a single zone share that zone's failure, and moving every instance to a different region is not needed for this goal.</p>]]></text>
@@ -197,10 +197,10 @@
     </name>
     <idnumber>L4-Q4</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization fits the lecture's advice?</p>]]></text>
+      <text><![CDATA[<p>A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization helps most?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The instructor's rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges.</p>]]></text>
+      <text><![CDATA[<p>A good rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -448,7 +448,7 @@
       <text><![CDATA[<p>A team uses an AI coding assistant to generate infrastructure code. Which approach gives the most dependable evidence that the generated code meets the team's goals?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, which the lecture calls loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code.</p>]]></text>
+      <text><![CDATA[<p>Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, an approach known as loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -507,7 +507,7 @@
     </name>
     <idnumber>L4-Q9</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan best fits the principles from the lecture?</p>]]></text>
+      <text><![CDATA[<p>A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan fits that goal best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>When servers can be rebuilt from code, are spread across availability zones, and are monitored, losing one is not a disaster. Rehearsing failures, as in chaos engineering, proves that recovery works, and zero-downtime methods such as blue-green deployment keep changes invisible to users. Maintenance windows and Friday rules work around missing automation, manual snapshot restores keep the outage, and chaos without monitoring is reckless.</p>]]></text>

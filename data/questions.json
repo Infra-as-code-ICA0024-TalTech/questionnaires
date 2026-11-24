@@ -6,7 +6,7 @@
     "title": "Infrastructure pillars",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "Which set contains the three infrastructure pillars introduced in the lecture?",
+    "prompt_markdown": "Which set contains the three basic pillars of infrastructure?",
     "options": [
       {
         "label": "A",
@@ -142,7 +142,7 @@
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "Review and automated checks before application can catch mistakes, as in the lecture's example of firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: in the lecture's rule, code lives in Git and only automation delivers the change. Reviewed changes still need validation."
+    "grader_markdown": "Review and automated checks before application can catch mistakes, for example firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: code lives in Git, and only automation delivers the change. Reviewed changes still need validation."
   },
   {
     "id": "L1 Q6",
@@ -354,7 +354,7 @@
     "title": "Rebuildability",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "The lecture describes a problematic form of a \"golden image.\" What makes that example an anti-pattern?",
+    "prompt_markdown": "A team calls its base server image the \"golden image.\" Which property of that image would make it an anti-pattern?",
     "options": [
       {
         "label": "A",
@@ -577,7 +577,7 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. The lecture treats a built image as a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy, as in the lecture's case study where machines were replaced in minutes while their data was preserved."
+    "grader_markdown": "Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. A built image is a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy. Done this way, machines can be replaced in minutes while their data is preserved."
   },
   {
     "id": "L3 Q1",
@@ -905,7 +905,7 @@
     "title": "Regions and availability zones",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A service must stay available if one data center in a cloud region fails. Which placement fits the lecture's description of regions and availability zones?",
+    "prompt_markdown": "A service must stay available if one data center in a cloud region fails. Which placement meets that requirement?",
     "options": [
       {
         "label": "A",
@@ -963,7 +963,7 @@
     "title": "Organizing a growing playbook",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization fits the lecture's advice?",
+    "prompt_markdown": "A single playbook has grown to several hundred lines. It configures web servers, databases, and batch jobs, and a service's restart handler is defined far from the tasks that notify it. Which reorganization helps most?",
     "options": [
       {
         "label": "A",
@@ -983,7 +983,7 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "The instructor's rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges."
+    "grader_markdown": "A good rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges."
   },
   {
     "id": "L4 Q5",
@@ -1099,7 +1099,7 @@
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, which the lecture calls loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code."
+    "grader_markdown": "Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, an approach known as loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code."
   },
   {
     "id": "L4 Q9",
@@ -1108,7 +1108,7 @@
     "title": "Changing production without disruption",
     "points": 4,
     "kind": "multichoice",
-    "prompt_markdown": "A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan best fits the principles from the lecture?",
+    "prompt_markdown": "A web shop announces multi-hour maintenance windows for each release and avoids changes on Fridays, because losing a production server would be a disaster. The team wants to make routine changes during working hours without users noticing. Which plan fits that goal best?",
     "options": [
       {
         "label": "A",
@@ -1282,7 +1282,7 @@
     "title": "Sharing state in a team",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach best fits the lecture's guidance?",
+    "prompt_markdown": "A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach fits this team best?",
     "options": [
       {
         "label": "A",
@@ -1331,7 +1331,7 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the lecture noted that the separate-resource style is now preferred for this case."
+    "grader_markdown": "Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the separate-resource style is now usually preferred for this case."
   },
   {
     "id": "L5 Q7",
@@ -1389,7 +1389,7 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. In the lecture, the destroyed items were helper resources that only ran commands and could only be replaced, so recreating them lost nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion."
+    "grader_markdown": "A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. Often the destroyed items are helper resources that only run commands and can only be replaced, so recreating them loses nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion."
   },
   {
     "id": "L5 Q9",
@@ -1447,7 +1447,7 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. The lecture's plan revealed this mistake before it was applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured."
+    "grader_markdown": "The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. Reading the plan reveals this mistake before it is applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured."
   },
   {
     "id": "L6 Q1",
@@ -1456,7 +1456,7 @@
     "title": "Paying for functions",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged under the model described in the lecture?",
+    "prompt_markdown": "A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged?",
     "options": [
       {
         "label": "A",
@@ -1485,7 +1485,7 @@
     "title": "Packaging as container images",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "The instructor prefers packaging applications as container images, even where a function platform can also run a plain code archive. What is the main reason given?",
+    "prompt_markdown": "Many teams package applications as container images, even where a function platform can also run a plain code archive. What is the main advantage of doing so?",
     "options": [
       {
         "label": "A",
@@ -1514,7 +1514,7 @@
     "title": "DNS under infrastructure as code",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility matches the lecture?",
+    "prompt_markdown": "An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility works best?",
     "options": [
       {
         "label": "A",
@@ -1630,7 +1630,7 @@
     "title": "Secrets in automated deployments",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach best follows the lecture's guidance?",
+    "prompt_markdown": "An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach handles the password best?",
     "options": [
       {
         "label": "A",
@@ -1688,11 +1688,11 @@
     "title": "Choosing a compute platform",
     "points": 4,
     "kind": "multichoice",
-    "prompt_markdown": "A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment best fits the trade-offs discussed in the lecture?",
+    "prompt_markdown": "A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment fits these trade-offs best?",
     "options": [
       {
         "label": "A",
-        "text": "A managed Kubernetes cluster behind a load balancer, since a cluster is the usual way to run two containers."
+        "text": "A managed Kubernetes cluster, so both parts share one platform that can grow with the company."
       },
       {
         "label": "B",
@@ -1708,7 +1708,7 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A cluster, always-on containers, or a VM sized for peak load all pay for idle capacity, which is hard to justify on a tight budget without an existing platform."
+    "grader_markdown": "With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A shared cluster could grow with the company later, but like always-on containers or a VM sized for peak load it pays for idle capacity every hour, which is hard to justify on a tight budget without an existing platform."
   },
   {
     "id": "L6 Q10",
@@ -1746,7 +1746,7 @@
     "title": "Integration tests for infrastructure code",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "Why does the lecture value integration tests on real targets more than unit tests for infrastructure code?",
+    "prompt_markdown": "Why are integration tests on real targets usually worth more than unit tests for infrastructure code?",
     "options": [
       {
         "label": "A",
@@ -1775,7 +1775,7 @@
     "title": "Module interface",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "In the lecture's view, what forms the interface of a reusable infrastructure module?",
+    "prompt_markdown": "What forms the interface of a reusable infrastructure module?",
     "options": [
       {
         "label": "A",
@@ -1833,7 +1833,7 @@
     "title": "Modules as maintained products",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "A team plans to extract repeated infrastructure code into a module that other teams will use. Which view matches the lecture?",
+    "prompt_markdown": "A team plans to extract repeated infrastructure code into a module that other teams will use. Which view is the most sound?",
     "options": [
       {
         "label": "A",
@@ -1853,7 +1853,7 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "The lecture treats a shared module as a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization."
+    "grader_markdown": "A shared module is a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization."
   },
   {
     "id": "L7 Q5",
@@ -1891,7 +1891,7 @@
     "title": "Assessing a third-party module",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "A team finds a public module that does what it needs. Which assessment best fits the lecture's advice before depending on it?",
+    "prompt_markdown": "A team finds a public module that does what it needs. Which assessment should come before depending on it?",
     "options": [
       {
         "label": "A",
@@ -1920,7 +1920,7 @@
     "title": "Providers and modules",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities matches the lecture's layering?",
+    "prompt_markdown": "A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities between provider and module fits best?",
     "options": [
       {
         "label": "A",
@@ -1998,7 +1998,7 @@
       }
     ],
     "correct_option": "D",
-    "grader_markdown": "A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through the pipeline the lecture describes: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides."
+    "grader_markdown": "A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through a staged pipeline: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides."
   },
   {
     "id": "L7 Q10",
@@ -2007,7 +2007,7 @@
     "title": "Testing a module across platforms",
     "points": 4,
     "kind": "multichoice",
-    "prompt_markdown": "An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan best fits the lecture?",
+    "prompt_markdown": "An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan fits best?",
     "options": [
       {
         "label": "A",
@@ -2143,7 +2143,7 @@
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. The lecture called such a single-resource module over-designed."
+    "grader_markdown": "A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. Such a single-resource module is over-designed."
   },
   {
     "id": "L8 Q5",
@@ -2326,7 +2326,7 @@
     "title": "GitOps and continuous delivery",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "How does the lecture characterize GitOps?",
+    "prompt_markdown": "Which description of GitOps fits best?",
     "options": [
       {
         "label": "A",
@@ -2346,7 +2346,7 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "The instructor described GitOps as continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and the lecture did not define it as a branching model."
+    "grader_markdown": "GitOps is continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and it is not a branching model."
   },
   {
     "id": "L9 Q2",
@@ -2384,7 +2384,7 @@
     "title": "Repository ownership",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "In the cross-team workflow from the lecture, who merges another team's change into the main branch of the network team's repository?",
+    "prompt_markdown": "The platform team owns its infrastructure repository. An application team opens a pull request there with a change it needs. Who merges that change into the main branch?",
     "options": [
       {
         "label": "A",
@@ -2400,11 +2400,11 @@
       },
       {
         "label": "D",
-        "text": "The network team that owns the repository, after it reviews the checked pull request"
+        "text": "The platform team that owns the repository, after it reviews the checked pull request"
       }
     ],
     "correct_option": "D",
-    "grader_markdown": "The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the lecture's aim was to avoid slow, central approval paths."
+    "grader_markdown": "The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the aim is to avoid slow, central approval paths."
   },
   {
     "id": "L9 Q4",
@@ -2413,27 +2413,27 @@
     "title": "Continuous reconciliation",
     "points": 1,
     "kind": "multichoice",
-    "prompt_markdown": "Besides declarative, versioned code and automated delivery, some definitions of GitOps add a controller that keeps reconciling the infrastructure with Git. How did the lecture treat this fourth principle?",
+    "prompt_markdown": "A team keeps declarative infrastructure code in Git and delivers every merged change through a pipeline. It has no controller that continuously reconciles the infrastructure with Git; instead, it runs the pipeline on a schedule to detect and fix drift. Many GitOps definitions list continuous reconciliation as a fourth principle. How does this setup relate to GitOps?",
     "options": [
       {
         "label": "A",
-        "text": "As essential, because GitOps without a controller inside a Kubernetes cluster is not GitOps"
+        "text": "It is not GitOps, because GitOps needs a controller running inside a Kubernetes cluster"
       },
       {
         "label": "B",
-        "text": "As optional, because scheduled pipeline runs can do much of the same checking against Git"
+        "text": "It covers the core of GitOps, and the scheduled runs give part of what continuous reconciliation would"
       },
       {
         "label": "C",
-        "text": "As harmful, because a controller that keeps changing the infrastructure itself causes drift"
+        "text": "It is not GitOps, because a pipeline that applies changes on a schedule causes drift"
       },
       {
         "label": "D",
-        "text": "As a replacement for version control, because the controller stores the desired state itself"
+        "text": "It is GitOps only if the infrastructure stores the desired state itself instead of Git"
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "The lecture listed four GitOps principles: declarative code, versioned and immutable code, automatic delivery, and a desired state controller that keeps checking the target against the code. The instructor called the fourth principle optional: GitOps works without it, and scheduled pipeline runs can provide much of the same continuous verification. GitOps is not limited to Kubernetes, and such a controller works from the code in Git rather than replacing version control."
+    "grader_markdown": "The setup has the three core principles: declarative code, versioned and immutable code in Git, and automatic delivery. A fourth principle, a desired state controller that keeps checking the target against Git, is optional: GitOps works without it, and scheduled pipeline runs give much of the same verification, though only at each run rather than continuously. GitOps is not limited to Kubernetes, scheduled runs correct drift rather than cause it, and the desired state stays in Git."
   },
   {
     "id": "L9 Q5",
@@ -2442,27 +2442,27 @@
     "title": "Push-based delivery",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "A team's pipelines run in a public hosted CI/CD service. They run the provisioning and configuration tools that push changes into the company's private infrastructure. What does this push model require the team to consider?",
+    "prompt_markdown": "A team runs its pipelines on a public hosted CI/CD service. The pipelines run provisioning and configuration tools that connect to the company's private infrastructure and push each change there. What must the team take care of in this push model?",
     "options": [
       {
         "label": "A",
-        "text": "The CI/CD service needs network access and credentials for the targets, which must be secured."
+        "text": "Giving the CI/CD service network access and credentials for the targets, and keeping that access secure"
       },
       {
         "label": "B",
-        "text": "Nothing beyond a pull model, because both models need the same access to the infrastructure."
+        "text": "Nothing extra, because a pull model needs exactly the same access to the infrastructure"
       },
       {
         "label": "C",
-        "text": "Pull requests stop working, because a push model delivers direct commits to the main branch instead."
+        "text": "Replacing pull requests with direct commits to the main branch, because pushed changes bypass review"
       },
       {
         "label": "D",
-        "text": "Changes can no longer be traced, because a pushed change leaves no record in the repository."
+        "text": "Keeping a separate change log, because a pushed change leaves no record in the repository"
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and the lecture considered either model workable depending on the tools and security requirements."
+    "grader_markdown": "In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and either model can work, depending on the tools and security requirements."
   },
   {
     "id": "L9 Q6",
@@ -2471,7 +2471,7 @@
     "title": "Pipelines as guardrails",
     "points": 2,
     "kind": "multichoice",
-    "prompt_markdown": "Why does the lecture call a repository's CI/CD pipeline guardrails for the team that owns the repository?",
+    "prompt_markdown": "Why can a repository's CI/CD pipeline be called guardrails for the team that owns the repository?",
     "options": [
       {
         "label": "A",
@@ -2497,35 +2497,6 @@
     "id": "L9 Q7",
     "lecture": 9,
     "number": 7,
-    "title": "Releasing and deploying applications",
-    "points": 2,
-    "kind": "multichoice",
-    "prompt_markdown": "An application pipeline tests each build and publishes it to an artifact repository. In the GitOps setup described in the lecture, what decides which application version runs in each environment?",
-    "options": [
-      {
-        "label": "A",
-        "text": "The application pipeline, which deploys each published build to every environment at once"
-      },
-      {
-        "label": "B",
-        "text": "Engineers, who copy artifacts to servers by hand and note the versions in a shared document"
-      },
-      {
-        "label": "C",
-        "text": "Each environment, which picks up the newest published artifact on its own schedule"
-      },
-      {
-        "label": "D",
-        "text": "The infrastructure repository, where version bumps can be committed by people or automation"
-      }
-    ],
-    "correct_option": "D",
-    "grader_markdown": "Application pipelines test the code and publish release artifacts to an artifact repository; the infrastructure or configuration repository then decides which version runs in which environment. Version bumps can be committed automatically by other pipelines, so the repository has both human and automated authors. Releasing an artifact is thereby separated from deploying it, and each deployment remains a recorded change in Git."
-  },
-  {
-    "id": "L9 Q8",
-    "lecture": 9,
-    "number": 8,
     "title": "A complete record of change",
     "points": 2,
     "kind": "multichoice",
@@ -2549,16 +2520,16 @@
       }
     ],
     "correct_option": "A",
-    "grader_markdown": "The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed."
+    "grader_markdown": "The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed. Emergency access, if a team needs it, should still leave a commit afterwards, so that the code and the record catch up with the change."
   },
   {
-    "id": "L9 Q9",
+    "id": "L9 Q8",
     "lecture": 9,
-    "number": 9,
+    "number": 8,
     "title": "Replacing tickets with pull requests",
     "points": 4,
     "kind": "multichoice",
-    "prompt_markdown": "A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Each request goes through tickets and takes days of back-and-forth for a change of a few lines. Both teams are technical. Which workflow best fits the lecture?",
+    "prompt_markdown": "A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Today each request goes through tickets and takes days of back-and-forth for a change of a few lines. The company moves to GitOps so that the database team can make such changes itself, as self-service, while the network team keeps control of its network. Which workflow fits best?",
     "options": [
       {
         "label": "A",
@@ -2578,12 +2549,12 @@
       }
     ],
     "correct_option": "C",
-    "grader_markdown": "Pull requests to the owning team's repository replace the ticket back-and-forth that the lecture called \"cosmic ping pong\". The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays."
+    "grader_markdown": "In GitOps, self-service means pull requests to the owning team's repository instead of the back-and-forth of tickets between teams. The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays."
   },
   {
-    "id": "L9 Q10",
+    "id": "L9 Q9",
     "lecture": 9,
-    "number": 10,
+    "number": 9,
     "title": "Layer repositories and simple interfaces",
     "points": 4,
     "kind": "multichoice",
@@ -2607,6 +2578,6 @@
       }
     ],
     "correct_option": "B",
-    "grader_markdown": "The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In the lecture's example, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow."
+    "grader_markdown": "The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In one real case, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow."
   }
 ]

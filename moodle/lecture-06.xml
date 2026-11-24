@@ -11,7 +11,7 @@
     </name>
     <idnumber>L6-Q1</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged under the model described in the lecture?</p>]]></text>
+      <text><![CDATA[<p>A team deploys a scheduled job on a function-as-a-service platform. For most of the month nothing invokes it. How is its compute typically charged?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Function-as-a-service platforms charge for the compute actually used while code runs, measured by execution time and allocated memory. A deployed function that is not invoked adds no compute charge. This makes functions very cheap for low or sporadic load, although high sustained traffic can make them expensive.</p>]]></text>
@@ -73,7 +73,7 @@
     </name>
     <idnumber>L6-Q2</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The instructor prefers packaging applications as container images, even where a function platform can also run a plain code archive. What is the main reason given?</p>]]></text>
+      <text><![CDATA[<p>Many teams package applications as container images, even where a function platform can also run a plain code archive. What is the main advantage of doing so?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>A container image is a portable package: the same image can run as a function, on a container service, or on a VM, so changing the platform does not mean repackaging the application. The image may need small adjustments for a particular platform. It does not remove permission needs or provider differences, and storage cost is not the reason given.</p>]]></text>
@@ -135,7 +135,7 @@
     </name>
     <idnumber>L6-Q3</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility matches the lecture?</p>]]></text>
+      <text><![CDATA[<p>An organization wants its public DNS setup managed as infrastructure as code. Which division of responsibility works best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Purchasing a domain is usually a one-time business action outside infrastructure code. The DNS records, whether hosted by the cloud provider or an external DNS service, are managed through an API and can be defined and reviewed as code. Hosting DNS with another provider does not prevent this.</p>]]></text>
@@ -383,7 +383,7 @@
     </name>
     <idnumber>L6-Q7</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach best follows the lecture's guidance?</p>]]></text>
+      <text><![CDATA[<p>An application needs a database password at runtime. The infrastructure tool keeps a state record of the resources it manages. Which approach handles the password best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Secret values should not be written into the tool's state or into plain configuration, where anyone with access to them could read the secret. Store the value in a secrets service, give the application only a reference such as the secret's name, and grant its identity read access to that specific secret. Baking secrets into images or relying on a private state bucket still spreads the value.</p>]]></text>
@@ -507,10 +507,10 @@
     </name>
     <idnumber>L6-Q9</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment best fits the trade-offs discussed in the lecture?</p>]]></text>
+      <text><![CDATA[<p>A small company runs a web app that gets a handful of requests per hour, with occasional short spikes, plus a background job that runs for a few minutes every hour. Both parts are small and already packaged as container images. The company has a tight budget and no existing Kubernetes platform. Which deployment fits these trade-offs best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A cluster, always-on containers, or a VM sized for peak load all pay for idle capacity, which is hard to justify on a tight budget without an existing platform.</p>]]></text>
+      <text><![CDATA[<p>With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A shared cluster could grow with the company later, but like always-on containers or a VM sized for peak load it pays for idle capacity every hour, which is hard to justify on a tight budget without an existing platform.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -519,7 +519,7 @@
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>A managed Kubernetes cluster behind a load balancer, since a cluster is the usual way to run two containers.</p>]]></text>
+      <text><![CDATA[<p>A managed Kubernetes cluster, so both parts share one platform that can grow with the company.</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>

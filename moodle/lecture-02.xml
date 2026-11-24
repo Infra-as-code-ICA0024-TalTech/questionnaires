@@ -135,7 +135,7 @@
     </name>
     <idnumber>L2-Q3</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>The lecture describes a problematic form of a "golden image." What makes that example an anti-pattern?</p>]]></text>
+      <text><![CDATA[<p>A team calls its base server image the "golden image." Which property of that image would make it an anti-pattern?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>The problem is hidden manual changes and the lack of a maintained, repeatable creation process. A shared baseline or an automated, rebuildable image is not inherently an anti-pattern, even if the team calls it a golden image.</p>]]></text>
@@ -575,7 +575,7 @@
       <text><![CDATA[<p>A version-controlled image build always selects the latest base image and packages. The team wants to reproduce an approved version and later roll out a deliberately patched version. Which plan meets both goals?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. The lecture treats a built image as a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy, as in the lecture's case study where machines were replaced in minutes while their data was preserved.</p>]]></text>
+      <text><![CDATA[<p>Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. A built image is a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy. Done this way, machines can be replaced in minutes while their data is preserved.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>

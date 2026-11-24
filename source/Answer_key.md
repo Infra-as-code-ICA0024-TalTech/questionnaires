@@ -2,7 +2,7 @@
 
 ## Answer key and marking guidance for Lectures 1 to 9
 
-**Instructor copy.** The student questionnaire contains 90 single-answer multiple-choice questions, 10 per lecture worth **20 marks** each. In each lecture, Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4. Scenarios also use multiple-choice answers.
+**Instructor copy.** The student questionnaire contains 89 single-answer multiple-choice questions, 10 per lecture worth **20 marks** each, except Lecture 9 with 9 questions worth **18 marks**. In each lecture, Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4; in Lecture 9, Q5-Q7 carry 2 and Q8-Q9 carry 4. Scenarios also use multiple-choice answers.
 
 Award the full question value for the correct choice and zero otherwise, with no negative marking. Explanations below provide feedback; students do not submit free-form answers. Questions assess principles, responsibilities, and design trade-offs without requiring product syntax. The [source map](Source_map.md) identifies the lecture concepts behind each question. Any pass threshold should follow the course assessment policy.
 
@@ -26,7 +26,7 @@ PaaS typically transfers more operating-system and runtime-platform maintenance 
 
 ### L1 Q5 Answer C — 2 marks
 
-Review and automated checks before application can catch mistakes, as in the lecture's example of firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: in the lecture's rule, code lives in Git and only automation delivers the change. Reviewed changes still need validation.
+Review and automated checks before application can catch mistakes, for example firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: code lives in Git, and only automation delivers the change. Reviewed changes still need validation.
 
 ### L1 Q6 Answer A — 2 marks
 
@@ -88,7 +88,7 @@ A shared baseline reduces inconsistent copies while workload-specific definition
 
 ### L2 Q10 Answer A — 4 marks
 
-Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. The lecture treats a built image as a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy, as in the lecture's case study where machines were replaced in minutes while their data was preserved.
+Version-controlled instructions do not freeze external inputs such as base images and packages, so reproduction requires controlled versions and available artifacts. A built image is a versioned artifact: keeping the previous version allows a rollback, and each new image is tested before release. An immutable update builds and validates a new image, replaces instances deliberately, and protects persistent data through separate storage or a verified copy. Done this way, machines can be replaced in minutes while their data is preserved.
 
 ## Lecture 3 Server state and configuration organization
 
@@ -148,7 +148,7 @@ A scream test stops, rather than deletes, seemingly unused infrastructure and wa
 
 ### L4 Q4 Answer B — 1 mark
 
-The instructor's rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges.
+A good rule of thumb is to work on code that fits in your head. When a playbook grows to several hundred lines, split it into included task files or roles, separate concerns such as web servers, databases, and batch jobs, and keep things that change for the same reason, such as a service's tasks and its handler, close together. Comments do not reduce the size, one file per task scatters related parts, and per-type copies duplicate code that then diverges.
 
 ### L4 Q5 Answer B — 2 marks
 
@@ -164,7 +164,7 @@ When two tasks set the same resource to different states, each run undoes the ot
 
 ### L4 Q8 Answer C — 2 marks
 
-Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, which the lecture calls loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code.
+Acceptance criteria expressed as tests and policies act as guardrails: generated code is revised until it passes them, an approach known as loop engineering. Self-confirmation by the same assistant, a single successful run in one environment, or trust in a stronger model do not show that the code meets the requirements. The team still needs to understand the tests and the code.
 
 ### L4 Q9 Answer A — 4 marks
 
@@ -198,7 +198,7 @@ When several people share a project, state should live in shared storage rather 
 
 ### L5 Q6 Answer A — 2 marks
 
-Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the lecture noted that the separate-resource style is now preferred for this case.
+Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the separate-resource style is now usually preferred for this case.
 
 ### L5 Q7 Answer C — 2 marks
 
@@ -206,7 +206,7 @@ A create-time provisioning script runs when the resource is created and is not r
 
 ### L5 Q8 Answer B — 2 marks
 
-A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. In the lecture, the destroyed items were helper resources that only ran commands and could only be replaced, so recreating them lost nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion.
+A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. Often the destroyed items are helper resources that only run commands and can only be replaced, so recreating them loses nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion.
 
 ### L5 Q9 Answer C — 4 marks
 
@@ -214,7 +214,7 @@ A load balancer gives clients one stable endpoint, so nodes can be added or repl
 
 ### L5 Q10 Answer A — 4 marks
 
-The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. The lecture's plan revealed this mistake before it was applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured.
+The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. Reading the plan reveals this mistake before it is applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured.
 
 ## Lecture 6 Choosing cloud deployment options
 
@@ -252,7 +252,7 @@ A function service with a built-in URL handles networking for you. A container s
 
 ### L6 Q9 Answer B — 4 marks
 
-With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A cluster, always-on containers, or a VM sized for peak load all pay for idle capacity, which is hard to justify on a tight budget without an existing platform.
+With low, bursty traffic and a short periodic job, pay-per-execution functions scale with demand and cost almost nothing while idle. A scheduled event starts the job only when needed, and the built-in function URL avoids the fixed cost of a load balancer. A shared cluster could grow with the company later, but like always-on containers or a VM sized for peak load it pays for idle capacity every hour, which is hard to justify on a tight budget without an existing platform.
 
 ### L6 Q10 Answer C — 4 marks
 
@@ -274,7 +274,7 @@ The tool's own parser already rejects invalid syntax. A linter applies further r
 
 ### L7 Q4 Answer A — 1 mark
 
-The lecture treats a shared module as a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization.
+A shared module is a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization.
 
 ### L7 Q5 Answer A — 2 marks
 
@@ -294,7 +294,7 @@ Rules such as required tags, size limits, or approved providers are valid code f
 
 ### L7 Q9 Answer D — 4 marks
 
-A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through the pipeline the lecture describes: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides.
+A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through a staged pipeline: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides.
 
 ### L7 Q10 Answer B — 4 marks
 
@@ -316,7 +316,7 @@ A published version is a frozen, tested point in time that consumers rely on. Fi
 
 ### L8 Q4 Answer C — 1 mark
 
-A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. The lecture called such a single-resource module over-designed.
+A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. Such a single-resource module is over-designed.
 
 ### L8 Q5 Answer D — 2 marks
 
@@ -346,7 +346,7 @@ Start by checking the available providers and existing modules: a well-maintaine
 
 ### L9 Q1 Answer B — 1 mark
 
-The instructor described GitOps as continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and the lecture did not define it as a branching model.
+GitOps is continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and it is not a branching model.
 
 ### L9 Q2 Answer C — 1 mark
 
@@ -354,35 +354,31 @@ In the pull model, a component running inside or near the infrastructure, such a
 
 ### L9 Q3 Answer D — 1 mark
 
-The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the lecture's aim was to avoid slow, central approval paths.
+The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the aim is to avoid slow, central approval paths.
 
 ### L9 Q4 Answer B — 1 mark
 
-The lecture listed four GitOps principles: declarative code, versioned and immutable code, automatic delivery, and a desired state controller that keeps checking the target against the code. The instructor called the fourth principle optional: GitOps works without it, and scheduled pipeline runs can provide much of the same continuous verification. GitOps is not limited to Kubernetes, and such a controller works from the code in Git rather than replacing version control.
+The setup has the three core principles: declarative code, versioned and immutable code in Git, and automatic delivery. A fourth principle, a desired state controller that keeps checking the target against Git, is optional: GitOps works without it, and scheduled pipeline runs give much of the same verification, though only at each run rather than continuously. GitOps is not limited to Kubernetes, scheduled runs correct drift rather than cause it, and the desired state stays in Git.
 
 ### L9 Q5 Answer A — 2 marks
 
-In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and the lecture considered either model workable depending on the tools and security requirements.
+In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and either model can work, depending on the tools and security requirements.
 
 ### L9 Q6 Answer C — 2 marks
 
 The pipeline's checks, such as syntax, policy, security, and vulnerability checks, block any change that breaks the owning team's rules. The pipeline definition is code stored in the same repository and maintained by that team, so it codifies the team's knowledge. Pull request pipelines verify without deploying, and the owners still review complex or risky changes, but much of the routine review is delegated to automation.
 
-### L9 Q7 Answer D — 2 marks
+### L9 Q7 Answer A — 2 marks
 
-Application pipelines test the code and publish release artifacts to an artifact repository; the infrastructure or configuration repository then decides which version runs in which environment. Version bumps can be committed automatically by other pipelines, so the repository has both human and automated authors. Releasing an artifact is thereby separated from deploying it, and each deployment remains a recorded change in Git.
+The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed. Emergency access, if a team needs it, should still leave a commit afterwards, so that the code and the record catch up with the change.
 
-### L9 Q8 Answer A — 2 marks
+### L9 Q8 Answer C — 4 marks
 
-The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed.
+In GitOps, self-service means pull requests to the owning team's repository instead of the back-and-forth of tickets between teams. The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays.
 
-### L9 Q9 Answer C — 4 marks
+### L9 Q9 Answer B — 4 marks
 
-Pull requests to the owning team's repository replace the ticket back-and-forth that the lecture called "cosmic ping pong". The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays.
-
-### L9 Q10 Answer B — 4 marks
-
-The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In the lecture's example, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow.
+The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In one real case, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow.
 
 ## Interpreting the results
 

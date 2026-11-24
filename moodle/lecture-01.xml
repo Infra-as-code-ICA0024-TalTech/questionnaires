@@ -11,7 +11,7 @@
     </name>
     <idnumber>L1-Q1</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Which set contains the three infrastructure pillars introduced in the lecture?</p>]]></text>
+      <text><![CDATA[<p>Which set contains the three basic pillars of infrastructure?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Compute executes workloads, storage retains data, and networking connects resources. The alternatives describe activities, environments, or application-level concerns rather than the three infrastructure pillars.</p>]]></text>
@@ -262,7 +262,7 @@
       <text><![CDATA[<p>Which pair of benefits best explains how version-controlling infrastructure definitions helps a team deliver changes reliably?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Review and automated checks before application can catch mistakes, as in the lecture's example of firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: in the lecture's rule, code lives in Git and only automation delivers the change. Reviewed changes still need validation.</p>]]></text>
+      <text><![CDATA[<p>Review and automated checks before application can catch mistakes, for example firewall rules codified in Git and checked by pipeline policies before they reached the devices. The commit history records who changed what, when, and why, and makes rollback possible. Version control alone neither applies changes nor restores deleted data: code lives in Git, and only automation delivers the change. Reviewed changes still need validation.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>

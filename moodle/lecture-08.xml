@@ -200,7 +200,7 @@
       <text><![CDATA[<p>Which module design is least likely to justify the extra layer it adds?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. The lecture called such a single-resource module over-designed.</p>]]></text>
+      <text><![CDATA[<p>A module that manages a single resource and passes nearly every setting through adds indirection without capturing any knowledge; using the resource directly is usually simpler. Modules earn their place when they combine many related resources, encode the organization's conventions, or package a repeated composition. Such a single-resource module is over-designed.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>

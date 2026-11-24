@@ -6,7 +6,7 @@ Self-check page for students on GitHub Pages: https://infra-as-code-ica0024-talt
 
 English assessments for Infrastructure as Code lectures 1 to 9, grounded in the lecture recordings, their transcripts, and the concept slides from the course Miro board. All questions were rechecked in November 2026 against per-lecture analyses of the recordings; Lectures 4 to 9 are newer drafts for instructor review. Questions assess principles, design choices, and codebase organization; they require no code reading, commands, tool syntax, or access to demo repositories.
 
-Each lecture contains **10 single-answer multiple-choice questions worth 20 marks**, including two practical scenarios. Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4. Every question has four choices and exactly one correct answer. There are 90 questions and 180 marks overall, with no free-response questions. The term **infrastructure pillars** is used throughout.
+Each lecture contains **10 single-answer multiple-choice questions worth 20 marks**, including two practical scenarios. Q1-Q4 carry 1 mark each, Q5-Q8 carry 2, and Q9-Q10 carry 4. Every question has four choices and exactly one correct answer. Lecture 9 has 9 questions and 18 marks (Q5-Q7 carry 2, Q8-Q9 carry 4). There are 89 questions and 178 marks overall, with no free-response questions. The term **infrastructure pillars** is used throughout.
 
 ## Files
 
@@ -40,8 +40,8 @@ The glossary has moved to the separate [ICA0024 glossary repository](https://git
 
 1. Open the course's **Question bank**, then use its **Questions** dropdown to select **Import**.
 2. Select **Moodle XML format** and upload one XML file. Enable **Get category from file** if offered. Repeat for the other lectures.
-3. Confirm 10 questions in each `ICA0024 / Lecture 01` to `Lecture 09` category. Preview all questions and choices, including the scenarios.
-4. Add a **Quiz** activity for each lecture and add its 10 questions from the question bank. Importing questions alone does not create a student-facing quiz. Set the quiz maximum grade to 20 if you want it to match the question marks.
+3. Confirm 10 questions in each `ICA0024 / Lecture 01` to `Lecture 08` category and 9 in `Lecture 09`. Preview all questions and choices, including the scenarios.
+4. Add a **Quiz** activity for each lecture and add its 10 questions from the question bank. Importing questions alone does not create a student-facing quiz. Set the quiz maximum grade to 20 (18 for Lecture 9) if you want it to match the question marks.
 5. Configure availability, attempts, and review settings. Preview an attempt before making it available to students.
 
 All questions use Moodle **Multiple choice** with one correct answer and automatic grading. Choices are shuffled for each attempt, so on-screen letters can differ from the answer key; grading follows the correct choice, not its letter. Answer explanations are stored as general feedback, whose release depends on the quiz review settings. No Essay or Short answer questions are generated.

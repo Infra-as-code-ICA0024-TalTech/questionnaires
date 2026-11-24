@@ -11,7 +11,7 @@
     </name>
     <idnumber>L7-Q1</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Why does the lecture value integration tests on real targets more than unit tests for infrastructure code?</p>]]></text>
+      <text><![CDATA[<p>Why are integration tests on real targets usually worth more than unit tests for infrastructure code?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Infrastructure code mostly orchestrates real systems, so its typical failures appear only when it runs against a target: different distributions ship different packages, paths, and service behavior. Unit tests can be written, but they exercise little of that. Integration tests do not replace linters, which catch a different class of problems before anything runs.</p>]]></text>
@@ -73,7 +73,7 @@
     </name>
     <idnumber>L7-Q2</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>In the lecture's view, what forms the interface of a reusable infrastructure module?</p>]]></text>
+      <text><![CDATA[<p>What forms the interface of a reusable infrastructure module?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>A module's published parameters and their defaults are how users interact with it: defaults give a working result, and overridable inputs act as extension points. The internal resources and file layout are implementation details that callers should not need to edit or copy. Commit history explains changes but is not the interface.</p>]]></text>
@@ -197,10 +197,10 @@
     </name>
     <idnumber>L7-Q4</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A team plans to extract repeated infrastructure code into a module that other teams will use. Which view matches the lecture?</p>]]></text>
+      <text><![CDATA[<p>A team plans to extract repeated infrastructure code into a module that other teams will use. Which view is the most sound?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The lecture treats a shared module as a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization.</p>]]></text>
+      <text><![CDATA[<p>A shared module is a software product: good modules need tests, documentation, examples, a release process, and ongoing effort. That cost is justified as infrastructure complexity and the number of teams grow, because modules also make delegation and knowledge transfer easier. Small setups may not need modules, and modules are also useful inside one organization.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -321,7 +321,7 @@
     </name>
     <idnumber>L7-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A team finds a public module that does what it needs. Which assessment best fits the lecture's advice before depending on it?</p>]]></text>
+      <text><![CDATA[<p>A team finds a public module that does what it needs. Which assessment should come before depending on it?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Signs of a healthy module include recent releases, active issue and security fixing, an evolving interface, and good documentation and examples. If a module looks inactive, its code can still be insourced, adapted, and maintained by the team. Download counts mostly reflect how widely the underlying software is used, not that the module was tested on your platforms; the number of parameters is not a quality measure either.</p>]]></text>
@@ -383,7 +383,7 @@
     </name>
     <idnumber>L7-Q7</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities matches the lecture's layering?</p>]]></text>
+      <text><![CDATA[<p>A team wants to manage a new cloud service with code and also standardize how other teams use it. Which split of responsibilities between provider and module fits best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>A provider, or a library of tasks, is the integration layer that turns definitions into API calls for a platform. A module sits one level higher: it combines those resources with the organization's choices into a reusable unit with an interface. Conventions belong in the module, not in the provider.</p>]]></text>
@@ -510,7 +510,7 @@
       <text><![CDATA[<p>Staging and production both use version 1.8.2 of a shared network module. Version 2.0.0 adds a feature the team needs and renames some inputs. How should the consuming team adopt it?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through the pipeline the lecture describes: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides.</p>]]></text>
+      <text><![CDATA[<p>A major version signals breaking changes, so the team should pin the new exact version and adapt its inputs. The change should then move through a staged pipeline: automated lint and policy checks, a lower environment such as staging, tests and monitoring, and only then production. Applying to production first, assuming a major release is safe, or changing released code without a new version all remove the predictability that versioning provides.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -572,7 +572,7 @@
     </name>
     <idnumber>L7-Q10</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan best fits the lecture?</p>]]></text>
+      <text><![CDATA[<p>An internal configuration module must support the company's Ubuntu and Rocky Linux servers, which start from company-prepared base images. Its only tests are unit tests that run on a laptop. Which testing plan fits best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>Unit tests add little for infrastructure code because the behavior that breaks depends on the real target: package names, defaults, and libraries differ between distributions. Integration tests should run automatically in the pipeline on disposable containers or VMs built from images that match the organization's real baselines, one per supported platform. Testing every possible platform is costly and unnecessary for an internal module, and production servers should not serve as test targets.</p>]]></text>

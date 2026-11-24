@@ -20,6 +20,10 @@ TITLES = {1: 'Infrastructure as Code concepts', 2: 'Images and machine initializ
           8: 'Module versioning and interface design',
           9: 'GitOps, pipelines, and team workflows'}
 
+# Questions and marks per lecture; Lecture 9 lost its release-versus-deploy question.
+COUNTS = {n: 10 for n in TITLES} | {9: 9}
+MARKS = {n: 20 for n in TITLES} | {9: 18}
+
 SELF_CHECK = ROOT/'self-check/index.html'
 QUESTIONS_JSON = ROOT/'data/questions.json'
 
@@ -33,7 +37,7 @@ def sections(text):
 def load_questions():
     prompts = sections((ROOT/'source/Student_questionnaire.md').read_text())
     answers = sections((ROOT/'source/Answer_key.md').read_text())
-    expected = {(n, i) for n in TITLES for i in range(1, 11)}
+    expected = {(n, i) for n in TITLES for i in range(1, COUNTS[n] + 1)}
     assert set(prompts) == set(answers) == expected, 'Question/answer IDs do not match'
     questions = []
     for (lecture, number), (title, points, body) in sorted(prompts.items()):
@@ -106,17 +110,17 @@ def self_check_export(questions):
 def validate(questions, output_format='all'):
     report = {'questions':len(questions), 'total_marks':sum(q['points'] for q in questions),
               'moodle_live_import_tested':False, 'lectures':[]}
-    assert report['questions']==10*len(TITLES) and report['total_marks']==20*len(TITLES)
+    assert report['questions']==sum(COUNTS.values()) and report['total_marks']==sum(MARKS.values())
     assert all(q['kind']=='multichoice' for q in questions)
     if output_format in ('all', 'selfcheck'):
         assert json.loads(QUESTIONS_JSON.read_text())==questions
     for lecture in TITLES:
         expected = [q for q in questions if q['lecture']==lecture]
-        assert sum(q['points'] for q in expected)==20
+        assert len(expected)==COUNTS[lecture] and sum(q['points'] for q in expected)==MARKS[lecture]
         if output_format in ('all', 'moodle'):
             root = ET.parse(ROOT/f'moodle/lecture-{lecture:02}.xml').getroot()
             nodes = [q for q in root.findall('question') if q.get('type')!='category']
-            assert len(nodes)==10
+            assert len(nodes)==COUNTS[lecture]
             for source, node in zip(expected,nodes):
                 assert node.get('type')==source['kind']
                 assert node.findtext('idnumber')==source['id'].replace(' ','-')

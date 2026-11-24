@@ -259,7 +259,7 @@
     </name>
     <idnumber>L5-Q5</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach best fits the lecture's guidance?</p>]]></text>
+      <text><![CDATA[<p>A provisioning project's state lives on one engineer's laptop and covers the whole platform. Eight people now change the networks, databases and application servers at different rates. Which approach fits this team best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>When several people share a project, state should live in shared storage rather than on one laptop, and only one run should change a given state at a time. Splitting state by layer and frequency of change reduces waiting and limits how much each run can affect. State can contain sensitive values, such as a generated private key, so it needs protection. Personal copies or a deleted state lose track of what the tool created.</p>]]></text>
@@ -324,7 +324,7 @@
       <text><![CDATA[<p>A firewall group is defined with its rules written inline. A colleague adds more rules for the same group as separate rule resources. Each apply now reports changes, although nobody edited the code. What is the most likely cause and fix?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the lecture noted that the separate-resource style is now preferred for this case.</p>]]></text>
+      <text><![CDATA[<p>Some providers let you model the same thing as nested blocks inside a resource or as separate resources linked to it. Using both for one group means two definitions claim the same rules, so each apply undoes the other's result and a change loop follows. Pick one style for that group; the separate-resource style is now usually preferred for this case.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -448,7 +448,7 @@
       <text><![CDATA[<p>After a small change, the preview reports six resources to add and three to destroy. Which response is most appropriate before approving the apply?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. In the lecture, the destroyed items were helper resources that only ran commands and could only be replaced, so recreating them lost nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion.</p>]]></text>
+      <text><![CDATA[<p>A plan is a preview, so use it to check what each destroy or replace entry refers to and why it happens. Often the destroyed items are helper resources that only run commands and can only be replaced, so recreating them loses nothing. Destroying a resource that holds data or serves traffic needs much more care. Destroy entries are not automatically wrong, and adding resources does not undo a deletion.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -575,7 +575,7 @@
       <text><![CDATA[<p>Each node in a cluster needs a file listing all cluster members. A separate step generates and copies that file, and it reruns only when the node it targets changes. After the cluster grows from three to four nodes, the plan copies the file only to the new node. What is the best correction?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. The lecture's plan revealed this mistake before it was applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured.</p>]]></text>
+      <text><![CDATA[<p>The file depends on the whole membership, so the step should rerun when the membership changes, for example by including the node identifiers in what triggers it. Every node then gets the updated list, not only the new one. Reading the plan reveals this mistake before it is applied. Recreating all nodes on every run is disruptive, manual copying breaks reproducibility, and assuming automatic discovery ignores how the cluster is configured.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>

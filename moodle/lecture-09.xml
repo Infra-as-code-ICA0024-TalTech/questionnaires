@@ -11,10 +11,10 @@
     </name>
     <idnumber>L9-Q1</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>How does the lecture characterize GitOps?</p>]]></text>
+      <text><![CDATA[<p>Which description of GitOps fits best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The instructor described GitOps as continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and the lecture did not define it as a branching model.</p>]]></text>
+      <text><![CDATA[<p>GitOps is continuous delivery applied to a different type of code: infrastructure, configuration, and operations code kept in Git and delivered through automation. It is not limited to Kubernetes; servers, cloud resources, and other infrastructure can be managed the same way. Git hosting services provide the pipelines, but GitOps is the practice rather than the service, and it is not a branching model.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -135,10 +135,10 @@
     </name>
     <idnumber>L9-Q3</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>In the cross-team workflow from the lecture, who merges another team's change into the main branch of the network team's repository?</p>]]></text>
+      <text><![CDATA[<p>The platform team owns its infrastructure repository. An application team opens a pull request there with a change it needs. Who merges that change into the main branch?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the lecture's aim was to avoid slow, central approval paths.</p>]]></text>
+      <text><![CDATA[<p>The team that owns a repository defines its structure, pipelines, and rules, and only it can push or merge to the main branch. Other teams submit pull requests; the pipeline checks them without deploying, and the owners review the green request and merge it, which triggers delivery. The pipeline informs the decision but does not replace the owners, and the aim is to avoid slow, central approval paths.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -165,7 +165,7 @@
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The network team that owns the repository, after it reviews the checked pull request</p>]]></text>
+      <text><![CDATA[<p>The platform team that owns the repository, after it reviews the checked pull request</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -197,10 +197,10 @@
     </name>
     <idnumber>L9-Q4</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Besides declarative, versioned code and automated delivery, some definitions of GitOps add a controller that keeps reconciling the infrastructure with Git. How did the lecture treat this fourth principle?</p>]]></text>
+      <text><![CDATA[<p>A team keeps declarative infrastructure code in Git and delivers every merged change through a pipeline. It has no controller that continuously reconciles the infrastructure with Git; instead, it runs the pipeline on a schedule to detect and fix drift. Many GitOps definitions list continuous reconciliation as a fourth principle. How does this setup relate to GitOps?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The lecture listed four GitOps principles: declarative code, versioned and immutable code, automatic delivery, and a desired state controller that keeps checking the target against the code. The instructor called the fourth principle optional: GitOps works without it, and scheduled pipeline runs can provide much of the same continuous verification. GitOps is not limited to Kubernetes, and such a controller works from the code in Git rather than replacing version control.</p>]]></text>
+      <text><![CDATA[<p>The setup has the three core principles: declarative code, versioned and immutable code in Git, and automatic delivery. A fourth principle, a desired state controller that keeps checking the target against Git, is optional: GitOps works without it, and scheduled pipeline runs give much of the same verification, though only at each run rather than continuously. GitOps is not limited to Kubernetes, scheduled runs correct drift rather than cause it, and the desired state stays in Git.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0</penalty>
@@ -209,25 +209,25 @@
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>As essential, because GitOps without a controller inside a Kubernetes cluster is not GitOps</p>]]></text>
+      <text><![CDATA[<p>It is not GitOps, because GitOps needs a controller running inside a Kubernetes cluster</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>As optional, because scheduled pipeline runs can do much of the same checking against Git</p>]]></text>
+      <text><![CDATA[<p>It covers the core of GitOps, and the scheduled runs give part of what continuous reconciliation would</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>As harmful, because a controller that keeps changing the infrastructure itself causes drift</p>]]></text>
+      <text><![CDATA[<p>It is not GitOps, because a pipeline that applies changes on a schedule causes drift</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>As a replacement for version control, because the controller stores the desired state itself</p>]]></text>
+      <text><![CDATA[<p>It is GitOps only if the infrastructure stores the desired state itself instead of Git</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -259,10 +259,10 @@
     </name>
     <idnumber>L9-Q5</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A team's pipelines run in a public hosted CI/CD service. They run the provisioning and configuration tools that push changes into the company's private infrastructure. What does this push model require the team to consider?</p>]]></text>
+      <text><![CDATA[<p>A team runs its pipelines on a public hosted CI/CD service. The pipelines run provisioning and configuration tools that connect to the company's private infrastructure and push each change there. What must the team take care of in this push model?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and the lecture considered either model workable depending on the tools and security requirements.</p>]]></text>
+      <text><![CDATA[<p>In the push model, the CI/CD service runs tools such as Terraform, Ansible, or Helm and connects directly to the infrastructure, so it needs network access and credentials for the targets. When the CI/CD service is public rather than internal, that access must be secured carefully. Pull requests and commit history work the same way in both models, and either model can work, depending on the tools and security requirements.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -271,25 +271,25 @@
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>ABCD</answernumbering>
     <answer fraction="100" format="html">
-      <text><![CDATA[<p>The CI/CD service needs network access and credentials for the targets, which must be secured.</p>]]></text>
+      <text><![CDATA[<p>Giving the CI/CD service network access and credentials for the targets, and keeping that access secure</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Nothing beyond a pull model, because both models need the same access to the infrastructure.</p>]]></text>
+      <text><![CDATA[<p>Nothing extra, because a pull model needs exactly the same access to the infrastructure</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Pull requests stop working, because a push model delivers direct commits to the main branch instead.</p>]]></text>
+      <text><![CDATA[<p>Replacing pull requests with direct commits to the main branch, because pushed changes bypass review</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
     </answer>
     <answer fraction="0" format="html">
-      <text><![CDATA[<p>Changes can no longer be traced, because a pushed change leaves no record in the repository.</p>]]></text>
+      <text><![CDATA[<p>Keeping a separate change log, because a pushed change leaves no record in the repository</p>]]></text>
       <feedback format="html">
         <text><![CDATA[]]></text>
       </feedback>
@@ -321,7 +321,7 @@
     </name>
     <idnumber>L9-Q6</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>Why does the lecture call a repository's CI/CD pipeline guardrails for the team that owns the repository?</p>]]></text>
+      <text><![CDATA[<p>Why can a repository's CI/CD pipeline be called guardrails for the team that owns the repository?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text><![CDATA[<p>The pipeline's checks, such as syntax, policy, security, and vulnerability checks, block any change that breaks the owning team's rules. The pipeline definition is code stored in the same repository and maintained by that team, so it codifies the team's knowledge. Pull request pipelines verify without deploying, and the owners still review complex or risky changes, but much of the routine review is delegated to automation.</p>]]></text>
@@ -379,76 +379,14 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L9 Q7 Releasing and deploying applications</text>
+      <text>L9 Q7 A complete record of change</text>
     </name>
     <idnumber>L9-Q7</idnumber>
-    <questiontext format="html">
-      <text><![CDATA[<p>An application pipeline tests each build and publishes it to an artifact repository. In the GitOps setup described in the lecture, what decides which application version runs in each environment?</p>]]></text>
-    </questiontext>
-    <generalfeedback format="html">
-      <text><![CDATA[<p>Application pipelines test the code and publish release artifacts to an artifact repository; the infrastructure or configuration repository then decides which version runs in which environment. Version bumps can be committed automatically by other pipelines, so the repository has both human and automated authors. Releasing an artifact is thereby separated from deploying it, and each deployment remains a recorded change in Git.</p>]]></text>
-    </generalfeedback>
-    <defaultgrade>2</defaultgrade>
-    <penalty>0</penalty>
-    <hidden>0</hidden>
-    <single>true</single>
-    <shuffleanswers>true</shuffleanswers>
-    <answernumbering>ABCD</answernumbering>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>The application pipeline, which deploys each published build to every environment at once</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Engineers, who copy artifacts to servers by hand and note the versions in a shared document</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="0" format="html">
-      <text><![CDATA[<p>Each environment, which picks up the newest published artifact on its own schedule</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <answer fraction="100" format="html">
-      <text><![CDATA[<p>The infrastructure repository, where version bumps can be committed by people or automation</p>]]></text>
-      <feedback format="html">
-        <text><![CDATA[]]></text>
-      </feedback>
-    </answer>
-    <correctfeedback format="html">
-      <text><![CDATA[]]></text>
-    </correctfeedback>
-    <partiallycorrectfeedback format="html">
-      <text><![CDATA[]]></text>
-    </partiallycorrectfeedback>
-    <incorrectfeedback format="html">
-      <text><![CDATA[]]></text>
-    </incorrectfeedback>
-    <tags>
-      <tag>
-        <text>ICA0024</text>
-      </tag>
-      <tag>
-        <text>lecture-09</text>
-      </tag>
-      <tag>
-        <text>multiple-choice</text>
-      </tag>
-    </tags>
-  </question>
-  <question type="multichoice">
-    <name>
-      <text>L9 Q8 A complete record of change</text>
-    </name>
-    <idnumber>L9-Q8</idnumber>
     <questiontext format="html">
       <text><![CDATA[<p>After an outage, a team must find out which change reached production, who approved it, and whether its checks passed. Some recent changes were applied from engineers' laptops. Which practice gives the team a complete record in future?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed.</p>]]></text>
+      <text><![CDATA[<p>The commit history shows who changed what and why, the pull request shows the review, and the pipeline logs show when each change ran and with what result; observability then shows the state of the infrastructure. The record is complete only when automation is the single path for changes. Changes applied from laptops or directly by senior engineers bypass it, and chat messages or snapshots do not show who approved a change or whether its checks passed. Emergency access, if a team needs it, should still leave a commit afterwards, so that the code and the record catch up with the change.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -503,14 +441,14 @@
   </question>
   <question type="multichoice">
     <name>
-      <text>L9 Q9 Replacing tickets with pull requests</text>
+      <text>L9 Q8 Replacing tickets with pull requests</text>
     </name>
-    <idnumber>L9-Q9</idnumber>
+    <idnumber>L9-Q8</idnumber>
     <questiontext format="html">
-      <text><![CDATA[<p>A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Each request goes through tickets and takes days of back-and-forth for a change of a few lines. Both teams are technical. Which workflow best fits the lecture?</p>]]></text>
+      <text><![CDATA[<p>A database team often needs small network changes, such as an opened port or a new route, in the network team's infrastructure repository. Today each request goes through tickets and takes days of back-and-forth for a change of a few lines. The company moves to GitOps so that the database team can make such changes itself, as self-service, while the network team keeps control of its network. Which workflow fits best?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Pull requests to the owning team's repository replace the ticket back-and-forth that the lecture called "cosmic ping pong". The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays.</p>]]></text>
+      <text><![CDATA[<p>In GitOps, self-service means pull requests to the owning team's repository instead of the back-and-forth of tickets between teams. The owners' pipeline checks each request automatically and gives feedback without deploying; the owners review a green request when they can and merge it, and the merge delivers the change. The owners keep control of the main branch while delegating implementation to the requesting team and much of the review to automation. Direct device access or direct pushes remove that control, and batching tickets keeps the delays.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -561,21 +499,18 @@
       <tag>
         <text>multiple-choice</text>
       </tag>
-      <tag>
-        <text>practical-scenario</text>
-      </tag>
     </tags>
   </question>
   <question type="multichoice">
     <name>
-      <text>L9 Q10 Layer repositories and simple interfaces</text>
+      <text>L9 Q9 Layer repositories and simple interfaces</text>
     </name>
-    <idnumber>L9-Q10</idnumber>
+    <idnumber>L9-Q9</idnumber>
     <questiontext format="html">
       <text><![CDATA[<p>An organization keeps its infrastructure in one repository per layer (network, machine images, server configuration, and application deployment), each owned by one team. Other teams often need to add simple entries, such as DNS records or batch jobs, to layers they do not own, while the owners keep refactoring the internals. Which organization best supports both kinds of change?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In the lecture's example, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow.</p>]]></text>
+      <text><![CDATA[<p>The owning team stays responsible for the complex internals of its layer, but changes that other teams need often should be easy to make: simple interface files such as YAML or JSON in the repository, sometimes a separate repository or a self-service portal, changed through pull requests that the owners' pipeline checks. In one real case, batch jobs moved into a repository that the data warehouse team could change under policy and security checks, which ended the waiting. A shared repository without owners, private copies, and tickets for every change each lose either control or flow.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>

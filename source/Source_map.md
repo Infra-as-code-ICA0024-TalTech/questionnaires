@@ -158,12 +158,11 @@ Source recording: `Lecture9.mp4` (17 November 2026), automated transcript `Lectu
 | L9 Q4 | Four GitOps principles, the desired state controller as optional, scheduled pipelines, 00:16:57–00:22:41 |
 | L9 Q5 | Push-based delivery from CI/CD and its security implications, 00:43:37–00:44:55; both models workable depending on tools and security, 00:48:20–00:48:40 |
 | L9 Q6 | The pipeline as guardrails defined by the owning team in its repository, 00:19:40–00:20:50; codified knowledge that blocks non-compliant pull requests, 00:26:25–00:27:35; delegating review to automation, 00:31:50–00:32:30; slide "Collaboration" |
-| L9 Q7 | Application release pipelines, artifact repositories, and version bumps committed to the infrastructure repository, 00:48:46–00:52:55; slide "Apps" |
-| L9 Q8 | Git history, pipeline logs, and observability as the record of change, 00:16:05–00:16:55; automated delivery as the only path, 00:18:25–00:18:45; 00:22:44–00:23:08 |
-| L9 Q9 | Slow cross-team change requests, 00:02:57–00:05:55; slide "Change"; pull requests checked by the owners' pipeline instead of tickets, "cosmic ping pong", 00:25:00–00:32:30; applied cross-team scenario |
-| L9 Q10 | Teams allowing pull requests to each other's repositories, 00:32:35–00:33:25; batch jobs moved into a repository another team could change under checks, 00:33:25–00:36:50; simple interface files or a portal for frequent outside changes, 00:36:50–00:39:20; applied repository-organization scenario |
+| L9 Q7 | Git history, pipeline logs, and observability as the record of change, 00:16:05–00:16:55; automated delivery as the only path, 00:18:25–00:18:45; 00:22:44–00:23:08 |
+| L9 Q8 | Slow cross-team change requests, 00:02:57–00:05:55; slide "Change"; pull requests checked by the owners' pipeline instead of tickets, "cosmic ping pong", 00:25:00–00:32:30; applied cross-team scenario |
+| L9 Q9 | Teams allowing pull requests to each other's repositories, 00:32:35–00:33:25; batch jobs moved into a repository another team could change under checks, 00:33:25–00:36:50; simple interface files or a portal for frequent outside changes, 00:36:50–00:39:20; applied repository-organization scenario |
 
-L9 Q9 and Q10 avoid the version-control basics already assessed in L1 Q5 and the shared definitions of L1 Q10; they assess how ownership, pull requests, and pipelines let teams change each other's infrastructure.
+L9 Q8 and Q9 avoid the version-control basics already assessed in L1 Q5 and the shared definitions of L1 Q10; they assess how ownership, pull requests, and pipelines let teams change each other's infrastructure.
 
 ## Source provenance
 
